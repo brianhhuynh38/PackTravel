@@ -1,6 +1,7 @@
 
 
 <!doctype html> {% load static %}
+{% load socialaccount %}
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -28,6 +29,13 @@
             </div>
             <br>
             <button type="submit"  style="color: white; background-color: #D22B2B; border-color: #D22B2B;" class="btn btn-dark" >Login</button>
+            <br>
+            OR
+            <br>
+            <div class="form-group">
+              <i class="fab fa-google"></i>
+              <a role="button" class="btn btn-primary" href="{% provider_login_url 'google' %}">Sign In with Google</a>
+            </div>
           </form>
 </div>
   </body>
