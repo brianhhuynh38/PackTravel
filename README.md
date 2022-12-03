@@ -23,7 +23,7 @@
 
 
 </div>
-<h1>🏆 Goal</h1>
+<h1>Goal</h1>
 
 _Travelling alone?_ **Try PackTravel**
 
@@ -31,10 +31,6 @@ _Travelling alone?_ **Try PackTravel**
 **Project Description:**
 
 Most of the university students do not have a car to travel off-campus and rely mostly on the Wolfline. But what if someone wants to travel outside Wolfline's limit? Well... why not collaborate on PackTravel to travel off-campus by a cab, rental car, etc.
-
-
-
-<img style="width: 320px; height: 200px;" src="https://user-images.githubusercontent.com/111834635/194171695-02f5bda6-af44-4e9e-a1a5-4d734c7af5de.jpg" alt=""/>
 
 **So, let's PackTravel 😎**
 
@@ -48,7 +44,7 @@ Most of the university students do not have a car to travel off-campus and rely 
   
 </ul>
 
-## 🚀 A bit abut PackTravel
+## A bit abut PackTravel
 
 https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3-af35-732ebd34e76c.mp4
 
@@ -65,9 +61,9 @@ https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3
 
 
 
-## 📖 Getting started:
+## Getting started:
 
-### 👤 Who can use our app</h1>
+### Who can use our app</h1>
 
   1. If you are a user who is visiting our app, you can sign up as a user with view access to rides. You can edit or create your own ride.
   2. If you are an admin user, you can create, view, update and delete rides and schedule rides.
@@ -125,12 +121,12 @@ Start the server
      - Site gets hosted at:
        `http://127.0.0.1:8000/`
        
-## 🛠️ Tools
+## Tools
 - [Preetier Code Formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - [JS-HTML-CSS Formatter](https://marketplace.visualstudio.com/items?itemName=lonefy.vscode-JS-CSS-HTML-formatter)
 - [PyLint](https://pylint.org/)
 
-## 🧑‍💻 Functionalities in Action 
+## Functionalities in Action 
 
 - **Login Page**
 ![](https://github.com/amisha-w/PackTravel/blob/main/images/Login%20(1).gif)
@@ -155,12 +151,12 @@ Start the server
 
 
 
-## 💬 Chat Channel
+## Chat Channel
 
-<code><a href="https://app.slack.com/client/T03UZM4975G/C03UT3QFHP0" target="_blank"><img height="50" width="100" src="https://user-images.githubusercontent.com/111834635/194175304-834d5663-b6bb-4e38-981d-98bc1bf028b8.png"></a></code>
+<code><a href="https://seproject-bvz2267.slack.com/archives/C045KE3RW9L" target="_blank"><img height="50" width="100" src="https://user-images.githubusercontent.com/111834635/194175304-834d5663-b6bb-4e38-981d-98bc1bf028b8.png"></a></code>
 
 
-### 🎯 Phase 1:
+### Phase 1:
 
 - [x] Create database ER diagram
 - [x] Create Mongo Database
@@ -174,7 +170,13 @@ Start the server
 - [x] Add Error Handling mechanisms
 - [x] Setup Workflows
 
-### 🎯 Future Enhancements:
+### Phase 2:
+- [] 
+- []
+- []
+- []
+
+### Future Enhancements:
 
 - [ ] Add machine learning algorithms for predicting lowest priced rides, best pickup and drop-off locations.
 - [ ] Add functionality to merge routes
@@ -186,7 +188,7 @@ Start the server
 
 ## Contributions to the Project
 
-## 👨‍🏭 Contributors 
+## Contributors 
 
 <table>
   <tr>
@@ -199,8 +201,3 @@ Start the server
 </table>
 
 
-<h1>❗ TroubleShooting and Help Guide</h1>
-
- 1. For any issues faced while using the application, please email the detailed description and steps to reproduce the error at help@packtravel.io .
- 2. If you are a developer, please raise an issue on github with steps to reproduce and possible source of error.
- 3. Our email is monitored 24x7 and we usually respond within 1 hour. Happy Emailing :).
