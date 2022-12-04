@@ -28,8 +28,29 @@ def intializeDB():
 
 # Home page for PackTravel
 def index(request, username=None):
+    intializeDB()
+    if request.user.is_authenticated:
+        request.session["username"] = request.user.username
+        request.session['fname'] = request.user.first_name
+        request.session['lname'] = request.user.last_name
+        request.session['email'] = request.user.email
+        user = userDB.find_one({"username": request.user.username})
+        if not user:
+            userObj = {
+                    "username": request.user.username, 
+                    "fname": request.user.first_name,
+                    "lname": request.user.last_name,
+                    "email": request.user.email,
+                    "rides": []
+                }
+            userDB.insert_one(userObj)
+            print("User Added")
+        else:
+            print("User Already exists")
+            print(f'Username: {user["username"]}')
+        return render(request, 'home/home.html', {"username":request.session["username"]})
     if request.session.has_key('username'):
-         return render(request, 'home/home.html', {"username":request.session["username"]})
+        return render(request, 'home/home.html', {"username":request.session["username"]})
     return render(request, 'home/home.html', {"username":None})
 
 

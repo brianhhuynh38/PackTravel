@@ -13,13 +13,13 @@
 ![Lint Python](https://github.com/amisha-w/PackTravel/actions/workflows/pylint.yml/badge.svg)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT) 
-[![contributors](https://img.shields.io/github/contributors/amisha-w/PackTravel?style=for-the-badge)](https://github.com/amisha-w/PackTravel/graphs/contributors)
-[![Total Lines](https://img.shields.io/tokei/lines/github/amisha-w/PackTravel?style=for-the-badge)](https://img.shields.io/tokei/lines/github/amisha-w/PackTravel)
-[![Issues](https://img.shields.io/github/issues/amisha-w/PackTravel?style=for-the-badge)](https://github.com/amisha-w/PackTravel/issues)
-[![Closed Issues](https://img.shields.io/github/issues-closed-raw/amisha-w/PackTravel?style=for-the-badge)](https://github.com/amisha-w/PackTravel/issues?q=is%3Aissue+is%3Aclosed)
-[![Pull Requests](https://img.shields.io/github/issues-pr/amisha-w/PackTravel?style=for-the-badge)](https://github.com/amisha-w/PackTravel/pulls)
-[![Commit Acitivity](https://img.shields.io/github/commit-activity/w/amisha-w/PackTravel?style=for-the-badge)](https://github.com/amisha-w/PackTravel/graphs/commit-activity)
-[![Repo Size](https://img.shields.io/github/repo-size/amisha-w/PackTravel?style=for-the-badge)](https://github.com/amisha-w/PackTravel)
+[![contributors](https://img.shields.io/github/contributors/Prachit99/PackTravel?style=for-the-badge)](https://github.com/Prachit99/PackTravel/graphs/contributors)
+[![Total Lines](https://img.shields.io/tokei/lines/github/Prachit99/PackTravel?style=for-the-badge)](https://img.shields.io/tokei/lines/github/Prachit99/PackTravel)
+[![Issues](https://img.shields.io/github/issues/Prachit99/PackTravel?style=for-the-badge)](https://github.com/Prachit99/PackTravel/issues)
+[![Closed Issues](https://img.shields.io/github/issues-closed-raw/Prachit99/PackTravel?style=for-the-badge)](https://github.com/Prachit99/PackTravel/issues?q=is%3Aissue+is%3Aclosed)
+[![Pull Requests](https://img.shields.io/github/issues-pr/Prachit99/PackTravel?style=for-the-badge)](https://github.com/Prachit99/PackTravel/pulls)
+[![Commit Acitivity](https://img.shields.io/github/commit-activity/w/Prachit99/PackTravel?style=for-the-badge)](https://github.com/Prachit99/PackTravel/graphs/commit-activity)
+[![Repo Size](https://img.shields.io/github/repo-size/Prachit99/PackTravel?style=for-the-badge)](https://github.com/Prachit99/PackTravel)
 
 
 </div>
@@ -82,23 +82,23 @@ https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3
 Create a virtual environment:
 
 ```bash
-  python3.x -m venv test_env
+  python3.x -m venv env
 ```
 
 Activate the virtual environment:
 Linux/MacOS:
 ```bash
-  source test_env/bin/activate
+  source env/bin/activate
 ```
 Windows:
 ```bash
-  ./test_env/Scripts/activate
+  ./env/Scripts/activate
 ```
 
 Clone the project
 
 ```bash
-  git clone https://github.com/amisha-w/PackTravel.git
+  git clone https://github.com/Prachit99/PackTravel.git
 ```
 
 Go to the project directory
@@ -122,8 +122,8 @@ Start the server
 
 
 
-     - Site will be hosted at:
-       `http://127.0.0.1:5000/`
+     - Site gets hosted at:
+       `http://127.0.0.1:8000/`
        
 ## 🛠️ Tools
 - [Preetier Code Formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
@@ -190,11 +190,11 @@ Start the server
 
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/amisha-w"><img src="https://avatars.githubusercontent.com/u/40361766?v=4" width="100px;" alt=""/><br /><sub><b>Amisha Waghela</b></sub></a></td>
-    <td align="center"><a href="https://github.com/Aoishi28"><img src="https://avatars.githubusercontent.com/u/60925790?v=4" width="100px;" alt=""/><br /><sub><b>Aoishi Das</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/ameyachavan26"><img src="https://avatars.githubusercontent.com/u/111834635?v=4" width="100px;" alt=""/><br /><sub><b>Ameya Chavan</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/kunalshah03"><img src="https://avatars.githubusercontent.com/u/48029057?v=4" width="100px;" alt=""/><br /><sub><b>Kunal Shah</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/swarnamalyamohan"><img src="https://avatars.githubusercontent.com/u/45752623?v=4" width="100px;" alt=""/><br /><sub><b>Swarnamalya M</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/Prachit99"><img src="https://avatars.githubusercontent.com/Prachit99" width="100px;" alt=""/><br /><sub><b>Prachit99</b></sub></a></td>
+    <td align="center"><a href="https://github.com/Darkspur"><img src="https://avatars.githubusercontent.com/Darkspur" width="100px;" alt=""/><br /><sub><b>Sahil Sawant Joshi</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/ashishjoshi2605"><img src="https://avatars.githubusercontent.com/ashishjoshi2605" width="100px;" alt=""/><br /><sub><b>Ashish Joshi</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/sankettangade"><img src="https://avatars.githubusercontent.com/sankettangade" width="100px;" alt=""/><br /><sub><b>Sanket Tangade</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/karan-47"><img src="https://avatars.githubusercontent.com/karan-47" width="100px;" alt=""/><br /><sub><b>Karan Gala</b></sub></a><br /></td>
   </tr>
 </table>
 

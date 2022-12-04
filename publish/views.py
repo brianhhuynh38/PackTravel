@@ -59,7 +59,7 @@ def select_route(request):
         ride = ride.replace("\'", "\"")
         ride = json.loads(ride)
         ride_id = ride['_id']
-        attachUserToRoute(username, route_id, ride_id)
+        attach_user_to_route(username, route_id)
         return redirect(display_ride, ride_id=ride['_id'] )
     return render(request, 'publish/publish.html', {"username": username})
 
