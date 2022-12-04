@@ -5,7 +5,7 @@ from django.db import models
 class Ride(models.Model):
     # fields of the model
     destination = models.TextField()
-    rideDate = models.TextField()
+    # rideDate = models.TextField()
 
     class Meta:
         app_label = 'PackTravel.publish'
