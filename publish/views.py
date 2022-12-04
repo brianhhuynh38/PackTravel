@@ -181,7 +181,7 @@ def attach_user_to_route(username, route_id):
     intializeDB()
     user = userDB.find_one({"username": username})
     if user == None:
-        return render(request, 'home/home.html', {"username": None})
+        return redirect('home/home.html', {"username": None})
 
     user['rides'].append(route_id)
     userDB.update_one({"username": username},{"$set": {"rides": user['rides']}})
