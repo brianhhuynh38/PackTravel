@@ -36,11 +36,11 @@ def publish_index(request):
 def display_ride(request, ride_id):
     intializeDB()
     ride = ridesDB.find_one({'_id': ride_id})
-    print(f"Ride = {ride}")
+    # print(f"Ride = {ride}")
     routes = get_routes(ride)
     print(f"Route = {routes}")
     selected = routeSelect(request.session['username'], routes)
-    print(f"Routes = {selected}")
+    # print(f"Routes = {selected}")
     context = {
             "username": request.session['username'],
             "ride": ride,
@@ -103,9 +103,9 @@ def create_route(request):
                 _{request.POST.get("ampm")}"""
             ,
                 "purpose": request.POST.get('purpose'),
-                "starting point": request.POST.get('spoint'),
+                "s_point": request.POST.get('s_point'),
                 "destination": request.POST.get('destination'),
-                # "type": request.POST.get('type'),
+                "type": request.POST.get('type'),
                 "date": request.POST.get("date"),
                 "hour": request.POST.get("hour"),
                 "minute":  request.POST.get("minute"),
