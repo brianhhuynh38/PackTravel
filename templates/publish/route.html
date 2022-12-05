@@ -111,7 +111,7 @@ function selectRoute(id) {
                   <!-- Modal body -->
                   <div class="modal-body" action="http://maps.google.com/maps">
                     <form action="http://maps.google.com/maps" method="get" target="_blank">
-                      <input type="hidden" name="saddr"  value="{{route.spoint}}" />
+                      <input type="hidden" name="saddr"  value="{{route.s_point}}" />
                       <input type="hidden" name="daddr" value= "{{ride.destination}}"/>
                       <input type="submit" class="btn text-center" style="background-color: #D22B2B; border-color: #D22B2B; color: white;" value="Get directions" />
                    </form>
