@@ -98,18 +98,9 @@ def create_route(request):
     if request.method == 'POST':
         route = {
             "_id":
-<<<<<<< HEAD
-                f"""{request.POST.get('purpose')}+_+
-                {request.POST.get('destination')}+_+
-                {request.POST.get('s_point')}+_+
-                {request.POST.get('type')}+_+
-                {request.POST.get('date')}+_+
-                {request.POST.get('hour')}"""
-=======
                 f"""{request.POST.get('purpose')}_{request.POST.get('spoint')}_{request.POST.get('destination')}
                 _{request.POST.get("date")}_{request.POST.get("hour")}_{request.POST.get("minute")}
                 _{request.POST.get("ampm")}"""
->>>>>>> fe9139fad10421733e7a3b8900393003938b1bb2
             ,
                 "purpose": request.POST.get('purpose'),
                 "s_point": request.POST.get('s_point'),
