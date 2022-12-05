@@ -12,9 +12,10 @@ jobs:
       - run: cd packTravel
       - run: virtualenv newenv
       - run: source newenv/bin/activate
-      - run: pip3 install -r requirements.txt || true
+      - run: pip3 install -r requirements.txt
       - run: pip3 install django
       - run: pip3 install django-allauth
+      - run: pip3 install pymongo
       - run: python3 manage.py test
       - run: pip3 install coverage
       - run: coverage run ./manage.py test

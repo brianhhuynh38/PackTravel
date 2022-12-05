@@ -135,5 +135,4 @@ def my_rides(request):
             if user_routes[i] == route['_id']:
                 route['id'] = route['_id']
                 processed.append(route)
-    print("Processes:", processed)
     return render(request, 'user/myride.html', {"username": request.session['username'], "rides": processed})
