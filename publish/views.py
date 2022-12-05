@@ -35,6 +35,7 @@ def publish_index(request):
 
 def display_ride(request, ride_id):
     intializeDB()
+    print("Ride id", ride_id)
     ride = ridesDB.find_one({'_id': ride_id})
     # print(f"Ride = {ride}")
     routes = get_routes(ride)
@@ -101,6 +102,7 @@ def create_route(request):
                 f"""{request.POST.get('purpose')}_{request.POST.get('s_point')}_{request.POST.get('destination')}
                 _{request.POST.get("date")}_{request.POST.get("hour")}_{request.POST.get("minute")}
                 _{request.POST.get("ampm")}"""
+
             ,
                 "purpose": request.POST.get('purpose'),
                 "s_point": request.POST.get('s_point'),
