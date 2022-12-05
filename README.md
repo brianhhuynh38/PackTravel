@@ -8,9 +8,9 @@
 
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7178601.svg)](https://doi.org/10.5281/zenodo.7178601)
-[![codecov](https://codecov.io/gh/amisha-w/PackTravel/branch/main/graph/badge.svg?token=HRFN97UEB7)](https://codecov.io/gh/amisha-w/PackTravel)
-![Python Style Checker](https://github.com/amisha-w/PackTravel/actions/workflows/python_style_checker.yml/badge.svg)
-![Lint Python](https://github.com/amisha-w/PackTravel/actions/workflows/pylint.yml/badge.svg)
+[![codecov](https://codecov.io/gh/amisha-w/PackTravel/branch/main/graph/badge.svg?token=HRFN97UEB7)](https://codecov.io/gh/Prachit99/PackTravel)
+![Python Style Checker](https://github.com/Prachit99/PackTravel/actions/workflows/python_style_checker.yml/badge.svg)
+![Lint Python](https://github.com/Prachit99/PackTravel/actions/workflows/pylint.yml/badge.svg)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT) 
 [![contributors](https://img.shields.io/github/contributors/Prachit99/PackTravel?style=for-the-badge)](https://github.com/Prachit99/PackTravel/graphs/contributors)
@@ -41,6 +41,9 @@ Most of the university students do not have a car to travel off-campus and rely 
   <li>Create mmultiple routes to reach a ride's destination:  Bus, Cab or Personal</li>
   <li>Search and view other's rides</li>
   <li>Join a PackTravel Ride's route</li>
+  <li>Check all your rides</li>
+  <li>Modify your Ride</li>
+  <li> Delete a Ride</li>
   
 </ul>
 
@@ -128,6 +131,9 @@ Start the server
 
 ## Functionalities in Action 
 
+- **Sign Up Page**
+![](https://github.com/amisha-w/PackTravel/blob/main/images/Register.gif)
+
 - **Login Page**
 ![](https://github.com/amisha-w/PackTravel/blob/main/images/Login%20(1).gif)
 
@@ -135,58 +141,36 @@ Start the server
 ![](https://github.com/amisha-w/PackTravel/blob/main/images/Create1.gif)
 ![](https://github.com/amisha-w/PackTravel/blob/main/images/Create2.gif)
 
-- **Search for a Ride**
-![](https://github.com/amisha-w/PackTravel/blob/main/images/Search.gif)
-
-- **Joining an existing Ride**
-![](https://github.com/amisha-w/PackTravel/blob/main/images/JoinRide.gif)
-
 - **Adding New Route**
 ![](https://github.com/amisha-w/PackTravel/blob/main/images/AddRoute11.gif)
 ![](https://github.com/amisha-w/PackTravel/blob/main/images/AddRoute12.gif)
 
-- **Sign Up Page**
-![](https://github.com/amisha-w/PackTravel/blob/main/images/Register.gif)
-  
+- **Search for a Ride**
+![](https://github.com/amisha-w/PackTravel/blob/main/images/Search.gif)
 
+
+## Phase 1:
+
+- Create HomePage
+- Create Login and Signup Page
+- Create Search Page
+- Added create Routes Page
+- Add Unit testing
+- Add Error Handling mechanisms
+- Setup Workflows
+
+## Phase 2:
+-  Restructed the database and object structure to improve efficiency and avoid data redundancy
+-  Added User based Rides Page 
+- Added Google SSO Sign IN
+- Deployed and Hosted the application on AWS
+- Added Modify and Delete Ride Functionality
 
 
 ## Chat Channel
 
 <code><a href="https://seproject-bvz2267.slack.com/archives/C045KE3RW9L" target="_blank"><img height="50" width="100" src="https://user-images.githubusercontent.com/111834635/194175304-834d5663-b6bb-4e38-981d-98bc1bf028b8.png"></a></code>
 
-
-### Phase 1:
-
-- [x] Create database ER diagram
-- [x] Create Mongo Database
-- [x] Create HomePage
-- [x] Create Login and Signup Page
-- [x] Create Search Page
-- [x] Added create Rides Page
-- [x] Added create routes Page
-- [x] Setup Django
-- [x] Add Unit testing
-- [x] Add Error Handling mechanisms
-- [x] Setup Workflows
-
-### Phase 2:
-- [] 
-- []
-- []
-- []
-
-### Future Enhancements:
-
-- [ ] Add machine learning algorithms for predicting lowest priced rides, best pickup and drop-off locations.
-- [ ] Add functionality to merge routes
-- [ ] Show later departures in search if currently searched rides is not available
-- [ ] Increase the geographical area coverage for the application
-- [ ] Extend the userbase to students other than that of the North Carolina State University
-- [ ] Integrate in-app cab booking services
-- [ ] Introduce a two way ride confirmation feature
-
-## Contributions to the Project
 
 ## Contributors 
 
