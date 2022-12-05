@@ -118,3 +118,22 @@ def login(request):
         form = LoginForm()
         return render(request, 'user/login.html', {"form": form})
 
+def my_rides(request):
+    intializeDB()
+    if not request.session.has_key('username'):
+        request.session['alert'] = "Please login to create a ride."
+        return redirect('index')
+    all_routes = list(routesDB.find())
+    user_list = list(userDB.find())
+    final_user, processed = list(), list()
+    for user in user_list:
+        if request.session["username"] == user['username']:
+            final_user = user
+    user_routes = final_user['rides']
+    for route in all_routes:
+        for i in range(len(user_routes)):
+            if user_routes[i] == route['_id']:
+                route['id'] = route['_id']
+                processed.append(route)
+    print("Processes:", processed)
+    return render(request, 'user/myride.html', {"username": request.session['username'], "rides": processed})

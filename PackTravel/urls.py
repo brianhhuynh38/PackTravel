@@ -36,4 +36,5 @@ urlpatterns = [
     path('display_ride/<ride_id>', publishViews.display_ride, name='display_ride'),
     path('accounts/', include('allauth.urls')),
     path('logout/', LogoutView.as_view()),
+    path('myrides/', userView.my_rides, name = 'search'),
 ]
