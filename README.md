@@ -35,7 +35,7 @@ https://user-images.githubusercontent.com/18501895/205809978-14a5c1c0-65a3-4171-
 
 ## Enhancement and Improvements in Phase 2:
 -  Restructed the database and object structure to improve efficiency and avoid data redundancy. 
-- Users can create or join Routes. Rides would be mapped or creating automatically based on the source and destination avoiding duplicate data and data redundancy.
+- Users can create or join routes which would create or map the rides automatically based on the source and destination avoiding duplicate data and data redundancy.
 -  Added User based Rides Page which would help the user to track his rides and work on it accordingly. 
 - Added Google SSO Sign in functionality to add options to signing up which also covers security loopholes.
 - Added delete/cancel ride functionality so that if the user has cancelled his plan of going to a particular destination, he/she can cancel/delete the ride so that others are not dependent on the same creating efficient and easy usability for the users.
