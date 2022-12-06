@@ -30,9 +30,14 @@ def search_index(request):
         request.session['alert'] = "Please login to create a ride."
         return redirect('index')
     all_rides = list(ridesDB.find())
-    processed = list()
+    all_routes = list(routesDB.find())
+    processed, routes = list(), list()
+    processed_routes = list()
     for ride in all_rides:
+        routes = ride['route_id']
+        for route in all_routes:
+            if route['_id'] in routes:
+                ride.update(route)
         ride['id'] = ride.pop('_id')
         processed.append(ride)
-    return render(request, 'search/search.html', {"username": request.session['username'], "rides":processed})
-    
+    return render(request, 'search/search.html', {"username": request.session['username'], "rides": processed})
