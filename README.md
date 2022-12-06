@@ -41,6 +41,7 @@ https://user-images.githubusercontent.com/18501895/205809978-14a5c1c0-65a3-4171-
 - Added delete/cancel ride functionality so that if the user has cancelled his plan of going to a particular destination, he/she can cancel/delete the ride so that others are not dependent on the same creating efficient and easy usability for the users.
 - Deployed and Hosted the application on AWS making the application more stable, globally acccessible and not dependent on any local machine.
 
+<a href="https://github.com/Prachit99/PackTravel/blob/main/images/video1155969440.mp4" target="_blank">Link to Video 2</a>
 
 <h2>Scalability</h2>
 
