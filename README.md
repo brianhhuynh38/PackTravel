@@ -23,18 +23,48 @@
 
 
 </div>
-<h1>Goal</h1>
 
-_Travelling alone?_ **Try PackTravel**
+## Flaws in Phase 1
+
+- Only basic sign-up/login option which used to break multiple times.
+- One was able to create Rides as well as Routes which would create a lot of data redundancy and multiple rides and routes even for the same source to destination travel ultimately causing more confusion to users.
+- No scope of deleting or cancelling a ride or route.
+- No scope for the user to track his/her rides creating problems for the user track his/her rides and routes and plan accordingly.
+- Application was running only on local servers. Not deployed so very less usability scope as well as very less server support.
 
 
-**Project Description:**
+## Enhancement and Improvements in Phase 2:
+-  Restructed the database and object structure to improve efficiency and avoid data redundancy. 
+- Users can create or join Routes. Rides would be mapped or creating automatically based on the source and destination avoiding duplicate data and data redundancy.
+-  Added User based Rides Page which would help the user to track his rides and work on it accordingly. 
+- Added Google SSO Sign in functionality to add options to signing up which also covers security loopholes.
+- Added delete/cancel ride functionality so that if the user has cancelled his plan of going to a particular destination, he/she can cancel/delete the ride so that others are not dependent on the same creating efficient and easy usability for the users.
+- Deployed and Hosted the application on AWS making the application more stable, globally acccessible and not dependent on any local machine.
+
+
+<h2>What is Packtravel?</h2>
 
 Most of the university students do not have a car to travel off-campus and rely mostly on the Wolfline. But what if someone wants to travel outside Wolfline's limit? Well... why not collaborate on PackTravel to travel off-campus by a cab, rental car, etc.
 
-**So, let's PackTravel 😎**
+**So, let's go for Packtravel**
 
-<h1>Features</h1>
+https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3-af35-732ebd34e76c.mp4
+
+**Built Using:**
+</br>
+<code><a href="https://www.python.org/" target="_blank"><img height="50" src="https://user-images.githubusercontent.com/111834635/194173533-37cd4997-55f3-4bb1-87bd-1a16a3af53aa.png"></a></code>
+<code><a href="https://www.djangoproject.com/" target="_blank"><img height="50" src="https://user-images.githubusercontent.com/111834635/194172149-ff6a56be-3025-4d2c-8cdb-b9a7e3f87259.png"></a></code>
+<code><a href="https://www.mongodb.com/" target="_blank"><img height="50" src="https://user-images.githubusercontent.com/111834635/194173280-628ecfc0-21ae-4870-8e22-711e6da83820.png"></a></code>
+<code><a href="https://developer.mozilla.org/en-US/docs/Glossary/HTML5" target="_blank"><img height="50" src="https://www.vectorlogo.zone/logos/w3_html5/w3_html5-ar21.svg"></a></code>
+<code><a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img height="50" src="https://www.vectorlogo.zone/logos/w3_css/w3_css-ar21.svg"></a></code>
+<code><a href="https://www.javascript.com/" target="_blank"><img height="50" src="https://www.vectorlogo.zone/logos/javascript/javascript-ar21.svg"></a></code>
+<code><a href="https://getbootstrap.com/" target="_blank"><img height="50" src="https://www.vectorlogo.zone/logos/getbootstrap/getbootstrap-ar21.svg"></a></code>
+
+
+
+
+
+<h2>Features</h2>
 
 <ul>
   <li>Create a PackTravel Ride</li>
@@ -47,26 +77,8 @@ Most of the university students do not have a car to travel off-campus and rely 
   
 </ul>
 
-## A bit abut PackTravel
 
-https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3-af35-732ebd34e76c.mp4
-
-**Built Using:**
-</br>
-<code><a href="https://developer.mozilla.org/en-US/docs/Glossary/HTML5" target="_blank"><img height="50" src="https://www.vectorlogo.zone/logos/w3_html5/w3_html5-ar21.svg"></a></code>
-<code><a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img height="50" src="https://www.vectorlogo.zone/logos/w3_css/w3_css-ar21.svg"></a></code>
-<code><a href="https://getbootstrap.com/" target="_blank"><img height="50" src="https://www.vectorlogo.zone/logos/getbootstrap/getbootstrap-ar21.svg"></a></code>
-<code><a href="https://www.javascript.com/" target="_blank"><img height="50" src="https://www.vectorlogo.zone/logos/javascript/javascript-ar21.svg"></a></code>
-<code><a href="https://www.djangoproject.com/" target="_blank"><img height="50" src="https://user-images.githubusercontent.com/111834635/194172149-ff6a56be-3025-4d2c-8cdb-b9a7e3f87259.png"></a></code>
-<code><a href="https://www.mongodb.com/" target="_blank"><img height="50" src="https://user-images.githubusercontent.com/111834635/194173280-628ecfc0-21ae-4870-8e22-711e6da83820.png"></a></code>
-<code><a href="https://www.python.org/" target="_blank"><img height="50" src="https://user-images.githubusercontent.com/111834635/194173533-37cd4997-55f3-4bb1-87bd-1a16a3af53aa.png"></a></code>
-
-
-
-
-## Getting started:
-
-### Who can use our app</h1>
+<h2> Who can use our app?</h2>
 
   1. If you are a user who is visiting our app, you can sign up as a user with view access to rides. You can edit or create your own ride.
   2. If you are an admin user, you can create, view, update and delete rides and schedule rides.
@@ -149,22 +161,7 @@ Start the server
 ![](https://github.com/amisha-w/PackTravel/blob/main/images/Search.gif)
 
 
-## Phase 1:
 
-- Create HomePage
-- Create Login and Signup Page
-- Create Search Page
-- Added create Routes Page
-- Add Unit testing
-- Add Error Handling mechanisms
-- Setup Workflows
-
-## Phase 2:
--  Restructed the database and object structure to improve efficiency and avoid data redundancy
--  Added User based Rides Page 
-- Added Google SSO Sign IN
-- Deployed and Hosted the application on AWS
-- Added Modify and Delete Ride Functionality
 
 
 ## Chat Channel
