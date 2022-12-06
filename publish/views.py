@@ -189,7 +189,6 @@ def attach_user_to_route(username, route_id):
     userDB.update_one({"username": username},{"$set": {"rides": user['rides']}})
     print("route added for user")
 
-
     # rides = user['rides']
     # #remove other routes for this user and ride
     # for route in rides.copy():
