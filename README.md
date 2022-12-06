@@ -60,6 +60,11 @@ https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3
 <code><a href="https://www.javascript.com/" target="_blank"><img height="50" src="https://www.vectorlogo.zone/logos/javascript/javascript-ar21.svg"></a></code>
 <code><a href="https://getbootstrap.com/" target="_blank"><img height="50" src="https://www.vectorlogo.zone/logos/getbootstrap/getbootstrap-ar21.svg"></a></code>
 
+<h2>Scalability</h2>
+
+How can we scale this project? What are the shortcomings which can be covered if we scale it? Everything answered and explained in the in-detailed document attached below.
+
+<a href="https://github.com/Prachit99/PackTravel/blob/36a6b9848f74c52ebe0ccedfef6c0846d98a230d/scalability.md" target="_blank">Click here to know about Scaling this project to the next level</a>
 
 <h2>Features</h2>
 
