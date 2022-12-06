@@ -36,9 +36,7 @@ def search_index(request):
         routes = ride['route_id']
         for route in all_routes:
             if route['_id'] in routes:
-                print("Route", route)
                 ride.update(route)
         ride['id'] = ride.pop('_id')
         processed.append(ride)
-    # print("Processed", processed)
     return render(request, 'search/search.html', {"username": request.session['username'], "rides": processed})
