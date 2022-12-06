@@ -146,23 +146,25 @@ Start the server
 ## Functionalities in Action 
 
 - **Sign Up Page**
-![](https://github.com/amisha-w/PackTravel/blob/main/images/Register.gif)
+<img src="/images/Register.gif" width="800" height="400"/>
 
 - **Login Page**
-![](https://github.com/amisha-w/PackTravel/blob/main/images/Login%20(1).gif)
+<img src="/images/Login%20(1).gif" width="800" height="400"/>
 
 - **Creating a Ride**
-![](https://github.com/amisha-w/PackTravel/blob/main/images/Create1.gif)
-![](https://github.com/amisha-w/PackTravel/blob/main/images/Create2.gif)
+<img src="/images/Create1.gif" width="800" height="400"/>
+<img src="/images/Create2.gif" width="800" height="400"/>
 
 - **Adding New Route**
-![](https://github.com/amisha-w/PackTravel/blob/main/images/AddRoute11.gif)
-![](https://github.com/amisha-w/PackTravel/blob/main/images/AddRoute12.gif)
+<img src="/images/AddRoute11.gif" width="800" height="400"/>
+<img src="/images/AddRoute12.gif" width= "800" height="400"/>
 
 - **Search for a Ride**
-![](https://github.com/amisha-w/PackTravel/blob/main/images/Search.gif)
+<img src="/images/Search.gif" width="800" height="400"/>
 
+- **My Rides**
 
+<img src="/images/myRides.gif" width="800" height="400"/>
 
 
 
