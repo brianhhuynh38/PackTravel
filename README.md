@@ -5,8 +5,6 @@
 
 
 
-
-
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7178601.svg)](https://doi.org/10.5281/zenodo.7178601)
 [![codecov](https://codecov.io/gh/amisha-w/PackTravel/branch/main/graph/badge.svg?token=HRFN97UEB7)](https://codecov.io/gh/Prachit99/PackTravel)
 ![Python Style Checker](https://github.com/Prachit99/PackTravel/actions/workflows/python_style_checker.yml/badge.svg)
@@ -32,6 +30,8 @@
 - No scope for the user to track his/her rides creating problems for the user track his/her rides and routes and plan accordingly.
 - Application was running only on local servers. Not deployed so very less usability scope as well as very less server support.
 
+
+https://user-images.githubusercontent.com/18501895/205809978-14a5c1c0-65a3-4171-b6f2-f30449325088.mp4
 
 ## Enhancement and Improvements in Phase 2:
 -  Restructed the database and object structure to improve efficiency and avoid data redundancy. 
@@ -59,9 +59,6 @@ https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3
 <code><a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img height="50" src="https://www.vectorlogo.zone/logos/w3_css/w3_css-ar21.svg"></a></code>
 <code><a href="https://www.javascript.com/" target="_blank"><img height="50" src="https://www.vectorlogo.zone/logos/javascript/javascript-ar21.svg"></a></code>
 <code><a href="https://getbootstrap.com/" target="_blank"><img height="50" src="https://www.vectorlogo.zone/logos/getbootstrap/getbootstrap-ar21.svg"></a></code>
-
-
-
 
 
 <h2>Features</h2>
