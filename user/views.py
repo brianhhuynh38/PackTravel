@@ -53,11 +53,24 @@ def index(request, username=None):
     return render(request, 'home/home.html', {"username": None})
 
 
+def add_user_to_session(request,userObj):
+    request.session['username'] = userObj["username"]
+    request.session['unityid'] = userObj["unityid"]
+    request.session['fname'] = userObj["fname"]
+    request.session['lname'] = userObj["lname"]
+    request.session['email'] = userObj["email"]
+    request.session['phone'] = userObj["phone"]
+    
 def register(request):
-    intializeDB()
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
+            intializeDB()
+            #check whether username is unique
+            if(userDB.find_one({"username": form.cleaned_data["username"]})):
+                print('UserName Already Exists, please try different Username')
+                return render(request, 'user/register.html', {"form": form})
+                
             userObj = {
                 "username": form.cleaned_data["username"],
                 "unityid": form.cleaned_data["unityid"],
@@ -69,12 +82,7 @@ def register(request):
                 "rides": []
             }
             userDB.insert_one(userObj)
-            request.session['username'] = userObj["username"]
-            request.session['unityid'] = userObj["unityid"]
-            request.session['fname'] = userObj["fname"]
-            request.session['lname'] = userObj["lname"]
-            request.session['email'] = userObj["email"]
-            request.session['phone'] = userObj["phone"]
+            add_user_to_session(request=request,userObj=userObj)
             return redirect(index, username=request.session["username"])
         else:
             print(form.errors.as_data())
@@ -124,19 +132,8 @@ def my_rides(request):
     if not request.session.has_key('username'):
         request.session['alert'] = "Please login to create a ride."
         return redirect('index')
-    all_routes = list(routesDB.find())
-    user_list = list(userDB.find())
-    final_user, processed = list(), list()
-    for user in user_list:
-        if request.session["username"] == user['username']:
-            final_user = user
-    user_routes = final_user['rides']
-    for route in all_routes:
-        for i in range(len(user_routes)):
-            if user_routes[i] == route['_id']:
-                route['id'] = route['_id']
-                processed.append(route)
-
+    print(request.session["username"],'----------------')
+    processed = list(ridesDB.find({"owner":request.session["username"]}))
     return render(request, 'user/myride.html', {"username": request.session['username'], "rides": processed})
 
 

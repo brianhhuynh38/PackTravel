@@ -97,9 +97,9 @@ def get_routes(ride):
     return routes
 
 def create_route(request):
-    intializeDB()
     if request.method == 'POST':
-        route = {
+        intializeDB()
+        ride = {
            "_id": str(uuid.uuid4()),
                 "purpose": request.POST.get('purpose'),
                 "spoint": request.POST.get('spoint'),
@@ -109,39 +109,13 @@ def create_route(request):
                 "hour": request.POST.get("hour"),
                 "minute":  request.POST.get("minute"),
                 "ampm": request.POST.get("ampm"),
-                "details": request.POST.get("details")
+                "details": request.POST.get("details"),
+                "owner": request.session["username"]
             }
-        ride_id = request.POST.get('destination')
-        attach_user_to_route(request.session['username'], route['_id'])
-        if routesDB.find_one({'_id': route['_id']}) == None:
-            routesDB.insert_one(route)
-            print("Route added")
-            if ridesDB.find_one({'_id': ride_id}) == None:
-                ride = {
-                    "_id":
-                        request.POST.get('destination'),
-                    "destination": request.POST.get('destination'),
-                    "route_id": [route['_id']]
-                }
-                ridesDB.insert_one(ride)
-                print("Ride Added")
-            else:
-                ride = ridesDB.find_one({'_id': ride_id})
-                ride['route_id'].append(route['_id'])
-                ridesDB.update_one({'_id': ride_id},{"$set": {"route_id": ride['route_id']}})
-                print("Ride Updated")
-        return redirect(display_ride, ride_id=ride_id)
+        if ridesDB.find_one({"_id": ride["_id"]}) is None:
+            ridesDB.insert_one(ride)
     return render(request, 'publish/publish.html', {"username": request.session['username']})
 
-def attach_user_to_route(username, route_id):
-    intializeDB()
-    user = userDB.find_one({"username": username})
-    if user == None:
-        return redirect('home/home.html', {"username": None})
-
-    user['rides'].append(route_id)
-    userDB.update_one({"username": username},{"$set": {"rides": user['rides']}})
-    print("route added for user")
     
 # Add Edit functionality
 
