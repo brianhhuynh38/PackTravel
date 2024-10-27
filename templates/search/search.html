@@ -85,17 +85,25 @@
     <div class="col-sm-6" >
         <div class="card" style="color: black; margin: 10px;">
         <div class="card-body">
-          <h5 class="card-title">{{ ride.name }}</h5>
+          <h5 class="card-title">{{ ride.spoint }} to {{ ride.destination}}</h5>
           <p class="card-text">{{ ride.details }}</p>
           <table class="table table-hover">
             <tbody>
-                <tr>
-                    <td>Destination</td>
-                    <td class="dest">{{ride.destination}}</td>
-                  </tr>
+              <tr>
+                <td>Date</td>
+                <td class="dest">{{ride.date}}</td>
+              </tr>
+              <tr>
+                <td>Time</td>
+                <td class="dest">{{ride.hour}}:{{ride.minute}} {{ride.ampm}}</td>
+              </tr>
+               <tr>
+                <td>Organizer</td>
+                <td class="dest">{{ride.owner}}</td>
+              </tr>
             </tbody>
           </table>
-          <a href="/display_ride/{{ ride.destination }}" style="background-color: #D22B2B; border-color: #D22B2B;" class="btn btn-dark">View</a>
+          <a href="/display_ride/{{ ride.id }}" style="background-color: #D22B2B; border-color: #D22B2B;" class="btn btn-dark">View Details</a>
         </div>
       </div>
     </div>
@@ -107,7 +115,7 @@
       </div>
 
 <!-- Modal -->
-<div class="modal fade" id="routeModal" tabindex="-1" aria-labelledby="modallabel" aria-hidden="true">
+{% comment %} <div class="modal fade" id="routeModal" tabindex="-1" aria-labelledby="modallabel" aria-hidden="true">
     <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
@@ -210,7 +218,7 @@
         <!-- </div> -->
         
     </div>
-</div>
+</div> {% endcomment %}
 
     
 

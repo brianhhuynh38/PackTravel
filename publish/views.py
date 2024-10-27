@@ -36,21 +36,21 @@ def publish_index(request):
     return render(request, 'publish/publish.html', {"username": request.session['username'], "alert":True})
 
 def display_ride(request, ride_id):
+    print(ride_id,'-------------')
     intializeDB()
     print("Ride id", ride_id)
     ride = ridesDB.find_one({'_id': ride_id})
-    # print(f"Ride = {ride}")
-    routes = get_routes(ride)
-    print(f"Route = {routes}")
-    selected = routeSelect(request.session['username'], routes)
-    # print(f"Routes = {selected}")
-    context = {
-            "username": request.session['username'],
-            "ride": ride,
-            "routes": routes,
-            "selectedRoute": selected
-        }
-    return render(request, 'publish/route.html', context)
+    # # print(f"Ride = {ride}")
+    # routes = get_routes(ride)
+    # print(f"Route = {routes}")
+    # selected = routeSelect(request.session['username'], routes)
+    # # print(f"Routes = {selected}")
+    # context = {
+    #         "username": request.session['username'],
+    #         "ride": ride,
+    #         "selectedRoute": selected
+    #     }
+    return render(request, 'publish/route.html')
 
 def select_route(request):
     intializeDB()
@@ -61,8 +61,6 @@ def select_route(request):
         print("route from form: ",route_id)
         ride = ride.replace("\'", "\"")
         ride = json.loads(ride)
-        ride_id = ride['_id']
-        attach_user_to_route(username, route_id)
         return redirect(display_ride, ride_id=ride['_id'] )
     return render(request, 'publish/publish.html', {"username": username})
 
