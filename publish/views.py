@@ -43,7 +43,8 @@ def display_ride(request, ride_id):
         "spoint":ride['spoint'],
         "destination":ride['destination']
     }
-    return render(request, 'publish/route.html',result)
+    #return render(request, 'publish/route.html',result)
+    return render(request, "publish/display_ride.html", {"ride_id": ride["_id"], "ride": ride})
 
 def select_route(request):
     intializeDB()
@@ -100,8 +101,12 @@ def create_route(request):
                 "hour": request.POST.get("hour"),
                 "minute":  request.POST.get("minute"),
                 "ampm": request.POST.get("ampm"),
+                "availability": int(request.POST.get("capacity")),
+                "max_size": int(request.POST.get("capacity")),
                 "details": request.POST.get("details"),
-                "owner": request.session["username"]
+                "owner": request.session["username"],
+                "requested_users": [],
+                "confirmed_users": []
             }
         if ridesDB.find_one({"_id": ride["_id"]}) is None:
             ridesDB.insert_one(ride)

@@ -1,87 +1,286 @@
 <!DOCTYPE html>{% load static %}
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>New PackTravel</title>
+<head><meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    />
-    <style>
-      #map {
-        height: 500px;
-        width: 100%;
-      }
-    </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlTEtvRzc8n19pvk4-h-DpdrbkybY2ePY&libraries=places"></script>
-  </head>
-  <body>
-    <div class="container text-center">
-      <div class="row align-items-center">
-        <div class="col" id="map">
-          <script type="text/javascript">
-            function initMap() {
-              var start = "{{ spoint }}";
-              var end = "{{ destination }}";
-              const travelMode = "DRIVING"; // Change this to WALKING, BICYCLING, or TRANSIT if needed
+	<title>New PackTravel</title>
 
-              // Create a map centered at the starting point
-              var map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 1,
-                center: { lat: 40.7128, lng: -74.006 }, // Center map at New York
-              });
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyAlTEtvRzc8n19pvk4-h-DpdrbkybY2ePY"></script>
 
-              // Create a DirectionsService object to use the route method
-              var directionsService = new google.maps.DirectionsService();
-              var directionsRenderer = new google.maps.DirectionsRenderer();
+</head>
+<style>
+    button:hover {
+    border: none;
+    /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); */
+    /* background: #D3D3D3; */
+}
+.modal { z-index: 1001 !important;} 
+.modal-backdrop {z-index: 1000 !important;}
+.pac-container {z-index: 1055 !important;}
+</style>
+<script>
+  window.onload = function(e){ 
+    document.getElementById("{{ selectedRoute }}").checked = true;
+}
 
-              directionsRenderer.setMap(map);
+function selectRoute(id) {
+  alert("You've joined a new route for this ride!")
+  document.getElementById(id).submit();
+}
+</script>
+<body style="background-color: #3A3B3C;">
 
-              // Define the desired mode of travel (e.g., DRIVING, WALKING, BICYCLING, TRANSIT)
-              var request = {
-                origin: start,
-                destination: end,
-                travelMode, // Change this to WALKING, BICYCLING, or TRANSIT if needed
-              };
+    {% include 'nav.html' %}
 
-              // Call the route method to display the route on the map
-              directionsService.route(request, function (result, status) {
-                if (status === "OK") {
-                  directionsRenderer.setDirections(result);
-                } else {
-                  alert("Could not display directions due to: " + status);
-                }
-              });
-            }
 
-            // Initialize the map when the window loads
-            window.onload = initMap;
-          </script>
-        </div>
-        <div class="col" id="map"></div>
-        <div class="col" id="map"></div>
-      </div>
+    
+    <div class="card mx-auto shadow-2-strong bg-white rounded" style="width: 60%; margin: 50px; padding: 50px;">
+        <h3>{{ride.name}} </h3>
+        <hr>
+        <h5>Ride Information: </h5>
+        <table class="table table-hover">
+            <tbody>
+              <tr>
+                <td>Destination</td>
+                <td>{{ride.destination}}</td>
+              </tr>
+              <tr>
+                <td>Date</td>
+                <td>{{ride.date}}</td>
+              </tr>
+              <tr>
+                <td>Reach Time</td>
+                <td>{{ride.hour}}:{{ride.minute}} {{ride.ampm}}</td>
+              </tr>
+              <tr>
+                <td>Details</td>
+                <td>{{ride.details}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+        <h5>Routes:</h5>
+          {% if routes %}
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Select</th>
+                <th scope="col">Type</th>
+                <th scope="col">Start Point</th>
+                
+                <th scope="col">Start Time</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Number of users</th>
+                <th scope="col">Details</th>
+              </tr>
+            </thead>
+            <tbody>
+          {% for route in routes %}
+          
+          
+            <tr>
+              
+              <th scope="row"><div class="input-group">
+                <form method="POST" action="/select_route/" id="myForm{{route.id}}">
+                  {% csrf_token %}
+                  <input value="{{ route.id }}" type="hidden" name="hiddenInput">
+                  <input type="hidden" value="{{ ride }}" name="hiddenRide">
+                  <input type="hidden" value="{{ request.session.username }}" name="hiddenUser">
+                </form>
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    {% if selectedRoute == route.id %}
+                    <input type="radio" onclick='selectRoute("myForm{{route.id}}")' name="routeselect" aria-label="Radio button for following text input" value="{{ route.id }}" id="{{ route.id }}" checked aria-checked="true">
+                    {% else %}
+                  <input type="radio" onclick='selectRoute("myForm{{route.id}}")' name="routeselect" aria-label="Radio button for following text input" value="{{ route.id }}" id="{{ route.id }}" >
+                  {% endif %} </div>
+                </div>
+              </div>
+            </th>
+              <td>
+                <a href="/route_page/{{ route.id }}">
+                {% if ride.type == "Bus" %}
+                <img height="15px" width="15px" src="{% static 'bus.svg'%}">
+                {% elif ride.type == "Cab" %}
+                <img  height="15px" width="15px" src="{% static 'car.svg'%}">
+                {% endif %}
+                {{ route.type }}</a></td>
+              <td><button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">{{ route.spoint }}</button></td>
+              <td>{{ route.hour }}:{{ route.minute }} {{ route.ampm }}</td>
+              <td>{{ route.duration }} minutes</td>
+              <td>{{ route.users|length }}</td>
+              <td>{{ route.details }}</td>
+            </a>
+            </tr>
+            <div class="modal" id="myModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h4 class="modal-title">View Your Route</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  
+                  <!-- Modal body -->
+                  <div class="modal-body" action="http://maps.google.com/maps">
+                    <form action="http://maps.google.com/maps" method="get" target="_blank">
+                      <input type="hidden" name="saddr"  value="{{route.spoint}}" />
+                      <input type="hidden" name="daddr" value= "{{ride.destination}}"/>
+                      <input type="submit" class="btn text-center" style="background-color: #D22B2B; border-color: #D22B2B; color: white;" value="Get directions" />
+                   </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          
+          {% endfor %}
+            </tbody>
+            </table>
+          {% endif %}
+
+
+   <button class="btn" data-bs-toggle="modal" data-bs-target="#routeModal"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" width="50px" height="50px">
+    <g id="surface369321732">
+    <path style=" stroke:none;fill-rule:nonzero;fill:#D22B2B;fill-opacity:1;" d="M 25 2 C 12.316406 2 2 12.316406 2 25 C 2 37.683594 12.316406 48 25 48 C 37.683594 48 48 37.683594 48 25 C 48 12.316406 37.683594 2 25 2 Z M 37 26 L 26 26 L 26 37 L 24 37 L 24 26 L 13 26 L 13 24 L 24 24 L 24 13 L 26 13 L 26 24 L 37 24 Z M 37 26 "/>
+    </g>
+    </svg>&nbsp; <h5>Add a Route</h5></button>
     </div>
-  </body>
+<!-- Modal -->
+<div class="modal fade" id="routeModal" tabindex="-1" aria-labelledby="modallabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="modallabel">Route Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="/add_route/" method="POST" class="form-group">
+                {% csrf_token %}
+                <div class="form-group">
+                                <span class="form-label">Select a type of route:</span>
+                                <select name="type" required class="form-control">
+                                    <option value="Bus">Bus</option>
+                                    <option value="Cab">Cab</option>
+                                    <option value="Personal">Personal</option>
+                                </select>
+                                <span class="select-arrow"></span>
+                            </div>
+                            <br>
+                <div class="form-group">
+                    <span class="form-label">Start Point</span>
+                    <input name="spoint" required class="form-control" type="text" id="route" placeholder="Enter a starting location for the route:">
+                    <script>
+                      var searchInput = 'route';
+                      $(document).ready(function () {
+                       var autocomplete;
+                       autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+                        types: ['geocode'],
+                        /*componentRestrictions: {
+                         country: "USA"
+                        }*/
+                       });
+                        
+                       google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                        var near_place = autocomplete.getPlace();
+                       });
+                      });
+                      </script>
+                </div>
+                <br>
+                Enter satrting time for the route:
+            <div class="row"
+                <div class="col-sm-7">
+                    <div class="row">
+                        
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <span class="form-label">Hour</span>
+                                <select name="hour" required class="form-control">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                </select>
+                                <span class="select-arrow"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <span class="form-label">Min</span>
+                                <select name="minute" required class="form-control">
+                                    <option>00</option>
+                                    <option>05</option>
+                                    <option>10</option>
+                                    <option>15</option>
+                                    <option>20</option>
+                                    <option>25</option>
+                                    <option>30</option>
+                                    <option>35</option>
+                                    <option>40</option>
+                                    <option>45</option>
+                                    <option>50</option>
+                                    <option>55</option>
+                                </select>
+                                <span class="select-arrow"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <span class="form-label">AM/PM</span>
+                                <select name="ampm" class="form-control">
+                                    <option>AM</option>
+                                    <option>PM</option>
+                                </select>
+                                <span class="select-arrow"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               <!-- </div> -->
+               <br>
+               <div class="form-group">
+                <span class="form-label">Duration in Minutes</span>
+                <input type="number" name="duration" required class="form-control" type="text" placeholder="Enter ride duration in minutes">
+            </div>
+            <br>
+               <div class="form-group">
+               <span class="form-label">Route Details</span>
+               <textarea rows="2" name="details" required class="form-control" type="text" placeholder="Enter ride details"></textarea>
+           </div>
+           <input type="hidden"  name="ride" value="{{ ride }}">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" style="background-color: #D22B2B; border-color: #D22B2B;" class="btn btn-primary">Validate Route</button>
+                </div>
+             </form>
+        <!-- </div> -->
+        
+    </div>
+    </div>
+</div>
+
+    
+
+</body>
+
 </html>
