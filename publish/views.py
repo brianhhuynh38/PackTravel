@@ -36,21 +36,14 @@ def publish_index(request):
     return render(request, 'publish/publish.html', {"username": request.session['username'], "alert":True})
 
 def display_ride(request, ride_id):
-    print(ride_id,'-------------')
     intializeDB()
     print("Ride id", ride_id)
     ride = ridesDB.find_one({'_id': ride_id})
-    # # print(f"Ride = {ride}")
-    # routes = get_routes(ride)
-    # print(f"Route = {routes}")
-    # selected = routeSelect(request.session['username'], routes)
-    # # print(f"Routes = {selected}")
-    # context = {
-    #         "username": request.session['username'],
-    #         "ride": ride,
-    #         "selectedRoute": selected
-    #     }
-    return render(request, 'publish/route.html')
+    result = {
+        "spoint":ride['spoint'],
+        "destination":ride['destination']
+    }
+    return render(request, 'publish/route.html',result)
 
 def select_route(request):
     intializeDB()

@@ -78,8 +78,7 @@ def register(request):
                 "lname": form.cleaned_data["last_name"],
                 "email": form.cleaned_data["email"],
                 "password": form.cleaned_data["password1"],
-                "phone": form.cleaned_data["phone_number"],
-                "rides": []
+                "phone": form.cleaned_data["phone_number"]
             }
             userDB.insert_one(userObj)
             add_user_to_session(request=request,userObj=userObj)

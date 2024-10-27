@@ -32,5 +32,4 @@ def search_index(request):
     processed = list(ridesDB.find())
     for ride in processed:
         ride['id'] = ride['_id']
-    print(processed,'----------------------------------------')
     return render(request, 'search/search.html', {"username": request.session['username'], "rides": processed})
