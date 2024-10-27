@@ -9,6 +9,8 @@ from django.contrib.auth.forms import UserCreationForm
 
 from publish.forms import RideForm
 from utils import get_client
+
+import uuid
 # from django.http import HttpResponse
 
 # Create your views here.
@@ -98,14 +100,9 @@ def create_route(request):
     intializeDB()
     if request.method == 'POST':
         route = {
-            "_id":
-                f"""{request.POST.get('purpose')}_{request.POST.get('s_point')}_{request.POST.get('destination')}
-                _{request.POST.get("date")}_{request.POST.get("hour")}_{request.POST.get("minute")}
-                _{request.POST.get("ampm")}"""
-
-            ,
+           "_id": str(uuid.uuid4()),
                 "purpose": request.POST.get('purpose'),
-                "s_point": request.POST.get('s_point'),
+                "spoint": request.POST.get('spoint'),
                 "destination": request.POST.get('destination'),
                 "type": request.POST.get('type'),
                 "date": request.POST.get("date"),
@@ -136,49 +133,6 @@ def create_route(request):
         return redirect(display_ride, ride_id=ride_id)
     return render(request, 'publish/publish.html', {"username": request.session['username']})
 
-# def add_route(request):
-#     intializeDB()
-#     if request.method == 'POST':
-#
-#         ride = request.POST.get('ride')
-#         ride = ride.replace("\'", "\"")
-#         ride = json.loads(ride)
-#         ride_id = ride['_id']
-#         ride = ridesDB.find_one({'_id': ride['_id']})
-#         route = {
-#                 "_id": str(ride_id)
-#                 +"_"+request.POST.get('type')
-#                 +"_"+request.POST.get('spoint')
-#                 +"_"+request.POST.get("hour")
-#                 +"_"+request.POST.get("minute")
-#                 +"_"+request.POST.get("duration")
-#                 +"_"+request.POST.get("details")
-#                 +"_"+request.POST.get("ampm"),
-#
-#                 "type": request.POST.get('type'),
-#                 "spoint": request.POST.get('spoint'),
-#                 "hour": request.POST.get("hour"),
-#                 "minute":  request.POST.get("minute"),
-#                 "duration": request.POST.get("duration"),
-#                 "details": request.POST.get("details"),
-#                 "ampm": request.POST.get("ampm"),
-#                 "users": [request.session['username']]
-#             }
-#         request.session["route"] = route
-#         request.session["ride"] = ride
-#         attachUserToRoute(request.session['username'], route["_id"], ride_id)
-#         #check if route is unique
-#         if routesDB.find_one({'_id': route["_id"]})== None:
-#             routesDB.insert_one(route)
-#             if 'routes' not in ride:
-#                 ridesDB.update_one({"_id": ride_id}, {"$set": {"routes": [route['_id']]}})
-#             else:
-#                 ride['routes'].append(route['_id'])
-#                 ridesDB.update_one({"_id": ride_id}, {"$set": {"routes": ride['routes']}})
-#         return redirect(display_ride, ride_id=request.session['ride']['_id'] )
-#
-#     return render(request, 'publish/publish.html', {"username": request.session['username']})
-
 def attach_user_to_route(username, route_id):
     intializeDB()
     user = userDB.find_one({"username": username})
@@ -188,33 +142,7 @@ def attach_user_to_route(username, route_id):
     user['rides'].append(route_id)
     userDB.update_one({"username": username},{"$set": {"rides": user['rides']}})
     print("route added for user")
-
-    # rides = user['rides']
-    # #remove other routes for this user and ride
-    # for route in rides.copy():
-    #     if ride_id in route:
-    #         rides.remove(route)
-    #         #remove user from other routes for this ride
-    #         print("foudn ride id in route")
-    #         route_instance = routesDB.find_one({'_id': route})
-    #         print("route inst",route_instance)
-    #         if route_instance:
-    #             print("found, removing user: ",username)
-    #             users = route_instance['users']
-    #             print("prev users: ",users)
-    #             users.remove(username)
-    #             print("now: ",users)
-    #             routesDB.update_one({"_id": route}, {"$set": {"users": users}})
-    #
-    # rides.append(route_id)
-    # userDB.update_one({"username": username}, {"$set": {"rides": rides}})
-    # # print(rides)
-    # route_instance = routesDB.find_one({'_id': route_id})
-    # if route_instance:
-    #     users = route_instance['users']
-    #     users.append(username)
-    #     routesDB.update_one({"_id": route_id}, {"$set": {"users": users}})
-
+    
 # Add Edit functionality
 
 # Add Delete functionality
