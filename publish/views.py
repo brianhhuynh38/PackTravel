@@ -58,7 +58,6 @@ def select_route(request):
         return redirect(display_ride, ride_id=ride['_id'] )
     return render(request, 'publish/publish.html', {"username": username})
 
-
 def routeSelect(username, routes):
     intializeDB()
     user = userDB.find_one({"username": username})
@@ -111,7 +110,6 @@ def create_route(request):
         if ridesDB.find_one({"_id": ride["_id"]}) is None:
             ridesDB.insert_one(ride)
     return render(request, 'publish/publish.html', {"username": request.session['username']})
-
     
 # Add Edit functionality
 

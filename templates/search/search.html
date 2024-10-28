@@ -108,6 +108,9 @@
             </tbody>
           </table>
           <a href="/display_ride/{{ ride.id }}" style="background-color: #D22B2B; border-color: #D22B2B;" class="btn btn-dark">View Details</a>
+          {% if ride.allow_to_join %}
+          <a href="/join_ride/{{ ride.id }}" style="background-color: #D22B2B; border-color: #D22B2B;" class="btn btn-dark">Request to Join</a>
+          {% endif %}
         </div>
       </div>
     </div>

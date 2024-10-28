@@ -1,8 +1,6 @@
 from http.client import HTTPResponse
 from django.shortcuts import render,redirect
 from numpy import True_, dtype
-import requests
-import json
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
@@ -32,32 +30,18 @@ def search_index(request):
     processed = list(ridesDB.find())
     for ride in processed:
         ride['id'] = ride['_id']
+        if request.session['username'] != ride['owner'] and ride['availability'] > 0:
+            ride['allow_to_join'] = True
     return render(request, 'search/search.html', {"username": request.session['username'], "rides": processed})
 
-def request_ride(request, ride_id):
-    """This method processes the request from a user to be part of a ride"""
+def join_ride(request,ride_id):
+    if not request.session.has_key('username'):
+        request.session['alert'] = "Please login to create a ride."
+        return redirect('index')
+    #username has requested to join the ride 
+    #pull out the ride from db 
     intializeDB()
-
-    if not request.session.has_key("username"):
-        request.session["alert"] = "Please login to request rides."
-        return redirect("index")
-
-    # get ride information from db
-    ride = ridesDB.find_one({"_id": ride_id})
-
-    # validation - check for edge cases
-    if ride is not None:
-        if ride["availability"] == 0:
-            message = "Ride has reached max capacity."
-        elif ride["owner"] == request.session["username"]:
-            message = "Owner of the ride cannot request own rides."
-        elif request.session["username"] in ride["confirmed_users"]:
-            message = "You are already a confirmed member of this ride."
-        else:
-            # add/update request to ride
-            ridesDB.update_one({"_id": ride_id}, {"$addToSet": {"requested_users": request.session["username"]}})
-            message = "Request successful."
-        print(message)
-
-    return redirect(requestsViews.requested_rides)
-
+    query = {"_id": ride_id}
+    update = {"$push": {"requested_users": request.session['username']}}
+    ridesDB.update_one(query,update)
+    return render(request, 'home/home.html', {"username": request.session["username"]})

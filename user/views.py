@@ -145,3 +145,10 @@ def delete_ride(request, ride_id):
     routesDB.delete_one({"_id": ride_id})
     return redirect("/myrides")
 
+def approve_ride(request,ride_id,username):
+    if not request.session.has_key('username'):
+        request.session['alert'] = "Please login to approve rides."
+        return redirect('index')
+    #add return function here which shows entire array of reuestors and gives option of singly approve them 
+    #also handle the logic of decrementing availability in rides 
+    
