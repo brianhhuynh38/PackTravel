@@ -38,4 +38,5 @@ urlpatterns = [
     path('logout/', LogoutView.as_view()),
     path('myrides/', userView.my_rides, name = 'search'),
     path('delete_ride/<ride_id>', userView.delete_ride, name = 'delete_ride')
+    
 ]

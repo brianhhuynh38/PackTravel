@@ -68,7 +68,7 @@
           var map = new google.maps.Map(document.getElementById("maps"));
           directionsDisplay.setMap(map);
 
-          var src = "{{ride.source}}";
+          var src = "{{ride.spoint}}";
           var dest = "{{ride.destination}}";
 
           directionsService.route(

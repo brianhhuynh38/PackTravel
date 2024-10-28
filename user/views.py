@@ -134,14 +134,21 @@ def my_rides(request):
         request.session['alert'] = "Please login to create a ride."
         return redirect('index')
     processed = list(ridesDB.find({"owner":request.session["username"]}))
-    return render(request, 'user/myride.html', {"username": request.session['username'], "rides": processed})
+    rides = []
+    for iter in processed:
+        iter['id'] = iter['_id']
+        rides.append(iter)
+    return render(request, 'user/myride.html', {"username": request.session['username'], "rides": rides})
 
 
 def delete_ride(request, ride_id):
     intializeDB()
+    print(ride_id)
     user = userDB.find_one({"username": request.session['username']})
-    if user is None:
-        pass
-    routesDB.delete_one({"_id": ride_id})
+    ride = ridesDB.find_one({"_id": ride_id})
+
+    # only owner can delete ride
+    if ride is not None and ride["owner"] == request.session["username"]:
+        ridesDB.delete_one({"_id": ride_id})
     return redirect("/myrides")
 
