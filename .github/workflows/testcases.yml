@@ -1,5 +1,13 @@
 name: run test cases
-on: [pull_request, push]
+on: 
+  push:
+    branches:
+      - main
+      - varun_features
+  pull_request:
+    branches:
+      - main
+      - varun_features
 jobs:
   test_python:
     runs-on: ubuntu-latest
