@@ -1,4 +1,5 @@
 name: run test cases
+
 on: 
   push:
     branches:
@@ -8,26 +9,35 @@ on:
     branches:
       - main
       - varun_features
+
 jobs:
   test_python:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3
-      - uses: actions/checkout@v3
-      - run: pip3 install virtualenv
-      - run: mkdir packTravel
-      - run: cd packTravel
-      - run: virtualenv newenv
-      - run: source newenv/bin/activate
-      - run: pip3 install django
-      - run: pip3 install django-allauth
-      - run: pip3 install pymongo
-      - run: pip3 install --upgrade setuptools
-      - run: pip3 install -r requirements.txt
-      - run: python3 manage.py test
-      - run: pip3 install coverage
-      - run: coverage run ./manage.py test
-
+      
+      # Set up Python 3.10.2
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10.2'  # Specify Python 3.10.2
+      
+      - run: pip install virtualenv
+      
+      # Set up project directory and virtual environment
+      - run: |
+          mkdir packTravel
+          cd packTravel
+          python -m virtualenv newenv
+          source newenv/bin/activate
+          
+          # Install dependencies
+          pip install django django-allauth pymongo setuptools --upgrade
+          pip install -r requirements.txt
+          
+          # Run tests and coverage
+          python manage.py test
+          pip install coverage
+          coverage run manage.py test
+      
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v2
