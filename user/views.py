@@ -154,12 +154,8 @@ def approve_rides(request,ride_id):
         return redirect('index')
     intializeDB()
     ride = ridesDB.find_one({"_id":ride_id})
-    #return requested users 
-    # return render(request, 'home/home.html', {"username": request.session["username"]})
-    return render(request,"user/approve_rides.html",{"space":ride['availability'],"requested_users":ride['requested_users'],"approved_users":ride['confirmed_users'],"ride_id":ride_id})
-    #add return function here which shows entire array of reuestors and gives option of singly approve them 
-    #also handle the logic of decrementing availability in rides 
-    
+    return render(request,"user/approve_rides.html",{"username": request.session['username'],"space":ride['availability'],"requested_users":ride['requested_users'],"approved_users":ride['confirmed_users'],"ride_id":ride_id})
+   
 def approve_user(request,ride_id,user_id):
     if not request.session.has_key('username'):
         request.session['alert'] = "Please login to approve rides."
@@ -170,7 +166,7 @@ def approve_user(request,ride_id,user_id):
     ride['confirmed_users'].append(user_id)
     ride['availability'] -= 1
     ridesDB.replace_one({"_id":ride_id},ride)
-    return render(request,"user/approve_rides.html",{"space":ride['availability'],"requested_users":ride['requested_users'],"approved_users":ride['confirmed_users'],"ride_id":ride_id})
+    return render(request,"user/approve_rides.html",{"username": request.session['username'],"space":ride['availability'],"requested_users":ride['requested_users'],"approved_users":ride['confirmed_users'],"ride_id":ride_id})
 
 def requested_rides(request):
     if not request.session.has_key('username'):
@@ -216,6 +212,4 @@ def requested_rides(request):
     results = list(ridesDB.aggregate(pipeline))
     requested = [doc for doc in results if doc['found_in_requested']]
     confirmed = [doc for doc in results if doc['found_in_confirmed']]
-    print(requested,'-----------------')
-    print(confirmed,'=================')
     return render(request, 'user/ride_status.html', {"username": request.session["username"],"requested":requested,"confirmed":confirmed})

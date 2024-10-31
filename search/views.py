@@ -52,4 +52,4 @@ def join_ride(request,ride_id):
     query = {"_id": ride_id}
     update = {"$push": {"requested_users": request.session['username']}}
     ridesDB.update_one(query,update)
-    return render(request, 'home/home.html', {"username": request.session["username"]})
+    return search_index(request)
