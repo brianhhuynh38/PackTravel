@@ -1,22 +1,6 @@
 name: run_test_cases
 
-on: 
-  push:
-    branches:
-      - main
-      - varun_features
-      - makarand_features
-      - michelle_features
-      - main_new
-      - release
-  pull_request:
-    branches:
-      - main
-      - varun_features
-      - makarand_features
-      - michelle_features
-      - main_new
-      - release
+on: [pull_request, push]
 
 jobs:
   test_python:
@@ -40,6 +24,9 @@ jobs:
           python manage.py test
           pip install coverage
           coverage run manage.py test
+          coverage xml
       
       - name: Upload coverage to Codecov
-        run: bash <(curl -s https://codecov.io/bash)
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }} 
+        run: bash <(curl -s https://codecov.io/bash) -f coverage.xml
