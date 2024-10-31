@@ -22,6 +22,13 @@ def intializeDB():
     ridesDB  = db.rides
     routesDB  = db.routes
 
+def is_user_in_list(username,list):
+    try:
+        list.index(username)
+        return True
+    except ValueError:
+        return False
+    
 def search_index(request):
     intializeDB()
     if not request.session.has_key('username'):
@@ -30,7 +37,8 @@ def search_index(request):
     processed = list(ridesDB.find())
     for ride in processed:
         ride['id'] = ride['_id']
-        if request.session['username'] != ride['owner'] and ride['availability'] > 0:
+        #if condition ensures, requestor is not already a part of requested users or approved users
+        if request.session['username'] != ride['owner'] and ride['availability'] > 0 and not is_user_in_list(request.session['username'],ride['requested_users']) and not is_user_in_list(request.session['username'],ride['confirmed_users']):
             ride['allow_to_join'] = True
     return render(request, 'search/search.html', {"username": request.session['username'], "rides": processed})
 

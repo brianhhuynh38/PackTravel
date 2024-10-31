@@ -154,10 +154,9 @@ def approve_rides(request,ride_id):
         return redirect('index')
     intializeDB()
     ride = ridesDB.find_one({"_id":ride_id})
-    print(ride['requested_users'],'-----------------------------')
     #return requested users 
     # return render(request, 'home/home.html', {"username": request.session["username"]})
-    return render(request,"user/approve_rides.html",{"requests":ride['requested_users'],"ride_id":ride_id})
+    return render(request,"user/approve_rides.html",{"space":ride['availability'],"requested_users":ride['requested_users'],"approved_users":ride['confirmed_users'],"ride_id":ride_id})
     #add return function here which shows entire array of reuestors and gives option of singly approve them 
     #also handle the logic of decrementing availability in rides 
     
@@ -169,6 +168,54 @@ def approve_user(request,ride_id,user_id):
     ride = ridesDB.find_one({"_id":ride_id})
     ride['requested_users'].remove(user_id)
     ride['confirmed_users'].append(user_id)
+    ride['availability'] -= 1
     ridesDB.replace_one({"_id":ride_id},ride)
-    return render(request,"user/approve_rides.html",{"requests":ride['requested_users'],"ride_id":ride_id})
+    return render(request,"user/approve_rides.html",{"space":ride['availability'],"requested_users":ride['requested_users'],"approved_users":ride['confirmed_users'],"ride_id":ride_id})
+
+def requested_rides(request):
+    if not request.session.has_key('username'):
+        request.session['alert'] = "Please login to create a ride."
+        return redirect('index')
+    intializeDB()
+    username =  request.session["username"]
+    pipeline = [
+        {
+            "$match": {
+                "$or": [
+                    {"requested_users": username},
+                    {"confirmed_users": username}
+                ]
+            }
+        },
+        {
+            "$project": {
+                "_id": 1,
+                "purpose": 1,
+                "spoint":1,
+                "destination":1,
+                "requested_users": 1,
+                "confirmed_users": 1,
+                "found_in_requested": {
+                    "$cond": {
+                        "if": {"$in": [username, "$requested_users"]},
+                        "then": True,
+                        "else": False
+                    }
+                },
+                "found_in_confirmed": {
+                    "$cond": {
+                        "if": {"$in": [username, "$confirmed_users"]},
+                        "then": True,
+                        "else": False
+                    }
+                }
+            }
+        }
+    ]
     
+    results = list(ridesDB.aggregate(pipeline))
+    requested = [doc for doc in results if doc['found_in_requested']]
+    confirmed = [doc for doc in results if doc['found_in_confirmed']]
+    print(requested,'-----------------')
+    print(confirmed,'=================')
+    return render(request, 'user/ride_status.html', {"username": request.session["username"],"requested":requested,"confirmed":confirmed})
