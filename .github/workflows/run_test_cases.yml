@@ -5,10 +5,18 @@ on:
     branches:
       - main
       - varun_features
+      - makarand_features
+      - michelle_features
+      - main_new
+      - release
   pull_request:
     branches:
       - main
       - varun_features
+      - makarand_features
+      - michelle_features
+      - main_new
+      - release
 
 jobs:
   test_python:
