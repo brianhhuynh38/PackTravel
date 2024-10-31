@@ -44,6 +44,7 @@ def display_ride(request, ride_id):
         "destination":ride['destination']
     }
     #return render(request, 'publish/route.html',result)
+    #print(ride)
     return render(request, "publish/display_ride.html", {"ride_id": ride["_id"], "ride": ride})
 
 def select_route(request):
