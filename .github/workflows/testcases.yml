@@ -23,16 +23,12 @@ jobs:
       - run: pip install virtualenv
       
       - run: |
-          mkdir packTravel
-          cd packTravel
           python -m virtualenv newenv
           source newenv/bin/activate
-          
-          # Install dependencies
+
           pip install django django-allauth pymongo setuptools --upgrade
           pip install -r requirements.txt
-          
-          # Run tests and coverage
+
           python manage.py test
           pip install coverage
           coverage run manage.py test
