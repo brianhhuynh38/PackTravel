@@ -5,7 +5,7 @@
 
 
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7178601.svg)](https://doi.org/10.5281/zenodo.7178601)
+[![DOI](https://zenodo.org/badge/879310431.svg)](https://doi.org/10.5281/zenodo.14020210)
 ![Tests](https://github.com/GradHackersGuild/PackTravel-Old/actions/workflows/run_test_cases.yml/badge.svg)
 [![Codecov](https://codecov.io/gh/GradHackersGuild/PackTravel-Old/branch/varun_features/graph/badge.svg)](https://codecov.io/gh/GradHackersGuild/PackTravel-Old)
 ![Python Style Checker](https://github.com/GradHackersGuild/PackTravel-Old/actions/workflows/python_style_checker.yml/badge.svg)
