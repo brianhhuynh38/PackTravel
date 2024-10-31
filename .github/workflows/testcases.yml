@@ -23,6 +23,7 @@ jobs:
       - run: pip3 install django
       - run: pip3 install django-allauth
       - run: pip3 install pymongo
+      - run: pip3 install --upgrade setuptools
       - run: pip3 install -r requirements.txt
       - run: python3 manage.py test
       - run: pip3 install coverage
