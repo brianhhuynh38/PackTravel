@@ -46,8 +46,6 @@ def join_ride(request,ride_id):
     if not request.session.has_key('username'):
         request.session['alert'] = "Please login to create a ride."
         return redirect('index')
-    #username has requested to join the ride 
-    #pull out the ride from db 
     intializeDB()
     query = {"_id": ride_id}
     update = {"$push": {"requested_users": request.session['username']}}
