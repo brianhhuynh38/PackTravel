@@ -39,5 +39,6 @@ urlpatterns = [
     path('myrides/', userView.my_rides, name = 'search'),
     path('delete_ride/<ride_id>', userView.delete_ride, name = 'delete_ride'),
     path('join_ride/<ride_id>',searchViews.join_ride,name='join_ride'),
-    path('approve_ride/<ride_id>/<username>',userView.approve_ride,name='approve_ride')
+    path('approve_rides/<ride_id>',userView.approve_rides,name='approve_rides'),
+    path('approve_user/<ride_id>/<user_id>',userView.approve_user,name='approve_user')
 ]

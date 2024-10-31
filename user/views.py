@@ -134,6 +134,9 @@ def my_rides(request):
         request.session['alert'] = "Please login to create a ride."
         return redirect('index')
     processed = list(ridesDB.find({"owner":request.session["username"]}))
+    for ride in processed:
+        ride['id'] = ride['_id']
+        
     return render(request, 'user/myride.html', {"username": request.session['username'], "rides": processed})
 
 
@@ -145,10 +148,27 @@ def delete_ride(request, ride_id):
     routesDB.delete_one({"_id": ride_id})
     return redirect("/myrides")
 
-def approve_ride(request,ride_id,username):
+def approve_rides(request,ride_id):
     if not request.session.has_key('username'):
         request.session['alert'] = "Please login to approve rides."
         return redirect('index')
+    intializeDB()
+    ride = ridesDB.find_one({"_id":ride_id})
+    print(ride['requested_users'],'-----------------------------')
+    #return requested users 
+    # return render(request, 'home/home.html', {"username": request.session["username"]})
+    return render(request,"user/approve_rides.html",{"requests":ride['requested_users'],"ride_id":ride_id})
     #add return function here which shows entire array of reuestors and gives option of singly approve them 
     #also handle the logic of decrementing availability in rides 
+    
+def approve_user(request,ride_id,user_id):
+    if not request.session.has_key('username'):
+        request.session['alert'] = "Please login to approve rides."
+        return redirect('index')
+    intializeDB()
+    ride = ridesDB.find_one({"_id":ride_id})
+    ride['requested_users'].remove(user_id)
+    ride['confirmed_users'].append(user_id)
+    ridesDB.replace_one({"_id":ride_id},ride)
+    return render(request,"user/approve_rides.html",{"requests":ride['requested_users'],"ride_id":ride_id})
     

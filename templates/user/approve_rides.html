@@ -1,0 +1,25 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
+    <title>My Rides</title>
+  </head>
+
+  <body>
+    <h3>Requested Users</h3>
+    <div class="row">
+      {% for request in requests %}
+       <form action="{% url 'approve_user' ride_id=ride_id user_id=request %}" method="post">
+         {% csrf_token %}
+        <h4>{{request}}</h4>
+        <button type="submit">Add User</button>
+      </div>
+      {%endfor%}
+    </form>
+  </body>
+</html>
