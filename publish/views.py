@@ -1,3 +1,27 @@
+"""
+MIT License
+
+Copyright (c) 2022 Amisha Waghela
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
+
 from http.client import HTTPResponse
 from django.shortcuts import render, redirect
 from numpy import True_, dtype
@@ -23,6 +47,7 @@ routesDB = None
 
 
 def intializeDB():
+    """Initializes global MongoDB client and database collections for users, rides, and routes."""
     global client, db, userDB, ridesDB, routesDB
     client = get_client()
     db = client.SEProject
@@ -32,6 +57,7 @@ def intializeDB():
 
 
 def publish_index(request):
+    """Renders the publish page if the user is logged in; otherwise, redirects to the index with an alert."""
     intializeDB()
     if not request.session.has_key('username'):
         request.session['alert'] = "Please login to create a ride."
@@ -40,6 +66,7 @@ def publish_index(request):
 
 
 def display_ride(request, ride_id):
+    """Displays details of a specific ride based on ride_id by fetching data from the rides database."""    
     intializeDB()
     print("Ride id", ride_id)
     ride = ridesDB.find_one({'_id': ride_id})
@@ -47,12 +74,11 @@ def display_ride(request, ride_id):
         "spoint": ride['spoint'],
         "destination": ride['destination']
     }
-    # return render(request, 'publish/route.html',result)
-    # print(ride)
     return render(request, "publish/display_ride.html", {"ride_id": ride["_id"], "ride": ride})
 
 
 def select_route(request):
+    """Processes route selection from a POST request and redirects to the display ride page with the selected ride's details."""
     intializeDB()
     if request.method == 'POST':
         route_id = request.POST.get("hiddenInput")
@@ -66,6 +92,7 @@ def select_route(request):
 
 
 def routeSelect(username, routes):
+    """Returns the first route ID that matches the user's rides or None if no match is found or input is invalid."""
     intializeDB()
     user = userDB.find_one({"username": username})
     if user == None or routes == None:
@@ -82,6 +109,7 @@ def routeSelect(username, routes):
 
 
 def get_routes(ride):
+    """Retrieves and returns a list of routes associated with a ride, or None if no route ID is found."""
     routes = []
     if 'route_id' not in ride:
         return None
@@ -114,6 +142,7 @@ def distance_and_cost(source, destination, date, hour, minute, ampm):
 
 
 def create_route(request):
+    """Handles the creation of a new route based on the data received in the request."""
     if request.method == 'POST':
         intializeDB()
         ride = {
