@@ -60,6 +60,20 @@
       transition: background-color 0.2s;
     }
 
+    .request-to-join-btn {
+      background-color: #9384d0;
+      color: white;
+      border-radius: 8px;
+      padding: 8px 16px;
+      transition: background-color 0.2s;
+    }
+
+    .request-to-join-btn:hover {
+      background-color: #8479b2;
+      color: white;
+
+    }
+
     .view-details-btn:hover {
       background-color: #659eb9;
       color: white;
@@ -122,7 +136,7 @@
               <div class="row g-2 mb-3">
                 <div class="col-6">
                   <div class="d-flex align-items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#83b166"
                       class="bi bi-calendar me-2 text-primary" viewBox="0 0 16 16">
                       <path
                         d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
@@ -145,6 +159,9 @@
               <a href="/display_ride/{{ ride.id }}" class="btn view-details-btn w-100">
                 View Details
               </a>
+              {% if ride.allow_to_join %}
+              <a href="/join_ride/{{ ride.id }}" class="btn request-to-join-btn w-100 mt-2">Request to Join</a>
+              {% endif %}
             </div>
           </div>
         </div>
