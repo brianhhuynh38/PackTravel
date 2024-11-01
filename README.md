@@ -10,14 +10,13 @@
 [![Codecov](https://codecov.io/gh/GradHackersGuild/PackTravel-Old/branch/main_new/graph/badge.svg)](https://codecov.io/gh/GradHackersGuild/PackTravel-Old)
 ![Python Style Checker](https://github.com/GradHackersGuild/PackTravel-Old/actions/workflows/python_style_checker.yml/badge.svg)
 ![Lint Python](https://github.com/GradHackersGuild/PackTravel-Old/actions/workflows/pylint.yml/badge.svg)
+![Lines of code](https://tokei.rs/b1/github/GradHackersGuild/PackTravel-Old?v=1)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT) 
 [![contributors](https://img.shields.io/github/contributors/GradHackersGuild/PackTravel-Old?style=for-the-badge)](https://github.com/GradHackersGuild/PackTravel-Old/graphs/contributors)
-[![Total Lines](https://img.shields.io/tokei/lines/github/GradHackersGuild/PackTravel-Old?style=for-the-badge)](https://img.shields.io/tokei/lines/github/GradHackersGuild/PackTravel-Old)
 [![Issues](https://img.shields.io/github/issues/GradHackersGuild/PackTravel-Old?style=for-the-badge)](https://github.com/GradHackersGuild/PackTravel-Old/issues)
 [![Closed Issues](https://img.shields.io/github/issues-closed-raw/GradHackersGuild/PackTravel-Old?style=for-the-badge)](https://github.com/GradHackersGuild/PackTravel-Old/issues?q=is%3Aissue+is%3Aclosed)
 [![Pull Requests](https://img.shields.io/github/issues-pr/GradHackersGuild/PackTravel-Old?style=for-the-badge)](https://github.com/GradHackersGuild/PackTravel-Old/pulls)
-[![Commit Activity](https://img.shields.io/github/commit-activity/w/GradHackersGuild/PackTravel-Old?style=for-the-badge)](https://github.com/GradHackersGuild/PackTravel-Old/graphs/commit-activity)
 [![Repo Size](https://img.shields.io/github/repo-size/GradHackersGuild/PackTravel-Old?style=for-the-badge)](https://github.com/GradHackersGuild/PackTravel-Old)
 
 
