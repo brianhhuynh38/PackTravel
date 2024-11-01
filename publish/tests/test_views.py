@@ -51,6 +51,18 @@ class PublishViewTests(TestCase):
         self.assertTemplateUsed(response, 'publish/display_ride.html')
 
     @patch("publish.views.intializeDB")
+    def test_select_route_post(self,mock_intializeDB):
+    #    try:
+        post_data = {
+            '_id': 'test_ride_id',
+            'destination': 'Destination'
+        }
+        response = self.client.post(reverse('select_route'), data=post_data)
+        self.assertEqual(response.status_code, 302)
+    #    except Exception:
+    #        print(Exception)
+        
+    @patch("publish.views.intializeDB")
     def test_select_route_post(self, mock_intializeDB):
         post_data = {
             'hiddenInput': 'test_route_id',
@@ -60,15 +72,7 @@ class PublishViewTests(TestCase):
         response = self.client.post(reverse('select_route'), data=post_data)
         self.assertEqual(response.status_code, 302)
 
-    @patch("publish.views.intializeDB")
-    def test_select_route_post(self,mock_intializeDB):
-        post_data = {
-            '_id': 'test_ride_id',
-            'destination': 'Destination'
-        }
-        response = self.client.post(reverse('select_route'), data=post_data)
-        self.assertEqual(response.status_code, 302)
-        
+
     @patch("publish.views.intializeDB")
     @patch("publish.views.ridesDB")
     @patch("publish.views.distance_and_cost")
