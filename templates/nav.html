@@ -36,7 +36,7 @@
     .navbar-nav {
       display: flex;
       justify-content: space-between;
-      padding-left: 50%;
+      padding-left: 40%;
 
     }
 
@@ -296,18 +296,21 @@
         <li class="nav-item">
           <a class="nav-link apply-font" href="/publish/">Create a Ride</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link apply-font" href="/ride_status/">Ride Status</a>
+        </li>
 
         {% if request.session.username %}
 
         <div class="nav-buttons ml-auto">
           <button class="btn btn-ghost" onclick="location.href='/logout/'">Logout</button>
-          <button class="btn btn-primary" onclick="location.href='/myrides/'">Hi, {{username }}</button>
+          <button class="btn btn-primary" onclick="location.href='/ride_status/'">Hi, {{username }}</button>
         </div>
 
         {% else %}
         <div class="nav-buttons ml-auto">
           <button class="btn btn-ghost" onclick="location.href='/login/'">Login</button>
-          <button class="btn btn-primary " onclick="location.href='/signup/'">Sign Up</button>
+          <button class="btn btn-primary " onclick="location.href='/register/'">Sign Up</button>
         </div>
         {% endif %}
 
