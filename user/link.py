@@ -29,7 +29,7 @@ import chromedriver_autoinstaller
 
 # f : Cab or Bus (1= Cab, 2=Bus)
 def get_link(source,destination,date_tr,month_tr,time_tr,f):
-
+    """Generates a route link from Google Maps based on the given source, destination, travel date, time, and mode of transport."""
     chromedriver_autoinstaller.install()
     chrome_options = webdriver.ChromeOptions()
     browser = webdriver.Chrome(options=chrome_options)

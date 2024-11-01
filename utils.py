@@ -29,6 +29,7 @@ from pymongo import MongoClient
 
 
 def get_client():
+    """Returns a MongoDB client connected to the specified Atlas cluster with secure TLS authentication."""
     #with open(os.path.join(sys.path[0], "config.ini"), "r") as f:
         #content = f.readlines()
     content="Varun1406"    
