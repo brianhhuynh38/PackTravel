@@ -48,6 +48,7 @@ def display_ride(request, ride_id):
         "destination": ride['destination']
     }
     # return render(request, 'publish/route.html',result)
+    # print(ride)
     return render(request, "publish/display_ride.html", {"ride_id": ride["_id"], "ride": ride})
 
 
@@ -136,7 +137,6 @@ def create_route(request):
         if ridesDB.find_one({"_id": ride["_id"]}) is None:
             ridesDB.insert_one(ride)
     return render(request, 'publish/publish.html', {"username": request.session['username']})
-
 
 # Add Edit functionality
 

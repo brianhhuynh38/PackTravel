@@ -141,7 +141,7 @@ def delete_ride(request, ride_id):
 
     # only owner can delete ride
     if ride is not None and ride["owner"] == request.session["username"]:
-        rides_collection.delete_one({"_id": ride_id})
+        ridesDB.delete_one({"_id": ride_id})
 
     return redirect(requested_rides)
 
