@@ -150,7 +150,7 @@ def my_rides(request):
 
 def delete_ride(request, ride_id):
     intializeDB()
-    print(ride_id)
+    #print(ride_id)
     user = userDB.find_one({"username": request.session['username']})
     ride = ridesDB.find_one({"_id": ride_id})
 

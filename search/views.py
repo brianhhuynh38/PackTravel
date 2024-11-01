@@ -4,7 +4,7 @@ from numpy import True_, dtype
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
-from request import views as requestsViews
+#from request import views as requestsViews
 from publish.forms import RideForm
 from utils import get_client
 
