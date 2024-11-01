@@ -19,11 +19,16 @@ routesDB = None
 
 def intializeDB():
     global client, db, userDB, ridesDB, routesDB
-    client = get_client()
-    db = client.SEProject
-    userDB = db.userData
-    ridesDB = db.rides
-    routesDB = db.routes
+    if client is None:  # Initialize the client only if it's not already initialized
+        client = get_client()
+        db = client.SEProject  # Connect to your main database
+    
+    if db is not None:
+        userDB = db.userData  # Ensure each collection is properly initialized
+        ridesDB = db.rides
+        routesDB = db.routes
+    else:
+        raise ConnectionError("Database connection could not be established.")
 
 
 # Home page for PackTravel
@@ -115,15 +120,17 @@ def login(request):
                 username = form.cleaned_data["username"]
                 passw = form.cleaned_data["password"]
                 user = userDB.find_one({"username": username})
-
-                if user and user["password"] == hashlib.sha256(form.cleaned_data["password"].encode()).hexdigest():
+                hash = hashlib.sha256(passw.encode()).hexdigest()
+                if user and user["password"] == hash:
                     request.session["username"] = username
                     request.session['unityid'] = user["unityid"]
                     request.session['fname'] = user["fname"]
                     request.session['lname'] = user["lname"]
                     request.session['email'] = user["email"]
                     request.session["phone"] = user["phone"]
-                    return redirect(index, request.session['username'])
+                    return redirect(f'/index/{username}')
+                else:
+                    return render(request, "user/login.html", {"form": form, "alert": "Incorrect username or password."})
 
         form = LoginForm()
         return render(request, 'user/login.html', {"form": form})
@@ -144,7 +151,7 @@ def my_rides(request):
 
 def delete_ride(request, ride_id):
     intializeDB()
-    print(ride_id)
+    #print(ride_id)
     user = userDB.find_one({"username": request.session['username']})
     ride = ridesDB.find_one({"_id": ride_id})
 

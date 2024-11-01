@@ -36,10 +36,10 @@ urlpatterns = [
     path('display_ride/<ride_id>', publishViews.display_ride, name='display_ride'),
     path('accounts/', include('allauth.urls')),
     path('logout/', LogoutView.as_view()),
-    path('myrides/', userView.my_rides, name = 'search'),
+    path('myrides/', userView.my_rides, name = 'my_rides'),
     path('delete_ride/<ride_id>', userView.delete_ride, name = 'delete_ride'),
     path('join_ride/<ride_id>',searchViews.join_ride,name='join_ride'),
     path('approve_rides/<ride_id>',userView.approve_rides,name='approve_rides'),
     path('approve_user/<ride_id>/<user_id>',userView.approve_user,name='approve_user'),
-    path('ride_status/',userView.requested_rides,name='rides_status')
+    path('ride_status/',userView.requested_rides,name='requested_rides')
 ]
