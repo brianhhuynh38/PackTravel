@@ -15,13 +15,13 @@ class PublishViewTests(TestCase):
         self.mock_routesDB = self.mock_db.routes
 
     @patch("publish.views.intializeDB")
-    def test_publish_index_not_logged_in(self):
+    def test_publish_index_not_logged_in(self, mock_intializeDB):
         response = self.client.get(reverse('publish'))
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('index'))
 
     @patch("publish.views.intializeDB")
-    def test_publish_index_logged_in(self):
+    def test_publish_index_logged_in(self,mock_intializeDB):
         session = self.client.session
         session['usrname'] = 'testuser'
         session.save()
@@ -30,7 +30,7 @@ class PublishViewTests(TestCase):
         self.assertRedirects(response, reverse('index'))
         
     @patch("publish.views.intializeDB")
-    def test_publish_index_logged_in(self):
+    def test_publish_index_logged_in(self, mock_intializeDB):
         session = self.client.session
         session['username'] = 'testuser'
         session.save()
@@ -40,7 +40,7 @@ class PublishViewTests(TestCase):
 
     @patch("publish.views.intializeDB")
     @patch("publish.views.ridesDB")
-    def test_display_ride(self, mock_ridesDB):
+    def test_display_ride(self, mock_ridesDB, mock_intializeDB):
         mock_ridesDB.find_one.return_value = {
             '_id': 'test_ride_id',
             'spoint': 'Source',
@@ -51,7 +51,7 @@ class PublishViewTests(TestCase):
         self.assertTemplateUsed(response, 'publish/display_ride.html')
 
     @patch("publish.views.intializeDB")
-    def test_select_route_post(self):
+    def test_select_route_post(self, mock_intializeDB):
         post_data = {
             'hiddenInput': 'test_route_id',
             'hiddenUser': 'testuser',
@@ -59,20 +59,20 @@ class PublishViewTests(TestCase):
         }
         response = self.client.post(reverse('select_route'), data=post_data)
         self.assertEqual(response.status_code, 302)
-        
+
     @patch("publish.views.intializeDB")
-    def test_select_route_post(self):
+    def test_select_route_post(self,mock_intializeDB):
         post_data = {
             '_id': 'test_ride_id',
             'destination': 'Destination'
         }
         response = self.client.post(reverse('select_route'), data=post_data)
         self.assertEqual(response.status_code, 302)
-
+        
     @patch("publish.views.intializeDB")
     @patch("publish.views.ridesDB")
     @patch("publish.views.distance_and_cost")
-    def test_create_route(self, mock_distance_and_cost):
+    def test_create_route(self, mock_distance_and_cost, mock_ridesDB, mock_intializeDB):
         mock_distance_and_cost.return_value = "10 and 15"
         session = self.client.session
         session['username'] = 'testuser'
