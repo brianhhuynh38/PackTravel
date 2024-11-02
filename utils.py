@@ -1,7 +1,7 @@
 """
 MIT License
 
-Copyright (c) 2022 Amisha Waghela
+Copyright (c) 2022 Makarand Pundlik
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -30,12 +30,10 @@ from pymongo import MongoClient
 
 def get_client():
     """Returns a MongoDB client connected to the specified Atlas cluster with secure TLS authentication."""
-    #with open(os.path.join(sys.path[0], "config.ini"), "r") as f:
-        #content = f.readlines()
-    content="Varun1406"    
+    with open(os.path.join(sys.path[0], "config.ini"), "r") as f:
+        content = f.readlines()
+        #file - config.ini stores password 
     client = MongoClient(
-        "mongodb+srv://vvarath:" + content + "@cluster0.wc05z.mongodb.net/?retryWrites=true&w=majority",
+        "mongodb+srv://<username>:"+content[0]+"@cluster0.wc05z.mongodb.net/?retryWrites=true&w=majority",
         tlsCAFile=certifi.where())
-        #"mongodb+srv://Aoishi:" + content[0] + "@cluster0.zpuftvw.mongodb.net/?retryWrites=true&w=majority",
-
     return client
