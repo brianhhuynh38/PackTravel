@@ -1,3 +1,27 @@
+"""
+MIT License
+
+Copyright (c) 2022 Amisha Waghela
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
+
 from http.client import HTTPResponse
 from django.shortcuts import render, redirect
 import requests
@@ -18,6 +42,7 @@ routesDB = None
 
 
 def intializeDB():
+    """Initializes global MongoDB client and database collections for users, rides, and routes."""
     global client, db, userDB, ridesDB, routesDB
     if client is None:  # Initialize the client only if it's not already initialized
         client = get_client()
@@ -33,6 +58,7 @@ def intializeDB():
 
 # Home page for PackTravel
 def index(request, username=None):
+    """Handles user authentication and initializes user session data, rendering the home page based on user login status."""
     intializeDB()
     if request.user.is_authenticated:
         request.session["username"] = request.user.username
@@ -60,6 +86,7 @@ def index(request, username=None):
 
 
 def add_user_to_session(request, userObj):
+    """Adds user details to the session for maintaining user state across requests."""
     request.session['username'] = userObj["username"]
     request.session['unityid'] = userObj["unityid"]
     request.session['fname'] = userObj["fname"]
@@ -69,6 +96,7 @@ def add_user_to_session(request, userObj):
 
 
 def register(request):
+    """Handles user registration by validating the input form, checking for existing usernames, and creating a new user record in the database."""
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
@@ -101,6 +129,7 @@ def register(request):
 
 
 def logout(request):
+    """Clears the user session and redirects to the index page."""
     try:
         request.session.clear()
     except:
@@ -110,6 +139,7 @@ def logout(request):
 
 # @describe: Existing user login
 def login(request):
+    """Authenticates existing users by verifying their credentials and setting session data upon successful login."""
     intializeDB()
     if request.session.has_key('username'):
         return redirect(index, {"username": request.session['username']})
@@ -137,6 +167,7 @@ def login(request):
 
 
 def my_rides(request):
+    """Retrieves and displays rides created by the logged-in user."""
     intializeDB()
     if not request.session.has_key('username'):
         request.session['alert'] = "Please login to create a ride."
@@ -150,6 +181,7 @@ def my_rides(request):
 
 
 def delete_ride(request, ride_id):
+    """Deletes a ride from the database if the logged-in user is the owner of that ride."""
     intializeDB()
     #print(ride_id)
     user = userDB.find_one({"username": request.session['username']})
@@ -162,6 +194,7 @@ def delete_ride(request, ride_id):
 
 
 def approve_rides(request, ride_id):
+    """Displays the approval page for rides, showing the availability and requested users for the specified ride."""
     if not request.session.has_key('username'):
         request.session['alert'] = "Please login to approve rides."
         return redirect('index')
@@ -171,6 +204,7 @@ def approve_rides(request, ride_id):
 
 
 def approve_user(request, ride_id, user_id):
+    """Approves a user for a ride by moving them from the requested users list to the confirmed users list."""
     if not request.session.has_key('username'):
         request.session['alert'] = "Please login to approve rides."
         return redirect('index')
@@ -184,6 +218,7 @@ def approve_user(request, ride_id, user_id):
 
 
 def requested_rides(request):
+    """Retrieves and displays rides for which the logged-in user has requested or been confirmed, along with their owned rides."""
     if not request.session.has_key('username'):
         request.session['alert'] = "Please login to create a ride."
         return redirect('index')
