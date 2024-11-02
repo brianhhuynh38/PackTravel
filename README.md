@@ -23,33 +23,9 @@
 
 
 </div>
-
-## Flaws in Phase 1
-
-- Only basic sign-up/login option which used to break multiple times.
-- One was able to create Rides as well as Routes which would create a lot of data redundancy and multiple rides and routes even for the same source to destination travel ultimately causing more confusion to users.
-- No scope of deleting or cancelling a ride or route.
-- No scope for the user to track his/her rides creating problems for the user track his/her rides and routes and plan accordingly.
-- Application was running only on local servers. Not deployed so very less usability scope as well as very less server support.
-
-
-https://user-images.githubusercontent.com/18501895/205809978-14a5c1c0-65a3-4171-b6f2-f30449325088.mp4
-
-## Enhancement and Improvements in Phase 2:
--  Restructed the database and object structure to improve efficiency and avoid data redundancy. 
-- Users can create or join routes which would create or map the rides automatically based on the source and destination avoiding duplicate data and data redundancy.
--  Added User based Rides Page which would help the user to track his rides and work on it accordingly. 
-- Added Google SSO Sign in functionality to add options to signing up which also covers security loopholes.
-- Added delete/cancel ride functionality so that if the user has cancelled his plan of going to a particular destination, he/she can cancel/delete the ride so that others are not dependent on the same creating efficient and easy usability for the users.
-- Deployed and Hosted the application on AWS making the application more stable, globally acccessible and not dependent on any local machine.
-
 <a href="https://github.com/Prachit99/PackTravel/blob/main/images/video1155969440.mp4" target="_blank">Link to Video 2</a>
 
 <h2>Scalability</h2>
-
-How can we scale this project? What are the shortcomings which can be covered if we scale it? Everything answered and explained in the in-detailed document attached below.
-
-<a href="https://github.com/Prachit99/PackTravel/blob/36a6b9848f74c52ebe0ccedfef6c0846d98a230d/scalability.md" target="_blank">Click here to know about Scaling this project to the next level</a>
 
 
 <h2>What is Packtravel?</h2>
@@ -92,7 +68,7 @@ https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3
   3. To request for admin privileges, please email on help@packtravel.io with the purpose of use. 
 
   - ### Prerequisite:
-      - Download [Python3.x]([https://www.python.org/downloads/](https://www.python.org/downloads/release/python-380/)).
+      - Download [Python3.x](https://www.python.org/downloads/release/python-380/).
       - Download [Django](https://docs.djangoproject.com/en/4.1/topics/install/).
 
    ## Run Locally
@@ -131,13 +107,33 @@ Install dependencies
   pip install -r requirements.txt
 ```
 
+Create API Keys
+1) Go to [google api keys](https://developers.google.com/maps/documentation/embed/get-api-key) and create API of your own. 
+2) Then replace every instance of 'your_google_api_key' with the key you created in the entire codebase. 
+
+Create MongoDB User to Connect to a dB 
+1) Go to [mongodb atlas](https://cloud.mongodb.com/)
+2) Create a new database or visit existing one.
+3) Create new cluster called pack-travel.
+4) Click on connect -> mongodB for VS Code.
+5) This will give you one endpoint like below.
+
+![image](https://github.com/user-attachments/assets/b39e2ba4-26e8-4071-a989-f62e0acb42f6)
+
+1) Go to Database Access.
+2) Create new user.
+3) Enter username and password.
+4) Put the password in config.ini file
+5) Replace the current endpoint in utils.py that you with the newly created endpoint
+6) Populate the username
+7) Password has already been taken care of in the step 4 
+ 
+
 Start the server
 
 ```bash
   python manage.py runserver
 ```
-
-
 
      - Site gets hosted at:
        `http://127.0.0.1:8000/`
