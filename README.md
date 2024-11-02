@@ -20,9 +20,8 @@
 [![Repo Size](https://img.shields.io/github/repo-size/GradHackersGuild/PackTravel-Old?style=for-the-badge)](https://github.com/GradHackersGuild/PackTravel-Old)
 
 
-
 </div>
-<a href="https://github.com/Prachit99/PackTravel/blob/main/images/video1155969440.mp4" target="_blank">Link to Video 2</a>
+DEMO: <a href="https://drive.google.com/drive/u/3/folders/17D7UdbXRUxfWHnkc3N5_KJEVKsNOitFJ" target="_blank">Link to Demo Video</a>
 
 
 <h2>What is Packtravel?</h2>
