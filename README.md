@@ -83,7 +83,7 @@ Linux/MacOS:
 ```
 Windows:
 ```bash
-  ./env/Scripts/activate
+  \env\Scripts\activate
 ```
 
 Clone the project
