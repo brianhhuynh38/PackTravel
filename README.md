@@ -173,20 +173,18 @@ Start the server
 
 
 
-## Chat Channel
+## Discord Channel
 
-<code><a href="https://seproject-bvz2267.slack.com/archives/C045KE3RW9L" target="_blank"><img height="50" width="100" src="https://user-images.githubusercontent.com/111834635/194175304-834d5663-b6bb-4e38-981d-98bc1bf028b8.png"></a></code>
+<code><a href="https://seproject-bvz2267.slack.com/archives/C045KE3RW9L" target="_blank"><img height="50" width="100" src="[https://user-images.githubusercontent.com/111834635/194175304-834d5663-b6bb-4e38-981d-98bc1bf028b8.png](https://blog.pinwheel.com/discord)"></a></code>
 
 
 ## Contributors 
 
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/Prachit99"><img src="https://avatars.githubusercontent.com/Prachit99" width="100px;" alt=""/><br /><sub><b>Prachit99</b></sub></a></td>
-    <td align="center"><a href="https://github.com/Darkspur"><img src="https://avatars.githubusercontent.com/Darkspur" width="100px;" alt=""/><br /><sub><b>Sahil Sawant Joshi</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/ashishjoshi2605"><img src="https://avatars.githubusercontent.com/ashishjoshi2605" width="100px;" alt=""/><br /><sub><b>Ashish Joshi</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/sankettangade"><img src="https://avatars.githubusercontent.com/sankettangade" width="100px;" alt=""/><br /><sub><b>Sanket Tangade</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/karan-47"><img src="https://avatars.githubusercontent.com/karan-47" width="100px;" alt=""/><br /><sub><b>Karan Gala</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/MakarandPundlik"><img src="https://avatars.githubusercontent.com/u/65530539?v=4" width="100px;" alt=""/><br /><sub><b>Makarand Pundlik</b></sub></a></td>
+    <td align="center"><a href="https://github.com/V4run14"><img src="https://avatars.githubusercontent.com/u/59575040?v=4" width="100px;" alt=""/><br /><sub><b>Varun Varatharajan</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/michellevarghese"><img src="https://avatars.githubusercontent.com/u/73420769?v=4" width="100px;" alt=""/><br /><sub><b>Michelle Varghese</b></sub></a><br /></td>
   </tr>
 </table>
 
