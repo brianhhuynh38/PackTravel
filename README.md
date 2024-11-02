@@ -144,8 +144,8 @@ Start the server
 
 
 ## Discord Channel
+<a href="https://discord.com/channels/1290739583042191420/1290739583042191423"><img src="https://github.com/user-attachments/assets/aff2b82a-677c-43da-be9e-73fcda385960" width="100px" height="100px"/></a>
 
-<code><a href="https://apps.microsoft.com/detail/xpdc2rh70k22mn?hl=en-US&gl=US" target="_blank"><img height="50" width="100" src="https://apps.microsoft.com/detail/xpdc2rh70k22mn?hl=en-US&gl=US"></a></code>
 
 
 ## Contributors 
