@@ -22,33 +22,7 @@
 
 
 </div>
-
-## Flaws in Phase 1
-
-- Only basic sign-up/login option which used to break multiple times.
-- One was able to create Rides as well as Routes which would create a lot of data redundancy and multiple rides and routes even for the same source to destination travel ultimately causing more confusion to users.
-- No scope of deleting or cancelling a ride or route.
-- No scope for the user to track his/her rides creating problems for the user track his/her rides and routes and plan accordingly.
-- Application was running only on local servers. Not deployed so very less usability scope as well as very less server support.
-
-
-https://user-images.githubusercontent.com/18501895/205809978-14a5c1c0-65a3-4171-b6f2-f30449325088.mp4
-
-## Enhancement and Improvements in Phase 2:
--  Restructed the database and object structure to improve efficiency and avoid data redundancy. 
-- Users can create or join routes which would create or map the rides automatically based on the source and destination avoiding duplicate data and data redundancy.
--  Added User based Rides Page which would help the user to track his rides and work on it accordingly. 
-- Added Google SSO Sign in functionality to add options to signing up which also covers security loopholes.
-- Added delete/cancel ride functionality so that if the user has cancelled his plan of going to a particular destination, he/she can cancel/delete the ride so that others are not dependent on the same creating efficient and easy usability for the users.
-- Deployed and Hosted the application on AWS making the application more stable, globally acccessible and not dependent on any local machine.
-
 <a href="https://github.com/Prachit99/PackTravel/blob/main/images/video1155969440.mp4" target="_blank">Link to Video 2</a>
-
-<h2>Scalability</h2>
-
-How can we scale this project? What are the shortcomings which can be covered if we scale it? Everything answered and explained in the in-detailed document attached below.
-
-<a href="https://github.com/Prachit99/PackTravel/blob/36a6b9848f74c52ebe0ccedfef6c0846d98a230d/scalability.md" target="_blank">Click here to know about Scaling this project to the next level</a>
 
 
 <h2>What is Packtravel?</h2>
@@ -73,12 +47,12 @@ https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3
 <h2>Features</h2>
 
 <ul>
-  <li>Create a PackTravel Ride</li>
-  <li>Create mmultiple routes to reach a ride's destination:  Bus, Cab or Personal</li>
-  <li>Search and view other's rides</li>
-  <li>Join a PackTravel Ride's route</li>
+  <li>Google map route display</li>
+  <li>Search and view other rides</li>
+  <li>Join a PackTravel Ride</li>
   <li>Check all your rides</li>
-  <li>Modify your Ride</li>
+  <li>See status of your requested rides</li> 
+  <li>Approve who can ride with you</li>
   <li> Delete a Ride</li>
   
 </ul>
@@ -91,7 +65,7 @@ https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3
   3. To request for admin privileges, please email on help@packtravel.io with the purpose of use. 
 
   - ### Prerequisite:
-      - Download [Python3.x](https://www.python.org/downloads/).
+      - Download [Python3.x](https://www.python.org/downloads/release/python-380/).
       - Download [Django](https://docs.djangoproject.com/en/4.1/topics/install/).
 
    ## Run Locally
@@ -99,7 +73,7 @@ https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3
 Create a virtual environment:
 
 ```bash
-  python3.x -m venv env
+  python3.8 -m venv env
 ```
 
 Activate the virtual environment:
@@ -115,7 +89,7 @@ Windows:
 Clone the project
 
 ```bash
-  git clone https://github.com/Prachit99/PackTravel.git
+  git clone https://github.com/GradHackersGuild/PackTravel-Old
 ```
 
 Go to the project directory
@@ -130,14 +104,33 @@ Install dependencies
   pip install -r requirements.txt
 ```
 
+Create API Keys
+1) Go to [google api keys](https://developers.google.com/maps/documentation/embed/get-api-key) and create API of your own. 
+2) Then replace every instance of 'your_google_api_key' with the key you created in the entire codebase. 
+
+Create MongoDB User to Connect to a dB 
+1) Go to [mongodb atlas](https://cloud.mongodb.com/)
+2) Create a new database or visit existing one.
+3) Create new cluster called pack-travel.
+4) Click on connect -> mongodB for VS Code.
+5) This will give you one endpoint like below.
+
+![image](https://github.com/user-attachments/assets/b39e2ba4-26e8-4071-a989-f62e0acb42f6)
+
+1) Go to Database Access.
+2) Create new user.
+3) Enter username and password.
+4) Put the password in config.ini file
+5) Replace the current endpoint in utils.py that you with the newly created endpoint
+6) Populate the username
+7) Password has already been taken care of in the step 4 
+ 
+
 Start the server
 
 ```bash
-  python manage.py migrate
   python manage.py runserver
 ```
-
-
 
      - Site gets hosted at:
        `http://127.0.0.1:8000/`
@@ -147,45 +140,20 @@ Start the server
 - [JS-HTML-CSS Formatter](https://marketplace.visualstudio.com/items?itemName=lonefy.vscode-JS-CSS-HTML-formatter)
 - [PyLint](https://pylint.org/)
 
-## Functionalities in Action 
-
-- **Sign Up Page**
-<img src="/images/Register.gif" width="800" height="400"/>
-
-- **Login Page**
-<img src="/images/Login%20(1).gif" width="800" height="400"/>
-
-- **Creating a Ride**
-<img src="/images/Create1.gif" width="800" height="400"/>
-<img src="/images/Create2.gif" width="800" height="400"/>
-
-- **Adding New Route**
-<img src="/images/AddRoute11.gif" width="800" height="400"/>
-<img src="/images/AddRoute12.gif" width= "800" height="400"/>
-
-- **Search for a Ride**
-<img src="/images/Search.gif" width="800" height="400"/>
-
-- **My Rides**
-
-<img src="/images/myRides.gif" width="800" height="400"/>
 
 
+## Discord Channel
+<a href="https://discord.com/channels/1290739583042191420/1290739583042191423"><img src="https://github.com/user-attachments/assets/aff2b82a-677c-43da-be9e-73fcda385960" width="100px" height="100px"/></a>
 
-## Chat Channel
-
-<code><a href="https://seproject-bvz2267.slack.com/archives/C045KE3RW9L" target="_blank"><img height="50" width="100" src="https://user-images.githubusercontent.com/111834635/194175304-834d5663-b6bb-4e38-981d-98bc1bf028b8.png"></a></code>
 
 
 ## Contributors 
 
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/Prachit99"><img src="https://avatars.githubusercontent.com/Prachit99" width="100px;" alt=""/><br /><sub><b>Prachit99</b></sub></a></td>
-    <td align="center"><a href="https://github.com/Darkspur"><img src="https://avatars.githubusercontent.com/Darkspur" width="100px;" alt=""/><br /><sub><b>Sahil Sawant Joshi</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/ashishjoshi2605"><img src="https://avatars.githubusercontent.com/ashishjoshi2605" width="100px;" alt=""/><br /><sub><b>Ashish Joshi</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/sankettangade"><img src="https://avatars.githubusercontent.com/sankettangade" width="100px;" alt=""/><br /><sub><b>Sanket Tangade</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/karan-47"><img src="https://avatars.githubusercontent.com/karan-47" width="100px;" alt=""/><br /><sub><b>Karan Gala</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/MakarandPundlik"><img src="https://avatars.githubusercontent.com/u/65530539?v=4" width="100px;" alt=""/><br /><sub><b>Makarand Pundlik</b></sub></a></td>
+    <td align="center"><a href="https://github.com/V4run14"><img src="https://avatars.githubusercontent.com/u/59575040?v=4" width="100px;" alt=""/><br /><sub><b>Varun Varatharajan</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/michellevarghese"><img src="https://avatars.githubusercontent.com/u/73420769?v=4" width="100px;" alt=""/><br /><sub><b>Michelle Varghese</b></sub></a><br /></td>
   </tr>
 </table>
 
