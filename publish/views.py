@@ -125,7 +125,7 @@ def get_routes(ride):
 
 def distance_and_cost(source, destination, date, hour, minute, ampm):
     """Method to retrieve distance between source and origin"""
-    api_key = "AIzaSyAlTEtvRzc8n19pvk4-h-DpdrbkybY2ePY"
+    api_key = "your_google_api_key"
     date = date.split("-")
     url = "https://maps.googleapis.com/maps/api/distancematrix/json?" + \
         "origins=" + source + "&destinations=" + destination + "&key=" + api_key
