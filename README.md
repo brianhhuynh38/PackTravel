@@ -25,8 +25,6 @@
 </div>
 <a href="https://github.com/Prachit99/PackTravel/blob/main/images/video1155969440.mp4" target="_blank">Link to Video 2</a>
 
-<h2>Scalability</h2>
-
 
 <h2>What is Packtravel?</h2>
 
@@ -142,29 +140,6 @@ Start the server
 - [Preetier Code Formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - [JS-HTML-CSS Formatter](https://marketplace.visualstudio.com/items?itemName=lonefy.vscode-JS-CSS-HTML-formatter)
 - [PyLint](https://pylint.org/)
-
-## Functionalities in Action 
-
-- **Sign Up Page**
-<img src="/images/Register.gif" width="800" height="400"/>
-
-- **Login Page**
-<img src="/images/Login%20(1).gif" width="800" height="400"/>
-
-- **Creating a Ride**
-<img src="/images/Create1.gif" width="800" height="400"/>
-<img src="/images/Create2.gif" width="800" height="400"/>
-
-- **Adding New Route**
-<img src="/images/AddRoute11.gif" width="800" height="400"/>
-<img src="/images/AddRoute12.gif" width= "800" height="400"/>
-
-- **Search for a Ride**
-<img src="/images/Search.gif" width="800" height="400"/>
-
-- **My Rides**
-
-<img src="/images/myRides.gif" width="800" height="400"/>
 
 
 
