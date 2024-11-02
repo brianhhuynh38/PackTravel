@@ -74,12 +74,12 @@ https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3
 <h2>Features</h2>
 
 <ul>
-  <li>Create a PackTravel Ride</li>
-  <li>Create mmultiple routes to reach a ride's destination:  Bus, Cab or Personal</li>
-  <li>Search and view other's rides</li>
-  <li>Join a PackTravel Ride's route</li>
+  <li>Google map route display</li>
+  <li>Search and view other rides</li>
+  <li>Join a PackTravel Ride</li>
   <li>Check all your rides</li>
-  <li>Modify your Ride</li>
+  <li>See status of your requested rides</li> 
+  <li>Approve who can ride with you</li>
   <li> Delete a Ride</li>
   
 </ul>
@@ -92,7 +92,7 @@ https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3
   3. To request for admin privileges, please email on help@packtravel.io with the purpose of use. 
 
   - ### Prerequisite:
-      - Download [Python3.x](https://www.python.org/downloads/).
+      - Download [Python3.x]([https://www.python.org/downloads/](https://www.python.org/downloads/release/python-380/)).
       - Download [Django](https://docs.djangoproject.com/en/4.1/topics/install/).
 
    ## Run Locally
@@ -100,7 +100,7 @@ https://user-images.githubusercontent.com/111834635/194171771-962a585e-5dc7-4ea3
 Create a virtual environment:
 
 ```bash
-  python3.x -m venv env
+  python3.8 -m venv env
 ```
 
 Activate the virtual environment:
@@ -116,7 +116,7 @@ Windows:
 Clone the project
 
 ```bash
-  git clone https://github.com/Prachit99/PackTravel.git
+  git clone https://github.com/GradHackersGuild/PackTravel-Old
 ```
 
 Go to the project directory
@@ -134,7 +134,6 @@ Install dependencies
 Start the server
 
 ```bash
-  python manage.py migrate
   python manage.py runserver
 ```
 
@@ -175,7 +174,7 @@ Start the server
 
 ## Discord Channel
 
-<code><a href="https://seproject-bvz2267.slack.com/archives/C045KE3RW9L" target="_blank"><img height="50" width="100" src="[https://user-images.githubusercontent.com/111834635/194175304-834d5663-b6bb-4e38-981d-98bc1bf028b8.png](https://blog.pinwheel.com/discord)"></a></code>
+<code><a href="https://apps.microsoft.com/detail/xpdc2rh70k22mn?hl=en-US&gl=US" target="_blank"><img height="50" width="100" src="https://apps.microsoft.com/detail/xpdc2rh70k22mn?hl=en-US&gl=US"></a></code>
 
 
 ## Contributors 
