@@ -32,6 +32,9 @@ Most of the university students do not have a car to travel off-campus and rely 
 
 https://github.com/user-attachments/assets/23f9fbcc-e94b-4396-8b41-565bf2569b51
 
+https://github.com/user-attachments/assets/0130cb39-9cb7-4ba9-9c3d-1b0daac5cafd
+
+
 **Built Using:**
 
 </br>
@@ -63,6 +66,8 @@ https://github.com/user-attachments/assets/23f9fbcc-e94b-4396-8b41-565bf2569b51
   1. If you are a user who is visiting our app, you can sign up as a user with view access to rides. You can edit or create your own ride.
   2. If you are an admin user, you can create, view, update and delete rides and schedule rides.
   3. To request for admin privileges, please email on help@packtravel.io with the purpose of use. 
+
+<h3>Screens:</h3>
 
   - ### Prerequisite:
       - Download [Python3.x](https://www.python.org/downloads/release/python-380/).
