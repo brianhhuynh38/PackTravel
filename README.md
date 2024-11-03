@@ -32,8 +32,6 @@ Most of the university students do not have a car to travel off-campus and rely 
 
 https://github.com/user-attachments/assets/23f9fbcc-e94b-4396-8b41-565bf2569b51
 
-https://github.com/user-attachments/assets/0130cb39-9cb7-4ba9-9c3d-1b0daac5cafd
-
 
 **Built Using:**
 
@@ -47,7 +45,7 @@ https://github.com/user-attachments/assets/0130cb39-9cb7-4ba9-9c3d-1b0daac5cafd
 <code><a href="https://getbootstrap.com/" target="_blank"><img height="50" src="https://www.vectorlogo.zone/logos/getbootstrap/getbootstrap-ar21.svg"></a></code>
 
 
-<h2>Features</h2>
+<h2>Features 💎 </h2>
 
 <ul>
   <li>Google map route display</li>
@@ -68,6 +66,34 @@ https://github.com/user-attachments/assets/0130cb39-9cb7-4ba9-9c3d-1b0daac5cafd
   3. To request for admin privileges, please email on help@packtravel.io with the purpose of use. 
 
 <h3>Screens:</h3>
+
+**Login:**
+
+![login 2](https://github.com/user-attachments/assets/157dc17c-a4c1-498a-98f2-5c903ca56763)
+
+**Register:**
+
+![register 2](https://github.com/user-attachments/assets/6a230927-5f47-4c35-9da4-679c2aee8281)
+
+**View Rides:**
+
+![list dash](https://github.com/user-attachments/assets/1b173444-a40f-419e-9ffa-44a7bd145bac)
+
+**Trip Details:**
+
+![trip details 2](https://github.com/user-attachments/assets/981a42de-dde7-4294-abe5-5f2f4fbae59d)
+
+**Create Ride**
+
+![create ride](https://github.com/user-attachments/assets/26e7503f-a9f0-4cb9-8af0-64ceedf4d498)
+
+**Search Rides**
+
+![search 2](https://github.com/user-attachments/assets/5c918ca1-df5e-41c3-8656-c5e9d6b1d6f5)
+
+**Manage Ride Dashboard**
+
+![dashboard 2](https://github.com/user-attachments/assets/85025d8e-612f-489b-a9ce-bd23033913d4)
 
   - ### Prerequisite:
       - Download [Python3.x](https://www.python.org/downloads/release/python-380/).
