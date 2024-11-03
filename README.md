@@ -6,10 +6,10 @@
 
 
 [![DOI](https://zenodo.org/badge/879310431.svg)](https://doi.org/10.5281/zenodo.14020210)
-![Tests](https://github.com/GradHackersGuild/PackTravel-Old/actions/workflows/run_test_cases.yml/badge.svg)
+[![Tests](https://github.com/GradHackersGuild/PackTravel-Old/actions/workflows/run_test_cases.yml/badge.svg)](https://github.com/GradHackersGuild/PackTravel-Old/actions/workflows/run_test_cases.yml)
 [![Codecov](https://codecov.io/gh/GradHackersGuild/PackTravel-Old/branch/main_new/graph/badge.svg)](https://codecov.io/gh/GradHackersGuild/PackTravel-Old)
-![Python Style Checker](https://github.com/GradHackersGuild/PackTravel-Old/actions/workflows/python_style_checker.yml/badge.svg)
-![Lint Python](https://github.com/GradHackersGuild/PackTravel-Old/actions/workflows/pylint.yml/badge.svg)
+[![Python Style Checker](https://github.com/GradHackersGuild/PackTravel-Old/actions/workflows/python_style_checker.yml/badge.svg)](https://github.com/GradHackersGuild/PackTravel-Old/actions/workflows/python_style_checker.yml)
+[![Lint Python](https://github.com/GradHackersGuild/PackTravel-Old/actions/workflows/pylint.yml/badge.svg)](https://github.com/GradHackersGuild/PackTravel-Old/actions/workflows/pylint.yml)
 ![Lines of code](https://tokei.rs/b1/github/GradHackersGuild/PackTravel-Old?v=1)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT) 
