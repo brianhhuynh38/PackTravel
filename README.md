@@ -65,6 +65,23 @@ https://github.com/user-attachments/assets/23f9fbcc-e94b-4396-8b41-565bf2569b51
   2. If you are an admin user, you can create, view, update and delete rides and schedule rides.
   3. To request for admin privileges, please email on help@packtravel.io with the purpose of use. 
 
+<h2>What’s next for pack travel?</h2>
+
+1. **Automatic Notifications:** Automatically notify users via email when someone joins their ride, keeping them informed through real-time alerts.
+
+2. **Cost Splitting for Uber/Lyft:** Introduce a feature that enables users to split the fare for ridesharing services like Uber and Lyft directly within the app.
+
+3.**Functionalities**: Cancel sent Request and Reject Ride request functionalities to be implemented
+
+3. **Website Hosting:** Deploy the PackTravel website on a reliable server to ensure it is publicly accessible for user sign-up and usage.
+
+4. **Mobile Support:** Enhance the application's usability on smartphones by developing a dedicated mobile app or optimizing it for mobile browser viewing.
+
+5. **Real-Time Fares:** Pull real-time fares directly from Uber and Lyft.
+
+6. **Improve our ML model** - to predict cab prices. Data Scientists, you are needed!!!
+
+
 <h3>Screens:</h3>
 
 **Login:**
