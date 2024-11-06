@@ -71,15 +71,17 @@ https://github.com/user-attachments/assets/23f9fbcc-e94b-4396-8b41-565bf2569b51
 
 2. **Cost Splitting for Uber/Lyft:** Introduce a feature that enables users to split the fare for ridesharing services like Uber and Lyft directly within the app.
 
-3. **Functionalities**: Cancel sent Request and Reject Ride request functionalities to be implemented
+3. **Functionalities**: Cancel Sent Request and Reject Ride Request functionalities to be implemented
 
-3. **Website Hosting:** Deploy the PackTravel website on a reliable server to ensure it is publicly accessible for user sign-up and usage.
+4. **Ride History**: View Past Rides of User
 
-4. **Mobile Support:** Enhance the application's usability on smartphones by developing a dedicated mobile app or optimizing it for mobile browser viewing.
+5. **Website Hosting:** Deploy the PackTravel website on a reliable server to ensure it is publicly accessible for user sign-up and usage.
 
-5. **Real-Time Fares:** Pull real-time fares directly from Uber and Lyft.
+6. **Mobile Support:** Enhance the application's usability on smartphones by developing a dedicated mobile app or optimizing it for mobile browser viewing.
 
-6. **Improve our ML model** - to predict cab prices. Data Scientists, you are needed!!!
+7. **Real-Time Fares:** Pull real-time fares directly from Uber and Lyft.
+
+8. **Improve our ML model** - to predict cab prices. Data Scientists, you are needed!!!
 
 
 <h3>Screens:</h3>
