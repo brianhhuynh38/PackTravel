@@ -34,6 +34,6 @@ def get_client():
         content = f.readlines()
         #file - config.ini stores password 
     client = MongoClient(
-        "mongodb+srv://<username>:"+content[0]+"@cluster0.wc05z.mongodb.net/?retryWrites=true&w=majority",
+        "mongodb+srv://brianhhuynh38:emh79tSNlsAqLm4Q@pack-travel.xpn4i.mongodb.net/?retryWrites=true&w=majority",
         tlsCAFile=certifi.where())
     return client
