@@ -47,7 +47,7 @@ def intializeDB():
     if client is None:  # Initialize the client only if it's not already initialized
         client = get_client()
         db = client.SEProject  # Connect to your main database
-    
+
     if db is not None:
         userDB = db.userData  # Ensure each collection is properly initialized
         ridesDB = db.rides
