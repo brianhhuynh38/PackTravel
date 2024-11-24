@@ -36,6 +36,7 @@ from publish.forms import RideForm
 from utils import get_client
 
 import uuid
+import os
 # from django.http import HttpResponse
 
 # Create your views here.
@@ -125,10 +126,11 @@ def get_routes(ride):
 
 def distance_and_cost(source, destination, date, hour, minute, ampm):
     """Method to retrieve distance between source and origin"""
-    api_key = "AIzaSyBz5B0nIaTBVp3ZoRWNqEgU03QVjVdewhM"
+    api_key = os.environ["GOOGLE_MAPS_API_KEY"]
     date = date.split("-")
     url = "https://maps.googleapis.com/maps/api/distancematrix/json?" + \
-        "origins=" + source + "&destinations=" + destination + "&key=" + api_key
+        "origins=" + source + \
+        "&destinations=" + destination + "&key=" + api_key
     if ampm.lower() == "pm":
         hour = str(int(hour) + 12)
     date_time = f"{date[2]}-{date[1]}-{date[0]} {hour}:{minute}:{00}"

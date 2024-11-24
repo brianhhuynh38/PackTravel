@@ -30,10 +30,8 @@ from pymongo import MongoClient
 
 def get_client():
     """Returns a MongoDB client connected to the specified Atlas cluster with secure TLS authentication."""
-    with open(os.path.join(sys.path[0], "config.ini"), "r") as f:
-        content = f.readlines()
-        #file - config.ini stores password 
+
     client = MongoClient(
-        "mongodb+srv://brianhhuynh38:emh79tSNlsAqLm4Q@pack-travel.xpn4i.mongodb.net/?retryWrites=true&w=majority",
+        "mongodb+srv://" + os.environ["USERNAME"] + ":" + os.environ["PASSWORD"] + os.environ["CLUSTER_LINK"] + "/?retryWrites=true&w=majority",
         tlsCAFile=certifi.where())
     return client
