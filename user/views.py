@@ -47,7 +47,7 @@ def intializeDB():
     if client is None:  # Initialize the client only if it's not already initialized
         client = get_client()
         db = client.SEProject  # Connect to your main database
-    
+
     if db is not None:
         userDB = db.userData  # Ensure each collection is properly initialized
         ridesDB = db.rides
@@ -72,7 +72,8 @@ def index(request, username=None):
                 "fname": request.user.first_name,
                 "lname": request.user.last_name,
                 "email": request.user.email,
-                "rides": []
+                "rides": [],
+                "ride_history": []
             }
             userDB.insert_one(userObj)
             print("User Added")
@@ -93,6 +94,7 @@ def add_user_to_session(request, userObj):
     request.session['lname'] = userObj["lname"]
     request.session['email'] = userObj["email"]
     request.session['phone'] = userObj["phone"]
+    request.session['ride_history'] = userObj['ride_history']
 
 
 def register(request):
@@ -114,7 +116,8 @@ def register(request):
                 "lname": form.cleaned_data["last_name"],
                 "email": form.cleaned_data["email"],
                 "password": hashlib.sha256(password.encode()).hexdigest(),
-                "phone": form.cleaned_data["phone_number"]
+                "phone": form.cleaned_data["phone_number"],
+                "ride_history": []
             }
             userDB.insert_one(userObj)
             add_user_to_session(request=request, userObj=userObj)
@@ -158,6 +161,7 @@ def login(request):
                     request.session['lname'] = user["lname"]
                     request.session['email'] = user["email"]
                     request.session["phone"] = user["phone"]
+                    request.session["ride_history"] = user["ride_history"]
                     return redirect(f'/index/{username}')
                 else:
                     return render(request, "user/login.html", {"form": form, "alert": "Incorrect username or password."})
@@ -214,6 +218,11 @@ def approve_user(request, ride_id, user_id):
     ride['confirmed_users'].append(user_id)
     ride['availability'] -= 1
     ridesDB.replace_one({"_id": ride_id}, ride)
+
+    # Once the user is approved for the ride, add the ride to the user's ride history
+    user = userDB.find_one({"_id": user_id})
+    user['ride_history'].append(json.dump(ride))
+
     return redirect("/ride_status")
 
 

@@ -3,6 +3,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+
 class RegisterForm(forms.ModelForm):
     username = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Enter a username', 'class': 'form-control'}))
     unityid = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Unity Id', 'class': 'form-control'}))
@@ -22,11 +23,14 @@ class RegisterForm(forms.ModelForm):
             'email',
             'password1',
             'phone_number',
+            'ride_history',
         )
+
 
 class LoginForm(forms.ModelForm):
     username = forms.CharField(required=True, widget=forms.TextInput(attrs={'placeholder': 'Enter your username', 'class': "form-control"}))
     password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={'placeholder': 'Password', 'class': "form-control"}))
+
     class Meta:
         model = User
         fields = ('username', 'password')

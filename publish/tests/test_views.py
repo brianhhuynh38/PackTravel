@@ -139,6 +139,6 @@ class PublishViewTests(TestCase):
             self.client.post(reverse('create_route'), data=post_data)
         except Exception: 
             self.assertEqual(True)
-        
+
     def tearDown(self):
         pass
