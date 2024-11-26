@@ -23,7 +23,6 @@ class RegisterForm(forms.ModelForm):
             'email',
             'password1',
             'phone_number',
-            'ride_history',
         )
 
 

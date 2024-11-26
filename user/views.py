@@ -220,8 +220,7 @@ def approve_user(request, ride_id, user_id):
     ridesDB.replace_one({"_id": ride_id}, ride)
 
     # Once the user is approved for the ride, add the ride to the user's ride history
-    user = userDB.find_one({"_id": user_id})
-    user['ride_history'].append(json.dump(ride))
+    userDB.find_one_and_update({"username": user_id}, {'$push': {'ride_history': json.dumps(ride)}})
 
     return redirect("/ride_status")
 
@@ -358,6 +357,7 @@ def view_ride_history(request) -> HttpResponse:
 
     # Get a list of rides that the current user has taken
     history = list(request.session["ride_history"])
+    print(history.count)
     ride_history = []
     for iter in history:
         ride_dict = json.load(iter)
