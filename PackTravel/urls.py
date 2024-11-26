@@ -65,5 +65,6 @@ urlpatterns = [
     path('join_ride/<ride_id>', searchViews.join_ride, name='join_ride'),
     path('approve_rides/<ride_id>', userView.approve_rides, name='approve_rides'),
     path('approve_user/<ride_id>/<user_id>', userView.approve_user, name='approve_user'),
-    path('ride_status/', userView.requested_rides, name='requested_rides')
+    path('ride_status/', userView.requested_rides, name='requested_rides'),
+    path('view_ride_history/', userView.view_ride_history, name='view_ride_history')
 ]
