@@ -34,6 +34,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 from publish.forms import RideForm
 from utils import get_client
+from dotenv import load_dotenv
 
 import uuid
 import os
@@ -46,6 +47,9 @@ userDB = None
 ridesDB = None
 routesDB = None
 
+load_dotenv()
+
+API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
 
 def intializeDB():
     """Initializes global MongoDB client and database collections for users, rides, and routes."""
@@ -63,7 +67,7 @@ def publish_index(request):
     if not request.session.has_key('username'):
         request.session['alert'] = "Please login to create a ride."
         return redirect('index')
-    return render(request, 'publish/publish.html', {"username": request.session['username'], "alert": True})
+    return render(request, 'publish/publish.html', {"username": request.session['username'], "alert": True, "api_key":API_KEY})
 
 
 def display_ride(request, ride_id):
@@ -75,7 +79,7 @@ def display_ride(request, ride_id):
         "spoint": ride['spoint'],
         "destination": ride['destination']
     }
-    return render(request, "publish/display_ride.html", {"ride_id": ride["_id"], "ride": ride})
+    return render(request, "publish/display_ride.html", {"ride_id": ride["_id"], "ride": ride, "api_key":API_KEY})
 
 
 def select_route(request):
@@ -89,7 +93,7 @@ def select_route(request):
         ride = ride.replace("\'", "\"")
         ride = json.loads(ride)
         return redirect(display_ride, ride_id=ride['_id'])
-    return render(request, 'publish/publish.html', {"username": username})
+    return render(request, 'publish/publish.html', {"username": username, "api_key":API_KEY})
 
 
 def routeSelect(username, routes):
@@ -167,7 +171,7 @@ def create_route(request):
         }
         if ridesDB.find_one({"_id": ride["_id"]}) is None:
             ridesDB.insert_one(ride)
-    return render(request, 'publish/publish.html', {"username": request.session['username']})
+    return render(request, 'publish/publish.html', {"username": request.session['username'], "api_key":API_KEY})
 
 # Add Edit functionality
 

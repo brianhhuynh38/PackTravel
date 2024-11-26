@@ -21,17 +21,18 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-
+from dotenv import load_dotenv
 import os
 import sys
 import certifi
 from pymongo import MongoClient
 
+load_dotenv()
 
 def get_client():
     """Returns a MongoDB client connected to the specified Atlas cluster with secure TLS authentication."""
 
     client = MongoClient(
-        "mongodb+srv://" + os.environ["USERNAME"] + ":" + os.environ["PASSWORD"] + os.environ["CLUSTER_LINK"] + "/?retryWrites=true&w=majority",
+        "mongodb+srv://" + os.getenv("USERNAME") + ":" + os.getenv("PASSWORD") + os.getenv("CLUSTER_LINK") + "/?retryWrites=true&w=majority",
         tlsCAFile=certifi.where())
     return client
