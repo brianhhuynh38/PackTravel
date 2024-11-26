@@ -144,28 +144,31 @@
 
           <h4>Rides Created</h4>
           {% for ride in rides %}
-          <!-- {% for user in ride.requested_users %} -->
+          
           <div class="card p-3">
-            <!-- <h5>Rider - {{ user }}</h5>
             <p>{{ ride.spoint }} to {{ ride.destination }}</p>
             <p>Date: {{ ride.date }}</p>
             <p>Starting Time: {{ ride.hour }}:{{ ride.minute }} {{ ride.ampm }}</p>
-            <p>Availability: {{ ride.availability }} out of {{ ride.max_size }}</p> -->
+            <p>Availability: {{ ride.availability }} out of {{ ride.max_size }}</p>
+            <h5>Riders:</h5>
+            {% if ride.confirmed_users %}
+              {% for user in ride.confirmed_users %}
+              {{ user }}{% if not loop.last %}, {% endif %}
+              {% endfor %}
+              {% else %}
+              No confirmed riders.
+              {% endif %}
           </div>
-          {% endfor %}
           {% endfor %}
 
           <h4>Rides Taken</h4>
           {% for ride in ride_history %}
-          <!-- {% for user in ride.requested_users %} -->
           <div class="card p-3">
-            <!-- <h5>Rider - {{ user }}</h5>
             <p>{{ ride.spoint }} to {{ ride.destination }}</p>
             <p>Date: {{ ride.date }}</p>
             <p>Starting Time: {{ ride.hour }}:{{ ride.minute }} {{ ride.ampm }}</p>
-            <p>Availability: {{ ride.availability }} out of {{ ride.max_size }}</p> -->
+            <p>Availability: {{ ride.availability }} out of {{ ride.max_size }}</p>
           </div>
-          {% endfor %}
           {% endfor %}
         </div>
 
