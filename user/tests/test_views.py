@@ -259,8 +259,9 @@ class UserViewTests(TestCase):
         session.save()
 
     # Simulate a GET request to a view that retrieves the ride history
-        response = self.client.get(reverse('ride_status'))
+        response = self.client.get(reverse('requested_rides'))
         self.assertEqual(response.status_code, 200)
+        print(response)
 
     # Assert that the response contains the ride history
         ride_history = self.mock_userDB.find_one.return_value["ride_history"]
