@@ -259,7 +259,7 @@ class UserViewTests(TestCase):
         session.save()
 
     # Simulate a GET request to a view that retrieves the ride history
-        response = self.client.get(reverse('ride_history'))
+        response = self.client.get(reverse('ride_status'))
         self.assertEqual(response.status_code, 200)
 
     # Assert that the response contains the ride history
