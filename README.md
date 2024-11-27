@@ -114,26 +114,23 @@ https://github.com/user-attachments/assets/23f9fbcc-e94b-4396-8b41-565bf2569b51
 **Manage Ride Dashboard**
 
 ![dashboard 2](https://github.com/user-attachments/assets/85025d8e-612f-489b-a9ce-bd23033913d4)
-       
+
+**View Ride History**
+
+![ride_history](https://github.com/user-attachments/assets/2b5f5cda-6b00-4879-9474-ee65bc62211d)
+
 ## Tools
 - [Preetier Code Formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - [JS-HTML-CSS Formatter](https://marketplace.visualstudio.com/items?itemName=lonefy.vscode-JS-CSS-HTML-formatter)
 - [PyLint](https://pylint.org/)
 
-
-
-## Discord Channel
-<a href="https://discord.com/channels/1290739583042191420/1290739583042191423"><img src="https://github.com/user-attachments/assets/aff2b82a-677c-43da-be9e-73fcda385960" width="100px" height="100px"/></a>
-
-
-
 ## Contributors 
 
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/MakarandPundlik"><img src="https://avatars.githubusercontent.com/u/65530539?v=4" width="100px;" alt=""/><br /><sub><b>Makarand Pundlik</b></sub></a></td>
-    <td align="center"><a href="https://github.com/V4run14"><img src="https://avatars.githubusercontent.com/u/59575040?v=4" width="100px;" alt=""/><br /><sub><b>Varun Varatharajan</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/michellevarghese"><img src="https://avatars.githubusercontent.com/u/73420769?v=4" width="100px;" alt=""/><br /><sub><b>Michelle Varghese</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/shinegami-2002"><img src="https://avatars.githubusercontent.com/shinegami-2002?v=4" width="100px;" alt=""/><br /><sub><b>Shanmukh Chatadi</b></sub></a></td>
+    <td align="center"><a href="https://github.com/brianhhuynh38"><img src="https://avatars.githubusercontent.com/brianhhuynh38?v=4" width="100px;" alt=""/><br /><sub><b>Brian Huynh</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/manavkamdar27"><img src="https://avatars.githubusercontent.com/manavkamdar27?v=4" width="100px;" alt=""/><br /><sub><b>Manav Kamdar</b></sub></a><br /></td>
   </tr>
 </table>
 
