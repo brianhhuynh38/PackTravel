@@ -67,6 +67,5 @@ urlpatterns = [
     path(
         "approve_user/<ride_id>/<user_id>", userView.approve_user, name="approve_user"
     ),
-    path("ride_status/", userView.requested_rides, name="requested_rides"),
-    path("view_ride_history/", userView.view_ride_history, name="view_ride_history"),
+    path("ride_status/", userView.requested_rides, name="requested_rides")
 ]

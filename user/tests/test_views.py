@@ -31,6 +31,7 @@ from bson import ObjectId
 import hashlib
 from user.views import add_user_to_session
 
+
 class UserViewTests(TestCase):
     def setUp(self):
         self.client = Client()
@@ -44,7 +45,8 @@ class UserViewTests(TestCase):
             "fname": "Test",
             "lname": "User",
             "email": "testuser@example.com",
-            "phone": "1234567890"
+            "phone": "1234567890",
+            "ride_history": []
         }
 
     @patch("user.views.intializeDB")
@@ -59,11 +61,12 @@ class UserViewTests(TestCase):
             "last_name": "User",
             "email": "test@example.com",
             "password1": "password123",
-            "phone_number": "1234567890"
+            "phone_number": "1234567890",
+            "ride_history": []
         }
         response = self.client.post(reverse("register"), data=form_data)
         self.assertEqual(response.status_code, 302)
-        #self.assertRedirects(response, reverse("index", kwargs={"username": self.username}))
+        # self.assertRedirects(response, reverse("index", kwargs={"username": self.username}))
 
     @patch('user.views.intializeDB')
     @patch('user.views.userDB')
@@ -81,11 +84,12 @@ class UserViewTests(TestCase):
             "fname": "Test",
             "lname": "User",
             "email": "testuser@example.com",
-            "phone": "1234567890"
+            "phone": "1234567890",
+            "ride_history": []
         }
         response = self.client.post(reverse('login'), data=login_data)
         self.assertEqual(response.status_code, 200)  # Redirecting to login after login gives 200
-        
+
     @patch('user.views.intializeDB')
     @patch('user.views.userDB')
     def test_login_wrong_password(self, mock_userDB, mock_initializeDB):
@@ -102,13 +106,14 @@ class UserViewTests(TestCase):
             "fname": "Test",
             "lname": "User",
             "email": "testuser@example.com",
-            "phone": "1234567890"
+            "phone": "1234567890",
+            "ride_history": []
         }
         response = self.client.post(reverse('login'), data=login_data)
         self.assertTemplateUsed(response, "user/login.html")
         self.assertIn("alert", response.context)
         self.assertEqual(response.context["alert"], "Incorrect username or password.")
-        
+
     @patch('user.views.intializeDB')
     @patch('user.views.userDB')
     def test_login_wrong_user(self, mock_userDB, mock_initializeDB):
@@ -125,7 +130,8 @@ class UserViewTests(TestCase):
             "fname": "Test",
             "lname": "User",
             "email": "testuser@example.com",
-            "phone": "1234567890"
+            "phone": "1234567890",
+            "ride_history": []
         }
         response = self.client.post(reverse('login'), data=login_data)
         self.assertTemplateUsed(response, "user/login.html")
@@ -165,7 +171,7 @@ class UserViewTests(TestCase):
         self.mock_ridesDB.find_one.return_value = {"_id": ObjectId(), "owner": "testuser"}
         response = self.client.post(reverse('delete_ride', args=[str(ObjectId())]))
         self.assertEqual(response.status_code, 302)
-        #self.mock_ridesDB.delete_one.assert_called_once()
+        # self.mock_ridesDB.delete_one.assert_called_once()
 
     @patch('user.views.intializeDB')
     @patch('user.views.ridesDB')
@@ -187,7 +193,7 @@ class UserViewTests(TestCase):
         response = self.client.get(reverse("approve_rides", args=[ride_id]))
         self.assertRedirects(response, reverse("index"))
         self.assertEqual(self.client.session["alert"], "Please login to approve rides.")
-    
+
     def _add_session_to_request(self, request):
         """Helper function to add session to the request object."""
         middleware = SessionMiddleware(lambda req: None) 
@@ -220,8 +226,8 @@ class UserViewTests(TestCase):
         self._add_session_to_request(request)
         with self.assertRaises(KeyError):
             add_user_to_session(request, incomplete_user_data)
-        
-    #def tearDown(self):
+
+    # def tearDown(self):
     #    #Clear mocked data
     #    self.mock_userDB.delete_many.assert_called_with({})
     #    self.mock_ridesDB.delete_many.assert_called_with({})

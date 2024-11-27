@@ -150,7 +150,7 @@
           <h4>Rides Created</h4>
           {% for ride in rides %}
           
-          <div class="card p-3">
+          <div class="card p-3" style="background-color:#c7fff6">
             <p>{{ ride.spoint }} to {{ ride.destination }}</p>
             <p>Date: {{ ride.date }}</p>
             <p>Starting Time: {{ ride.hour }}:{{ ride.minute }} {{ ride.ampm }}</p>
@@ -168,7 +168,7 @@
 
           <h4>Rides Taken</h4>
           {% for ride in ride_history %}
-          <div class="card p-3">
+          <div class="card p-3" style="background-color:#bcfeb7">
             <p>{{ ride.spoint }} to {{ ride.destination }}</p>
             <p>Date: {{ ride.date }}</p>
             <p>Starting Time: {{ ride.hour }}:{{ ride.minute }} {{ ride.ampm }}</p>
