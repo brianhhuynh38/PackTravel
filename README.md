@@ -7,7 +7,7 @@
 
 [![DOI](https://zenodo.org/badge/879310431.svg)](https://doi.org/10.5281/zenodo.14020210)
 [![Tests](https://github.com/brianhhuynh38/PackTravel/actions/workflows/run_test_cases.yml/badge.svg)](https://github.com/brianhhuynh38/PackTravel/actions/workflows/run_test_cases.yml)
-[![Codecov](https://codecov.io/gh/brianhhuynh38/PackTravel/branch/main_new/graph/badge.svg)](https://codecov.io/gh/brianhhuynh38/PackTravel)
+[![codecov](https://codecov.io/gh/brianhhuynh38/PackTravel/graph/badge.svg?token=M2466V4YVI)](https://codecov.io/gh/brianhhuynh38/PackTravel)
 [![Python Style Checker](https://github.com/brianhhuynh38/PackTravel/actions/workflows/python_style_checker.yml/badge.svg)](https://github.com/brianhhuynh38/PackTravel/actions/workflows/python_style_checker.yml)
 [![Lint Python](https://github.com/brianhhuynh38/PackTravel/actions/workflows/pylint.yml/badge.svg)](https://github.com/brianhhuynh38/PackTravel/actions/workflows/pylint.yml)
 
