@@ -142,6 +142,11 @@
         <div id="viewRideHistory" class="section" style="display:none;">
           <h3>View Ride History</h3>
 
+          <p>
+            Below are the rides that you have created and the rides that you have taken over the course
+            of your journeys:
+          </p>
+
           <h4>Rides Created</h4>
           {% for ride in rides %}
           
@@ -168,6 +173,14 @@
             <p>Date: {{ ride.date }}</p>
             <p>Starting Time: {{ ride.hour }}:{{ ride.minute }} {{ ride.ampm }}</p>
             <p>Availability: {{ ride.availability }} out of {{ ride.max_size }}</p>
+            <h5>Riders:</h5>
+            {% if ride.confirmed_users %}
+              {% for user in ride.confirmed_users %}
+                {{ user }}{% if not loop.last %}, {% endif %}
+              {% endfor %}
+            {% else %}
+              No confirmed riders.
+            {% endif %}
           </div>
           {% endfor %}
         </div>
