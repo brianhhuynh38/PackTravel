@@ -67,6 +67,7 @@
         <a href="#" onclick="showSection('sentRequests')">Sent Requests</a>
         <a href="#" onclick="showSection('receivedRequests')">Received Requests</a>
         <a href="#" onclick="showSection('myRides')">My Rides</a>
+        <a href="#" onclick="showSection('viewRideHistory')">View Ride History</a>
       </div>
 
       <!-- Main Content -->
@@ -120,7 +121,7 @@
             <p>Confirmed Riders:
               {% if ride.confirmed_users %}
               {% for user in ride.confirmed_users %}
-              {{ user }}{% if not loop.last %}, {% endif %}
+              {{ user }}{% if not forloop.last %}, {% endif %}
               {% endfor %}
               {% else %}
               No confirmed riders.
@@ -136,6 +137,57 @@
           </div>
           {% endfor %}
         </div>
+
+        <!-- View Ride History -->
+        <div id="viewRideHistory" class="section" style="display:none;">
+          <h3>View Ride History</h3>
+
+          <p>
+            Below are the rides that you have created and the rides that you have taken over the course
+            of your journeys:
+          </p>
+
+          <h4>Rides Created</h4>
+          {% for ride in rides %}
+          
+          <div class="card p-3" style="background-color:#c7fff6">
+            <p>{{ ride.spoint }} to {{ ride.destination }}</p>
+            <p>Date: {{ ride.date }}</p>
+            <p>Starting Time: {{ ride.hour }}:{{ ride.minute }} {{ ride.ampm }}</p>
+            <p>Availability: {{ ride.availability }} out of {{ ride.max_size }}</p>
+            <h5>Riders:</h5>
+            {% if ride.confirmed_users %}
+              {% for user in ride.confirmed_users %}
+              {{ user }}{% if not forloop.last %}, {% endif %}
+              {% endfor %}
+              {% else %}
+              No confirmed riders.
+              {% endif %}
+          </div>
+          {% endfor %}
+
+          <h4>Rides Taken</h4>
+          {% for ride in ride_history %}
+          <div class="card p-3" style="background-color:#bcfeb7">
+            <p>{{ ride.spoint }} to {{ ride.destination }}</p>
+            <p>Date: {{ ride.date }}</p>
+            <p>Starting Time: {{ ride.hour }}:{{ ride.minute }} {{ ride.ampm }}</p>
+            <p>Availability: {{ ride.availability }} out of {{ ride.max_size }}</p>
+            <h5>Riders:</h5>
+            {% if ride.confirmed_users %}
+              {% for user in ride.confirmed_users %}
+                {{ user }}
+                {% if not forloop.last %}
+                  ,
+                {% endif %}
+              {% endfor %}
+            {% else %}
+              No confirmed riders.
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+
       </div>
 
     </div>

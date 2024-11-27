@@ -31,6 +31,7 @@ from bson import ObjectId
 import hashlib
 from user.views import add_user_to_session
 
+
 class UserViewTests(TestCase):
     def setUp(self):
         self.client = Client()
@@ -44,7 +45,8 @@ class UserViewTests(TestCase):
             "fname": "Test",
             "lname": "User",
             "email": "testuser@example.com",
-            "phone": "1234567890"
+            "phone": "1234567890",
+            "ride_history": []
         }
 
     @patch("user.views.intializeDB")
@@ -59,11 +61,12 @@ class UserViewTests(TestCase):
             "last_name": "User",
             "email": "test@example.com",
             "password1": "password123",
-            "phone_number": "1234567890"
+            "phone_number": "1234567890",
+            "ride_history": []
         }
         response = self.client.post(reverse("register"), data=form_data)
         self.assertEqual(response.status_code, 302)
-        #self.assertRedirects(response, reverse("index", kwargs={"username": self.username}))
+        # self.assertRedirects(response, reverse("index", kwargs={"username": self.username}))
 
     @patch('user.views.intializeDB')
     @patch('user.views.userDB')
@@ -81,11 +84,12 @@ class UserViewTests(TestCase):
             "fname": "Test",
             "lname": "User",
             "email": "testuser@example.com",
-            "phone": "1234567890"
+            "phone": "1234567890",
+            "ride_history": []
         }
         response = self.client.post(reverse('login'), data=login_data)
         self.assertEqual(response.status_code, 200)  # Redirecting to login after login gives 200
-        
+
     @patch('user.views.intializeDB')
     @patch('user.views.userDB')
     def test_login_wrong_password(self, mock_userDB, mock_initializeDB):
@@ -102,13 +106,14 @@ class UserViewTests(TestCase):
             "fname": "Test",
             "lname": "User",
             "email": "testuser@example.com",
-            "phone": "1234567890"
+            "phone": "1234567890",
+            "ride_history": []
         }
         response = self.client.post(reverse('login'), data=login_data)
         self.assertTemplateUsed(response, "user/login.html")
         self.assertIn("alert", response.context)
         self.assertEqual(response.context["alert"], "Incorrect username or password.")
-        
+
     @patch('user.views.intializeDB')
     @patch('user.views.userDB')
     def test_login_wrong_user(self, mock_userDB, mock_initializeDB):
@@ -125,7 +130,8 @@ class UserViewTests(TestCase):
             "fname": "Test",
             "lname": "User",
             "email": "testuser@example.com",
-            "phone": "1234567890"
+            "phone": "1234567890",
+            "ride_history": []
         }
         response = self.client.post(reverse('login'), data=login_data)
         self.assertTemplateUsed(response, "user/login.html")
@@ -165,7 +171,7 @@ class UserViewTests(TestCase):
         self.mock_ridesDB.find_one.return_value = {"_id": ObjectId(), "owner": "testuser"}
         response = self.client.post(reverse('delete_ride', args=[str(ObjectId())]))
         self.assertEqual(response.status_code, 302)
-        #self.mock_ridesDB.delete_one.assert_called_once()
+        # self.mock_ridesDB.delete_one.assert_called_once()
 
     @patch('user.views.intializeDB')
     @patch('user.views.ridesDB')
@@ -187,7 +193,7 @@ class UserViewTests(TestCase):
         response = self.client.get(reverse("approve_rides", args=[ride_id]))
         self.assertRedirects(response, reverse("index"))
         self.assertEqual(self.client.session["alert"], "Please login to approve rides.")
-    
+
     def _add_session_to_request(self, request):
         """Helper function to add session to the request object."""
         middleware = SessionMiddleware(lambda req: None) 
@@ -205,6 +211,7 @@ class UserViewTests(TestCase):
         self.assertEqual(request.session['lname'], self.user_data["lname"])
         self.assertEqual(request.session['email'], self.user_data["email"])
         self.assertEqual(request.session['phone'], self.user_data["phone"])
+        self.assertEqual(request.session['ride_history'], self.user_data['ride_history'])
 
     def test_missing_user_data_key(self):
         incomplete_user_data = {
@@ -214,14 +221,111 @@ class UserViewTests(TestCase):
             # "lname" key is missing
             "email": "testuser@example.com",
             "phone": "1234567890"
+            # ride_history is also missing
         }
 
         request = self.factory.get('/dummy-url')
         self._add_session_to_request(request)
         with self.assertRaises(KeyError):
             add_user_to_session(request, incomplete_user_data)
-        
-    #def tearDown(self):
+
+    # def tearDown(self):
     #    #Clear mocked data
     #    self.mock_userDB.delete_many.assert_called_with({})
     #    self.mock_ridesDB.delete_many.assert_called_with({})
+
+    # @patch('user.views.intializeDB')
+    # @patch('user.views.userDB')
+    # def test_user_ride_history(self, mock_userDB, mock_initializeDB):
+    #     mock_userDB.return_value = self.mock_userDB
+    #     # Simulate user data with ride history
+    #     self.mock_userDB.find_one.return_value = {
+    #         "_id": ObjectId("67459ff2c43321e6a104beb6"),
+    #         "username": "q",
+    #         "unityid": "q",
+    #         "fname": "q",
+    #         "lname": "q",
+    #         "email": "abc@mail.com",
+    #         "password": "8e35c2cd3bf6641bdb0e2050b76932cbb2e6034a0ddacc1d9bea82a6ba57f7cf",
+    #         "phone": "1234567890",
+    #         "ride_history": [
+    #         "{\"_id\": \"608509f0-cb2a-4692-ab11-c60670a641a1\", \"purpose\": \"ewdf\", \"spoint\": \"Raleigh, NC, USA\", \"destination\": \"Richmond, VA, USA\", \"type\": \"Personal\", \"date\": \"2024-11-28\", \"hour\": \"1\", \"minute\": \"00\", \"ampm\": \"AM\", \"availability\": 0, \"max_size\": 1, \"details\": \"vsfwec\", \"owner\": \"a\", \"cost\": \"For Uber, price range is from: $487.95 to: $509.4 and For Lyft, price range is from: $485.25 to: $511.45\", \"requested_users\": [], \"confirmed_users\": [\"q\"]}"
+    #     ]
+    # }
+
+    # # Set up session for the user
+    #     session = self.client.session
+    #     session["username"] = "q"
+    #     session.save()
+
+    # # Simulate a GET request to a view that retrieves the ride history
+    #     response = self.client.get(reverse('requested_rides'))
+    #     self.assertEqual(response.status_code, 200)
+
+    # # Assert that the response contains the ride history
+    #     ride_history = self.mock_userDB.find_one.return_value["ride_history"]
+    #     self.assertContains(response, "Raleigh, NC, USA")
+    #     self.assertContains(response, "Richmond, VA, USA")
+    #     self.assertContains(response, "2024-11-28")
+    #     self.assertContains(response, "Personal")
+
+@patch('user.views.intializeDB')
+@patch('user.views.userDB')
+def test_ride_history(self, mock_userDB, mock_initializeDB):
+    # Simulate user data with a populated ride history
+    ride_history = [
+        {
+            "_id": "608509f0-cb2a-4692-ab11-c60670a641a1",
+            "purpose": "ewdf",
+            "spoint": "Raleigh, NC, USA",
+            "destination": "Richmond, VA, USA",
+            "type": "Personal",
+            "date": "2024-11-28",
+            "hour": "1",
+            "minute": "00",
+            "ampm": "AM",
+            "availability": 0,
+            "max_size": 1,
+            "details": "vsfwec",
+            "owner": "a",
+            "cost": "For Uber, price range is from: $487.95 to: $509.4 and For Lyft, price range is from: $485.25 to: $511.45",
+            "requested_users": [],
+            "confirmed_users": ["q"]
+        }
+    ]
+    user_data = {
+        "_id": ObjectId("67459ff2c43321e6a104beb6"),
+        "username": "q",
+        "unityid": "q",
+        "fname": "q",
+        "lname": "q",
+        "email": "abc@mail.com",
+        "password": "8e35c2cd3bf6641bdb0e2050b76932cbb2e6034a0ddacc1d9bea82a6ba57f7cf",
+        "phone": "1234567890",
+        "ride_history": [str(ride) for ride in ride_history],
+    }
+
+    # Mock the database call to return the user data
+    mock_userDB.return_value = self.mock_userDB
+    self.mock_userDB.find_one.return_value = user_data
+
+    # Set up the session
+    session = self.client.session
+    session["username"] = user_data["username"]
+    session.save()
+
+    # Send GET request to the view that fetches ride history
+    response = self.client.get(reverse('my_rides'))
+    self.assertEqual(response.status_code, 200)
+
+    # Validate that the ride history appears in the response
+    for ride in ride_history:
+        self.assertContains(response, ride["spoint"])
+        self.assertContains(response, ride["destination"])
+        self.assertContains(response, ride["date"])
+        self.assertContains(response, ride["type"])
+
+    # Edge Case: Empty Ride History
+    self.mock_userDB.find_one.return_value["ride_history"] = []
+    response = self.client.get(reverse('my_rides'))
+    self.assertContains(response, "No rides found")

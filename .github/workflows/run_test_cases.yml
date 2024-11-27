@@ -4,7 +4,14 @@ on: [pull_request, push]
 
 jobs:
   test_python:
-    runs-on: ubuntu-20.04 
+    runs-on: ubuntu-20.04
+
+    env:
+      USERNAME: ${{ secrets.USERNAME }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+      CLUSTER_LINK: ${{ secrets.CLUSTER_LINK }}
+      GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+
     steps:
       - uses: actions/checkout@v3
       

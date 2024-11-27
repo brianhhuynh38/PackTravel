@@ -28,13 +28,13 @@ from selenium.webdriver.common.keys import Keys
 import chromedriver_autoinstaller
 
 # f : Cab or Bus (1= Cab, 2=Bus)
-def get_link(source,destination,date_tr,month_tr,time_tr,f):
+def get_link(source, destination, date_tr, month_tr, time_tr, f):
     """Generates a route link from Google Maps based on the given source, destination, travel date, time, and mode of transport."""
     chromedriver_autoinstaller.install()
     chrome_options = webdriver.ChromeOptions()
     browser = webdriver.Chrome(options=chrome_options)
 
-    dict_month={'Jan':1,'Feb':2,'Mar':3,'Apr':4,'May':5,'Jun':6,'Jul':7,'Aug':8,'Sep':9,'Oct':10,'Nov':11,'Dec':12}
+    dict_month={'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12}
     month_tr=dict_month[month_tr]
     date_tr=int(date_tr)
     browser.get('https://www.google.com/maps')
