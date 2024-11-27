@@ -1,27 +1,27 @@
-abstract: '<h2><strong>Pilot Release - v1.1</strong></h2>
+abstract: '<h2><strong>Pilot Release - v1.3</strong></h2>
 
   <h3><strong>New Features:</strong></h3>
 
-  <p><strong>1. Google Map Integration:</strong>
+  <p><strong>1. Security Refactor</strong>
 
-  - Users can now auto fill exact start and destination locations with the help of
-  googleMapAPI''s autocomplete.
+  - Developers no longer have to expose their API key or replace 6 different instances
+  of it every time something needs to be done.
 
-  - Users can now view their ride route from start to destination with embedded GMap
-  on clicking view Ride Details.</p>
+  - All important data handled via `.env` file</p>
 
-  <p><strong>2. Joining a ride:</strong>
+  <p><strong>2. View Ride History:</strong>
 
-  - Users can now request ride owner to add them to the created ride.
+  - Users can now view any rides that they have created or taken.
 
-  - Ride owners can view requested users and approve their request.
+  - Added new page in Ride Status that shows any Rides that users have been approved for.
 
-  - Availability and Capacity of ride fields added to keep track of number of users
-  that can be added to a ride.</p>
+  - Added array to each user in database that stores any rides they aer approved for</p>
 
-  <p><strong>3. Secure Password Storage:</strong>
+  <p><strong>3. Improved Machine Learning Model:</strong>
 
-  - Users passwords are hashed and stored in the database.</p>
+  - Algorithm that predicts prices for ride sharing services
+  
+  - Introduce 5 new models with better perfomance than the previous model</p>
 
 
 
@@ -38,18 +38,18 @@ abstract: '<h2><strong>Pilot Release - v1.1</strong></h2>
   <p><strong>3. Unique Username Constraint:</strong> Added ride owner unique username
   constraint and simplified db querying.</p>'
 authors:
-- family-names: Varatharajan
-  given-names: Varun
-- family-names: Pundlik
-  given-names: Makarand
-- family-names: Varghese
-  given-names: Michelle
-cff-version: 1.2.0
-date-released: '2024-10-30'
-doi: 10.5281/zenodo.14020211
+- family-names: Chatadi
+  given-names: Shanmukh
+- family-names: Huynh
+  given-names: Brian
+- family-names: Kamdar
+  given-names: Manav
+cff-version: 1.3.0
+date-released: '2024-11-27'
+doi: 
 license:
 - cc-by-4.0
-repository-code: https://github.com/GradHackersGuild/PackTravel-Old/tree/v1.1
-title: PackTravel by GradHackersGuild
+repository-code: https://github.com/brianhhuynh38/PackTravel
+title: PackTravel by Group 45
 type: software
-version: v1.1
+version: v1.3
