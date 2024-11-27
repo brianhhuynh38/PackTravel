@@ -35,8 +35,9 @@ from utils import get_client
 client = None
 db = None
 userDB = None
-ridesDB  = None
-routesDB  = None
+ridesDB = None
+routesDB = None
+
 
 def intializeDB():
     """Initializes global MongoDB client and database collections for users, rides, and routes."""
@@ -44,17 +45,19 @@ def intializeDB():
     client = get_client()
     db = client.SEProject
     userDB = db.userData
-    ridesDB  = db.rides
-    routesDB  = db.routes
+    ridesDB = db.rides
+    routesDB = db.routes
 
-def is_user_in_list(username,list):
+
+def is_user_in_list(username, list):
     """Checks if a username is present in a given list and returns True if found, otherwise False."""
     try:
         list.index(username)
         return True
     except ValueError:
         return False
-    
+
+
 def search_index(request):
     """Searches for available rides and renders the search results page, allowing users to join if they meet criteria."""
     intializeDB()
@@ -69,7 +72,8 @@ def search_index(request):
             ride['allow_to_join'] = True
     return render(request, 'search/search.html', {"username": request.session['username'], "rides": processed})
 
-def join_ride(request,ride_id):
+
+def join_ride(request, ride_id):
     """Allows a logged-in user to join a ride by adding their username to the ride's requested users list."""
     if not request.session.has_key('username'):
         request.session['alert'] = "Please login to create a ride."
@@ -77,5 +81,5 @@ def join_ride(request,ride_id):
     intializeDB()
     query = {"_id": ride_id}
     update = {"$push": {"requested_users": request.session['username']}}
-    ridesDB.update_one(query,update)
+    ridesDB.update_one(query, update)
     return search_index(request)

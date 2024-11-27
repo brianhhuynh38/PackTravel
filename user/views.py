@@ -62,9 +62,9 @@ def index(request, username=None):
     intializeDB()
     if request.user.is_authenticated:
         request.session["username"] = request.user.username
-        request.session['fname'] = request.user.first_name
-        request.session['lname'] = request.user.last_name
-        request.session['email'] = request.user.email
+        request.session["fname"] = request.user.first_name
+        request.session["lname"] = request.user.last_name
+        request.session["email"] = request.user.email
         user = userDB.find_one({"username": request.user.username})
         if not user:
             userObj = {
@@ -72,27 +72,33 @@ def index(request, username=None):
                 "fname": request.user.first_name,
                 "lname": request.user.last_name,
                 "email": request.user.email,
-                "rides": []
+                "rides": [],
+                "ride_history": [],
             }
             userDB.insert_one(userObj)
             print("User Added")
         else:
             print("User Already exists")
             print(f'Username: {user["username"]}')
-        return render(request, 'home/home.html', {"username": request.session["username"]})
-    if request.session.has_key('username'):
-        return render(request, 'home/home.html', {"username": request.session["username"]})
-    return render(request, 'home/home.html', {"username": None})
+        return render(
+            request, "home/home.html", {"username": request.session["username"]}
+        )
+    if request.session.has_key("username"):
+        return render(
+            request, "home/home.html", {"username": request.session["username"]}
+        )
+    return render(request, "home/home.html", {"username": None})
 
 
 def add_user_to_session(request, userObj):
     """Adds user details to the session for maintaining user state across requests."""
-    request.session['username'] = userObj["username"]
-    request.session['unityid'] = userObj["unityid"]
-    request.session['fname'] = userObj["fname"]
-    request.session['lname'] = userObj["lname"]
-    request.session['email'] = userObj["email"]
-    request.session['phone'] = userObj["phone"]
+    request.session["username"] = userObj["username"]
+    request.session["unityid"] = userObj["unityid"]
+    request.session["fname"] = userObj["fname"]
+    request.session["lname"] = userObj["lname"]
+    request.session["email"] = userObj["email"]
+    request.session["phone"] = userObj["phone"]
+    request.session["ride_history"] = userObj["ride_history"]
 
 
 def register(request):
@@ -103,9 +109,9 @@ def register(request):
             password = form.cleaned_data["password1"]
             intializeDB()
             # check whether username is unique
-            if (userDB.find_one({"username": form.cleaned_data["username"]})):
-                print('UserName Already Exists, please try different Username')
-                return render(request, 'user/register.html', {"form": form})
+            if userDB.find_one({"username": form.cleaned_data["username"]}):
+                print("UserName Already Exists, please try different Username")
+                return render(request, "user/register.html", {"form": form})
 
             userObj = {
                 "username": form.cleaned_data["username"],
@@ -114,7 +120,8 @@ def register(request):
                 "lname": form.cleaned_data["last_name"],
                 "email": form.cleaned_data["email"],
                 "password": hashlib.sha256(password.encode()).hexdigest(),
-                "phone": form.cleaned_data["phone_number"]
+                "phone": form.cleaned_data["phone_number"],
+                "ride_history": [],
             }
             userDB.insert_one(userObj)
             add_user_to_session(request=request, userObj=userObj)
@@ -122,10 +129,10 @@ def register(request):
         else:
             print(form.errors.as_data())
     else:
-        if request.session.has_key('username'):
-            return index(request, request.session['username'])
+        if request.session.has_key("username"):
+            return index(request, request.session["username"])
         form = RegisterForm()
-    return render(request, 'user/register.html', {"form": form})
+    return render(request, "user/register.html", {"form": form})
 
 
 def logout(request):
@@ -141,8 +148,8 @@ def logout(request):
 def login(request):
     """Authenticates existing users by verifying their credentials and setting session data upon successful login."""
     intializeDB()
-    if request.session.has_key('username'):
-        return redirect(index, {"username": request.session['username']})
+    if request.session.has_key("username"):
+        return redirect(index, {"username": request.session["username"]})
     else:
         if request.method == "POST":
             form = LoginForm(request.POST)
@@ -153,38 +160,47 @@ def login(request):
                 hash = hashlib.sha256(passw.encode()).hexdigest()
                 if user and user["password"] == hash:
                     request.session["username"] = username
-                    request.session['unityid'] = user["unityid"]
-                    request.session['fname'] = user["fname"]
-                    request.session['lname'] = user["lname"]
-                    request.session['email'] = user["email"]
+                    request.session["unityid"] = user["unityid"]
+                    request.session["fname"] = user["fname"]
+                    request.session["lname"] = user["lname"]
+                    request.session["email"] = user["email"]
                     request.session["phone"] = user["phone"]
-                    return redirect(f'/index/{username}')
+                    request.session["ride_history"] = user["ride_history"]
+                    return redirect(f"/index/{username}")
                 else:
-                    return render(request, "user/login.html", {"form": form, "alert": "Incorrect username or password."})
+                    return render(
+                        request,
+                        "user/login.html",
+                        {"form": form, "alert": "Incorrect username or password."},
+                    )
 
         form = LoginForm()
-        return render(request, 'user/login.html', {"form": form})
+        return render(request, "user/login.html", {"form": form})
 
 
 def my_rides(request):
     """Retrieves and displays rides created by the logged-in user."""
     intializeDB()
-    if not request.session.has_key('username'):
-        request.session['alert'] = "Please login to create a ride."
-        return redirect('index')
+    if not request.session.has_key("username"):
+        request.session["alert"] = "Please login to create a ride."
+        return redirect("index")
     processed = list(ridesDB.find({"owner": request.session["username"]}))
     rides = []
     for iter in processed:
-        iter['id'] = iter['_id']
+        iter["id"] = iter["_id"]
         rides.append(iter)
-    return render(request, 'user/myride.html', {"username": request.session['username'], "rides": rides})
+    return render(
+        request,
+        "user/myride.html",
+        {"username": request.session["username"], "rides": rides},
+    )
 
 
 def delete_ride(request, ride_id):
     """Deletes a ride from the database if the logged-in user is the owner of that ride."""
     intializeDB()
-    #print(ride_id)
-    user = userDB.find_one({"username": request.session['username']})
+    # print(ride_id)
+    user = userDB.find_one({"username": request.session["username"]})
     ride = ridesDB.find_one({"_id": ride_id})
 
     # only owner can delete ride
@@ -195,42 +211,55 @@ def delete_ride(request, ride_id):
 
 def approve_rides(request, ride_id):
     """Displays the approval page for rides, showing the availability and requested users for the specified ride."""
-    if not request.session.has_key('username'):
-        request.session['alert'] = "Please login to approve rides."
-        return redirect('index')
+    if not request.session.has_key("username"):
+        request.session["alert"] = "Please login to approve rides."
+        return redirect("index")
     intializeDB()
     ride = ridesDB.find_one({"_id": ride_id})
-    return render(request, "user/approve_rides.html", {"username": request.session['username'], "space": ride['availability'], "requested_users": ride['requested_users'], "approved_users": ride['confirmed_users'], "ride_id": ride_id})
+    return render(
+        request,
+        "user/approve_rides.html",
+        {
+            "username": request.session["username"],
+            "space": ride["availability"],
+            "requested_users": ride["requested_users"],
+            "approved_users": ride["confirmed_users"],
+            "ride_id": ride_id,
+        },
+    )
 
 
 def approve_user(request, ride_id, user_id):
     """Approves a user for a ride by moving them from the requested users list to the confirmed users list."""
-    if not request.session.has_key('username'):
-        request.session['alert'] = "Please login to approve rides."
-        return redirect('index')
+    if not request.session.has_key("username"):
+        request.session["alert"] = "Please login to approve rides."
+        return redirect("index")
     intializeDB()
     ride = ridesDB.find_one({"_id": ride_id})
-    ride['requested_users'].remove(user_id)
-    ride['confirmed_users'].append(user_id)
-    ride['availability'] -= 1
+    ride["requested_users"].remove(user_id)
+    ride["confirmed_users"].append(user_id)
+    ride["availability"] -= 1
     ridesDB.replace_one({"_id": ride_id}, ride)
+
+    # Once the user is approved for the ride, add the ride to the user's ride history
+    userDB.find_one_and_update(
+        {"username": user_id}, {"$push": {"ride_history": json.dumps(ride)}}
+    )
+
     return redirect("/ride_status")
 
 
 def requested_rides(request):
     """Retrieves and displays rides for which the logged-in user has requested or been confirmed, along with their owned rides."""
-    if not request.session.has_key('username'):
-        request.session['alert'] = "Please login to create a ride."
-        return redirect('index')
+    if not request.session.has_key("username"):
+        request.session["alert"] = "Please login to create a ride."
+        return redirect("index")
     intializeDB()
     username = request.session["username"]
     pipeline = [
         {
             "$match": {
-                "$or": [
-                    {"requested_users": username},
-                    {"confirmed_users": username}
-                ]
+                "$or": [{"requested_users": username}, {"confirmed_users": username}]
             }
         },
         {
@@ -251,25 +280,25 @@ def requested_rides(request):
                     "$cond": {
                         "if": {"$in": [username, "$requested_users"]},
                         "then": True,
-                        "else": False
+                        "else": False,
                     }
                 },
                 "found_in_confirmed": {
                     "$cond": {
                         "if": {"$in": [username, "$confirmed_users"]},
                         "then": True,
-                        "else": False
+                        "else": False,
                     }
-                }
+                },
             }
-        }
+        },
     ]
     pipeline2 = [
         {
             "$match": {
                 "owner": username,  # Filter by the rides owned by the user
                 # Only get rides with pending requests
-                "requested_users": {"$exists": True, "$not": {"$size": 0}}
+                "requested_users": {"$exists": True, "$not": {"$size": 0}},
             }
         },
         {
@@ -285,20 +314,13 @@ def requested_rides(request):
                 "minute": 1,
                 "ampm": 1,
                 "availability": 1,
-                "max_size": 1  # Only return the requested users
+                "max_size": 1,  # Only return the requested users
             }
-        }
+        },
     ]
 
     pipeline3 = [
-        {
-            "$match": {
-                "$or": [
-                    {"owner": username},
-                    {"confirmed_users": username}
-                ]
-            }
-        },
+        {"$match": {"$or": [{"owner": username}, {"confirmed_users": username}]}},
         {
             "$project": {
                 "_id": 1,
@@ -313,16 +335,91 @@ def requested_rides(request):
                 "max_size": 1,
                 "ampm": 1,
                 "owner": 1,
-                "confirmed_users": 1
+                "confirmed_users": 1,
             }
-        }
+        },
     ]
+
+    if not request.session.has_key("username"):
+        request.session["alert"] = "Please login to view your ride history."
+        return redirect("index")
+
+    # Get a list of rides that the current user has created
+    processed = list(ridesDB.find({"owner": request.session["username"]}))
+    rides = []
+    for iter in processed:
+        iter["id"] = iter["_id"]
+        rides.append(iter)
+
+    # Get a list of rides that the current user has taken
+    history = list(request.session["ride_history"])
+    # print(history.count)÷
+    # print("history", history)
+    ride_history = []
+    for iter in history:
+        ride_dict = json.loads(iter)
+        ride_dict["id"] = ride_dict["_id"]
+        ride_history.append(ride_dict)
+
+    print("ride history", ride_history)
     received_requests = list(ridesDB.aggregate(pipeline2))
     user_rides = list(ridesDB.aggregate(pipeline3))
 
     results = list(ridesDB.aggregate(pipeline))
-    requested = [doc for doc in results if doc['found_in_requested']]
-    confirmed = [doc for doc in results if doc['found_in_confirmed']]
-    print(user_rides)
+    requested = [doc for doc in results if doc["found_in_requested"]]
+    confirmed = [doc for doc in results if doc["found_in_confirmed"]]
 
-    return render(request, 'user/ride_status.html', {"username": request.session["username"], "requested": requested, "confirmed": confirmed, "received_requests": received_requests, "user_rides": user_rides})
+    return render(
+        request,
+        "user/ride_status.html",
+        {
+            "username": request.session["username"],
+            "requested": requested,
+            "confirmed": confirmed,
+            "received_requests": received_requests,
+            "user_rides": user_rides,
+            "username": request.session["username"],
+            "rides": rides,
+            "ride_history": ride_history,
+        },
+    )
+
+
+def view_ride_history(request) -> HttpResponse:
+    """
+    Returns html rendering information for any rides that the logged-in user has ever taken or created
+    """
+    # Initialize the database if it does not exist yet
+    intializeDB()
+
+    # Check if the user is logged in and return if they aren't
+    if not request.session.has_key("username"):
+        request.session["alert"] = "Please login to view your ride history."
+        return redirect("index")
+
+    # Get a list of rides that the current user has created
+    processed = list(ridesDB.find({"owner": request.session["username"]}))
+    rides = []
+    for iter in processed:
+        iter["id"] = iter["_id"]
+        rides.append(iter)
+
+    # Get a list of rides that the current user has taken
+    history = list(request.session["ride_history"])
+    print(history.count)
+    ride_history = []
+    for iter in history:
+        ride_dict = json.load(iter)
+        ride_dict["id"] = ride_dict["_id"]
+        ride_history.append(ride_dict)
+
+    # Renders the ride history page
+    return render(
+        request,
+        "user/view_ride_history.html",
+        {
+            "username": request.session["username"],
+            "rides": rides,
+            "ride_history": request.session["ride_history"],
+        },
+    )
