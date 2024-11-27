@@ -269,3 +269,4 @@ class UserViewTests(TestCase):
         self.assertContains(response, "Richmond, VA, USA")
         self.assertContains(response, "2024-11-28")
         self.assertContains(response, "Personal")
+        
