@@ -234,39 +234,98 @@ class UserViewTests(TestCase):
     #    self.mock_userDB.delete_many.assert_called_with({})
     #    self.mock_ridesDB.delete_many.assert_called_with({})
 
-    @patch('user.views.intializeDB')
-    @patch('user.views.userDB')
-    def test_user_ride_history(self, mock_userDB, mock_initializeDB):
-        mock_userDB.return_value = self.mock_userDB
-        # Simulate user data with ride history
-        self.mock_userDB.find_one.return_value = {
-            "_id": ObjectId("67459ff2c43321e6a104beb6"),
-            "username": "q",
-            "unityid": "q",
-            "fname": "q",
-            "lname": "q",
-            "email": "abc@mail.com",
-            "password": "8e35c2cd3bf6641bdb0e2050b76932cbb2e6034a0ddacc1d9bea82a6ba57f7cf",
-            "phone": "1234567890",
-            "ride_history": [
-            "{\"_id\": \"608509f0-cb2a-4692-ab11-c60670a641a1\", \"purpose\": \"ewdf\", \"spoint\": \"Raleigh, NC, USA\", \"destination\": \"Richmond, VA, USA\", \"type\": \"Personal\", \"date\": \"2024-11-28\", \"hour\": \"1\", \"minute\": \"00\", \"ampm\": \"AM\", \"availability\": 0, \"max_size\": 1, \"details\": \"vsfwec\", \"owner\": \"a\", \"cost\": \"For Uber, price range is from: $487.95 to: $509.4 and For Lyft, price range is from: $485.25 to: $511.45\", \"requested_users\": [], \"confirmed_users\": [\"q\"]}"
-        ]
+    # @patch('user.views.intializeDB')
+    # @patch('user.views.userDB')
+    # def test_user_ride_history(self, mock_userDB, mock_initializeDB):
+    #     mock_userDB.return_value = self.mock_userDB
+    #     # Simulate user data with ride history
+    #     self.mock_userDB.find_one.return_value = {
+    #         "_id": ObjectId("67459ff2c43321e6a104beb6"),
+    #         "username": "q",
+    #         "unityid": "q",
+    #         "fname": "q",
+    #         "lname": "q",
+    #         "email": "abc@mail.com",
+    #         "password": "8e35c2cd3bf6641bdb0e2050b76932cbb2e6034a0ddacc1d9bea82a6ba57f7cf",
+    #         "phone": "1234567890",
+    #         "ride_history": [
+    #         "{\"_id\": \"608509f0-cb2a-4692-ab11-c60670a641a1\", \"purpose\": \"ewdf\", \"spoint\": \"Raleigh, NC, USA\", \"destination\": \"Richmond, VA, USA\", \"type\": \"Personal\", \"date\": \"2024-11-28\", \"hour\": \"1\", \"minute\": \"00\", \"ampm\": \"AM\", \"availability\": 0, \"max_size\": 1, \"details\": \"vsfwec\", \"owner\": \"a\", \"cost\": \"For Uber, price range is from: $487.95 to: $509.4 and For Lyft, price range is from: $485.25 to: $511.45\", \"requested_users\": [], \"confirmed_users\": [\"q\"]}"
+    #     ]
+    # }
+
+    # # Set up session for the user
+    #     session = self.client.session
+    #     session["username"] = "q"
+    #     session.save()
+
+    # # Simulate a GET request to a view that retrieves the ride history
+    #     response = self.client.get(reverse('requested_rides'))
+    #     self.assertEqual(response.status_code, 200)
+
+    # # Assert that the response contains the ride history
+    #     ride_history = self.mock_userDB.find_one.return_value["ride_history"]
+    #     self.assertContains(response, "Raleigh, NC, USA")
+    #     self.assertContains(response, "Richmond, VA, USA")
+    #     self.assertContains(response, "2024-11-28")
+    #     self.assertContains(response, "Personal")
+
+@patch('user.views.intializeDB')
+@patch('user.views.userDB')
+def test_ride_history(self, mock_userDB, mock_initializeDB):
+    # Simulate user data with a populated ride history
+    ride_history = [
+        {
+            "_id": "608509f0-cb2a-4692-ab11-c60670a641a1",
+            "purpose": "ewdf",
+            "spoint": "Raleigh, NC, USA",
+            "destination": "Richmond, VA, USA",
+            "type": "Personal",
+            "date": "2024-11-28",
+            "hour": "1",
+            "minute": "00",
+            "ampm": "AM",
+            "availability": 0,
+            "max_size": 1,
+            "details": "vsfwec",
+            "owner": "a",
+            "cost": "For Uber, price range is from: $487.95 to: $509.4 and For Lyft, price range is from: $485.25 to: $511.45",
+            "requested_users": [],
+            "confirmed_users": ["q"]
+        }
+    ]
+    user_data = {
+        "_id": ObjectId("67459ff2c43321e6a104beb6"),
+        "username": "q",
+        "unityid": "q",
+        "fname": "q",
+        "lname": "q",
+        "email": "abc@mail.com",
+        "password": "8e35c2cd3bf6641bdb0e2050b76932cbb2e6034a0ddacc1d9bea82a6ba57f7cf",
+        "phone": "1234567890",
+        "ride_history": [str(ride) for ride in ride_history],
     }
 
-    # Set up session for the user
-        session = self.client.session
-        session["username"] = "q"
-        session.save()
+    # Mock the database call to return the user data
+    mock_userDB.return_value = self.mock_userDB
+    self.mock_userDB.find_one.return_value = user_data
 
-    # Simulate a GET request to a view that retrieves the ride history
-        response = self.client.get(reverse('requested_rides'))
-        self.assertEqual(response.status_code, 200)
-        print(response)
+    # Set up the session
+    session = self.client.session
+    session["username"] = user_data["username"]
+    session.save()
 
-    # Assert that the response contains the ride history
-        ride_history = self.mock_userDB.find_one.return_value["ride_history"]
-        self.assertContains(response, "Raleigh, NC, USA")
-        self.assertContains(response, "Richmond, VA, USA")
-        self.assertContains(response, "2024-11-28")
-        self.assertContains(response, "Personal")
-        
+    # Send GET request to the view that fetches ride history
+    response = self.client.get(reverse('my_rides'))
+    self.assertEqual(response.status_code, 200)
+
+    # Validate that the ride history appears in the response
+    for ride in ride_history:
+        self.assertContains(response, ride["spoint"])
+        self.assertContains(response, ride["destination"])
+        self.assertContains(response, ride["date"])
+        self.assertContains(response, ride["type"])
+
+    # Edge Case: Empty Ride History
+    self.mock_userDB.find_one.return_value["ride_history"] = []
+    response = self.client.get(reverse('my_rides'))
+    self.assertContains(response, "No rides found")
