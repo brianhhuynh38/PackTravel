@@ -211,6 +211,7 @@ class UserViewTests(TestCase):
         self.assertEqual(request.session['lname'], self.user_data["lname"])
         self.assertEqual(request.session['email'], self.user_data["email"])
         self.assertEqual(request.session['phone'], self.user_data["phone"])
+        self.assertEqual(request.session['ride_history'], self.user_data['ride_history'])
 
     def test_missing_user_data_key(self):
         incomplete_user_data = {
@@ -220,6 +221,7 @@ class UserViewTests(TestCase):
             # "lname" key is missing
             "email": "testuser@example.com",
             "phone": "1234567890"
+            # ride_history is also missing
         }
 
         request = self.factory.get('/dummy-url')

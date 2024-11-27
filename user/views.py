@@ -362,6 +362,7 @@ def requested_rides(request):
             ride_history.append(ride_dict)
     except KeyError:
         # Return an empty list if the User does not have a ride history for whatever reason
+        request.session["ride_history"] = []
         ride_history = []
 
     received_requests = list(ridesDB.aggregate(pipeline2))
