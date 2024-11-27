@@ -121,7 +121,7 @@
             <p>Confirmed Riders:
               {% if ride.confirmed_users %}
               {% for user in ride.confirmed_users %}
-              {{ user }}{% if not loop.last %}, {% endif %}
+              {{ user }}{% if not forloop.last %}, {% endif %}
               {% endfor %}
               {% else %}
               No confirmed riders.
@@ -158,7 +158,7 @@
             <h5>Riders:</h5>
             {% if ride.confirmed_users %}
               {% for user in ride.confirmed_users %}
-              {{ user }}{% if not loop.last %}, {% endif %}
+              {{ user }}{% if not forloop.last %}, {% endif %}
               {% endfor %}
               {% else %}
               No confirmed riders.
@@ -176,7 +176,10 @@
             <h5>Riders:</h5>
             {% if ride.confirmed_users %}
               {% for user in ride.confirmed_users %}
-                {{ user }}{% if not loop.last %}, {% endif %}
+                {{ user }}
+                {% if not forloop.last %}
+                  ,
+                {% endif %}
               {% endfor %}
             {% else %}
               No confirmed riders.
