@@ -21,14 +21,14 @@ class PublishViewTests(TestCase):
         self.assertRedirects(response, reverse('index'))
 
     @patch("publish.views.intializeDB")
-    def test_publish_index_logged_in_without_username(self,mock_intializeDB):
+    def test_publish_index_logged_in_without_username(self, mock_intializeDB):
         session = self.client.session
         session['usrname'] = 'testuser'
         session.save()
         response = self.client.get(reverse('publish'))
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('index'))
-        
+
     @patch("publish.views.intializeDB")
     def test_publish_index_logged_in(self, mock_intializeDB):
         session = self.client.session
@@ -55,15 +55,15 @@ class PublishViewTests(TestCase):
     def test_display_ride_wrong_args(self, mock_ridesDB, mock_intializeDB):
         try:
             mock_ridesDB.find_one.return_value = {
-            '_id': 'test_ride_id',
-            'destination': 'Destination'
+                '_id': 'test_ride_id',
+                'destination': 'Destination'
             }
             response = self.client.get(reverse('display_ride', args=['test_ride_id']))
             self.assertEqual(response.status_code, 200)
             self.assertTemplateUsed(response, 'publish/display_ride.html')
         except Exception:
             self.assertTrue(True)
-        
+
     @patch("publish.views.intializeDB")
     @patch("publish.views.ridesDB")
     def test_display_ride_no_args(self, mock_ridesDB, mock_intializeDB):
@@ -85,7 +85,6 @@ class PublishViewTests(TestCase):
         response = self.client.post(reverse('select_route'), data=post_data)
         self.assertEqual(response.status_code, 302)
 
-
     @patch("publish.views.intializeDB")
     @patch("publish.views.ridesDB")
     @patch("publish.views.distance_and_cost")
@@ -94,7 +93,7 @@ class PublishViewTests(TestCase):
         session = self.client.session
         session['username'] = 'testuser'
         session.save()
-        
+
         post_data = {
             'purpose': 'Test Purpose',
             'spoint': 'Source',
@@ -107,11 +106,11 @@ class PublishViewTests(TestCase):
             'capacity': '4',
             'details': 'Test details'
         }
-        
+
         response = self.client.post(reverse('create_route'), data=post_data)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'publish/publish.html')
-        #mock_ridesDB.insert_one.assert_called_once()
+        # mock_ridesDB.insert_one.assert_called_once()
 
     @patch("publish.views.intializeDB")
     @patch("publish.views.ridesDB")
@@ -123,7 +122,7 @@ class PublishViewTests(TestCase):
             session = self.client.session
             session['username'] = 'testuser'
             session.save()
-            
+
             post_data = {
                 'purpose': 'Test Purpose',
                 'spoint': 'Source',

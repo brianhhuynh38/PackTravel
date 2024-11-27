@@ -351,17 +351,20 @@ def requested_rides(request):
         iter["id"] = iter["_id"]
         rides.append(iter)
 
-    # Get a list of rides that the current user has taken
-    history = list(request.session["ride_history"])
-    # print(history.count)÷
-    # print("history", history)
-    ride_history = []
-    for iter in history:
-        ride_dict = json.loads(iter)
-        ride_dict["id"] = ride_dict["_id"]
-        ride_history.append(ride_dict)
+    try:
+        # Get a list of rides that the current user has taken
+        history = list(request.session["ride_history"])
 
-    print("ride history", ride_history)
+        ride_history = []
+        for iter in history:
+            ride_dict = json.loads(iter)
+            ride_dict["id"] = ride_dict["_id"]
+            ride_history.append(ride_dict)
+    except KeyError:
+        # Return an empty list if the User does not have a ride history for whatever reason
+        request.session["ride_history"] = []
+        ride_history = []
+
     received_requests = list(ridesDB.aggregate(pipeline2))
     user_rides = list(ridesDB.aggregate(pipeline3))
 
@@ -378,48 +381,7 @@ def requested_rides(request):
             "confirmed": confirmed,
             "received_requests": received_requests,
             "user_rides": user_rides,
-            "username": request.session["username"],
             "rides": rides,
             "ride_history": ride_history,
-        },
-    )
-
-
-def view_ride_history(request) -> HttpResponse:
-    """
-    Returns html rendering information for any rides that the logged-in user has ever taken or created
-    """
-    # Initialize the database if it does not exist yet
-    intializeDB()
-
-    # Check if the user is logged in and return if they aren't
-    if not request.session.has_key("username"):
-        request.session["alert"] = "Please login to view your ride history."
-        return redirect("index")
-
-    # Get a list of rides that the current user has created
-    processed = list(ridesDB.find({"owner": request.session["username"]}))
-    rides = []
-    for iter in processed:
-        iter["id"] = iter["_id"]
-        rides.append(iter)
-
-    # Get a list of rides that the current user has taken
-    history = list(request.session["ride_history"])
-    print(history.count)
-    ride_history = []
-    for iter in history:
-        ride_dict = json.load(iter)
-        ride_dict["id"] = ride_dict["_id"]
-        ride_history.append(ride_dict)
-
-    # Renders the ride history page
-    return render(
-        request,
-        "user/view_ride_history.html",
-        {
-            "username": request.session["username"],
-            "rides": rides,
-            "ride_history": request.session["ride_history"],
         },
     )
