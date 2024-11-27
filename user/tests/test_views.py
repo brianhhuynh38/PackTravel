@@ -233,3 +233,38 @@ class UserViewTests(TestCase):
     #    #Clear mocked data
     #    self.mock_userDB.delete_many.assert_called_with({})
     #    self.mock_ridesDB.delete_many.assert_called_with({})
+
+    @patch('user.views.intializeDB')
+    @patch('user.views.userDB')
+    def test_user_ride_history(self, mock_userDB, mock_initializeDB):
+        mock_userDB.return_value = self.mock_userDB
+        # Simulate user data with ride history
+        self.mock_userDB.find_one.return_value = {
+            "_id": ObjectId("67459ff2c43321e6a104beb6"),
+            "username": "q",
+            "unityid": "q",
+            "fname": "q",
+            "lname": "q",
+            "email": "abc@mail.com",
+            "password": "8e35c2cd3bf6641bdb0e2050b76932cbb2e6034a0ddacc1d9bea82a6ba57f7cf",
+            "phone": "1234567890",
+            "ride_history": [
+            "{\"_id\": \"608509f0-cb2a-4692-ab11-c60670a641a1\", \"purpose\": \"ewdf\", \"spoint\": \"Raleigh, NC, USA\", \"destination\": \"Richmond, VA, USA\", \"type\": \"Personal\", \"date\": \"2024-11-28\", \"hour\": \"1\", \"minute\": \"00\", \"ampm\": \"AM\", \"availability\": 0, \"max_size\": 1, \"details\": \"vsfwec\", \"owner\": \"a\", \"cost\": \"For Uber, price range is from: $487.95 to: $509.4 and For Lyft, price range is from: $485.25 to: $511.45\", \"requested_users\": [], \"confirmed_users\": [\"q\"]}"
+        ]
+    }
+
+    # Set up session for the user
+        session = self.client.session
+        session["username"] = "q"
+        session.save()
+
+    # Simulate a GET request to a view that retrieves the ride history
+        response = self.client.get(reverse('my_rides'))
+        self.assertEqual(response.status_code, 200)
+
+    # Assert that the response contains the ride history
+        ride_history = self.mock_userDB.find_one.return_value["ride_history"]
+        self.assertContains(response, "Raleigh, NC, USA")
+        self.assertContains(response, "Richmond, VA, USA")
+        self.assertContains(response, "2024-11-28")
+        self.assertContains(response, "Personal")
