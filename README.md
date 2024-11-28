@@ -27,7 +27,7 @@ DEMO: <a href="https://drive.google.com/drive/u/3/folders/17D7UdbXRUxfWHnkc3N5_K
 
 Most of the university students do not have a car to travel off-campus and rely mostly on the Wolfline. But what if someone wants to travel outside Wolfline's limit? Well... why not collaborate on PackTravel to travel off-campus by a cab, rental car, etc.
 
-**So, let's go for Packtravel**
+**So, let's try Packtravel:**
 
 https://github.com/user-attachments/assets/23f9fbcc-e94b-4396-8b41-565bf2569b51
 
