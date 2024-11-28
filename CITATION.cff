@@ -1,3 +1,6 @@
+
+cff-version: 1.1.0
+message: "If you use this software, please cite it as below."
 authors:
 - family-names: Chatadi
   given-names: Shanmukh
@@ -5,12 +8,6 @@ authors:
   given-names: Brian
 - family-names: Kamdar
   given-names: Manav
-cff-version: 1.2.0
-date-released: '2024-11-27'
-doi: 
-license:
-- cc-by-4.0
-repository-code: https://github.com/brianhhuynh38/PackTravel
-title: PackTravel by Group 45
-type: software
-version: v1.3
+title: PackTravel
+version: v1.3-3
+date-released: 2024-11-28
