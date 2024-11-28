@@ -1,0 +1,45 @@
+,RMSE,MAE,R2,Model
+lasso,22.50105210016026,19.249141044559636,-4.807466063190154,"Pipeline(steps=[('scaler', StandardScaler()),
+                ('lassocv', LassoCV(cv=10, max_iter=100000, random_state=42))])"
+ridge,22.31138753322048,19.069516867753904,-4.709974772103581,"Pipeline(steps=[('scaler', StandardScaler()),
+                ('ridgecv',
+                 RidgeCV(alphas=array([1.00000000e-04, 1.20679264e-04, 1.45634848e-04, 1.75751062e-04,
+       2.12095089e-04, 2.55954792e-04, 3.08884360e-04, 3.72759372e-04,
+       4.49843267e-04, 5.42867544e-04, 6.55128557e-04, 7.90604321e-04,
+       9.54095476e-04, 1.15139540e-03, 1.38949549e-03, 1.67683294e-03,
+       2.02358965e-03, 2.44205309e-03, 2.9...
+       9.10298178e-03, 1.09854114e-02, 1.32571137e-02, 1.59985872e-02,
+       1.93069773e-02, 2.32995181e-02, 2.81176870e-02, 3.39322177e-02,
+       4.09491506e-02, 4.94171336e-02, 5.96362332e-02, 7.19685673e-02,
+       8.68511374e-02, 1.04811313e-01, 1.26485522e-01, 1.52641797e-01,
+       1.84206997e-01, 2.22299648e-01, 2.68269580e-01, 3.23745754e-01,
+       3.90693994e-01, 4.71486636e-01, 5.68986603e-01, 6.86648845e-01,
+       8.28642773e-01, 1.00000000e+00]),
+                         cv=10))])"
+knn,5.678423378488886,4.022489750636558,0.6301406771799384,"Pipeline(steps=[('scaler', StandardScaler()),
+                ('kneighborsregressor', KNeighborsRegressor(n_neighbors=9))])"
+random_forest,2.6209361402739337,1.442235202484988,0.9212058619737751,"Pipeline(steps=[('randomforestregressor',
+                 RandomForestRegressor(max_depth=20, min_samples_leaf=2,
+                                       min_samples_split=5, n_estimators=200,
+                                       random_state=42))])"
+gradient_boosting,2.5677891354142597,1.4113267089072155,0.9243690171779336,"Pipeline(steps=[('gradientboostingregressor',
+                 GradientBoostingRegressor(max_depth=7, min_samples_leaf=2,
+                                           min_samples_split=5,
+                                           n_estimators=200,
+                                           random_state=42))])"
+xgboost,2.5878691266179574,1.4242925731103366,0.9231815307048764,"Pipeline(steps=[('xgbregressor',
+                 XGBRegressor(base_score=None, booster=None, callbacks=None,
+                              colsample_bylevel=None, colsample_bynode=None,
+                              colsample_bytree=1.0, device=None,
+                              early_stopping_rounds=None,
+                              enable_categorical=False, eval_metric=None,
+                              feature_types=None, gamma=None, grow_policy=None,
+                              importance_type=None,
+                              interaction_constraints=None, learning_rate=0.1,
+                              max_bin=None, max_cat_threshold=None,
+                              max_cat_to_onehot=None, max_delta_step=None,
+                              max_depth=7, max_leaves=None,
+                              min_child_weight=None, missing=nan,
+                              monotone_constraints=None, multi_strategy=None,
+                              n_estimators=200, n_jobs=None,
+                              num_parallel_tree=None, random_state=42, ...))])"

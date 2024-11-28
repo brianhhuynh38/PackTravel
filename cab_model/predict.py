@@ -81,7 +81,7 @@ class predict_price():
         """This method predicts cab price with input data"""
         path_to_model = str(BASE_DIR) + r"/cab_model/model.pkl"
         with open(path_to_model, 'rb') as f:
-            lasso_trained_model = pickle.load(f)
+            trained_model = pickle.load(f)
 
         res1 = ""
         res2 = ""
@@ -96,7 +96,7 @@ class predict_price():
             for eachCabType in cabs[each_cab_comp]:
                 to_pred[eachCabType] = 1
                 to_pred_df = self.dataframeFromDict(to_pred)
-                price = lasso_trained_model.predict(to_pred_df.to_numpy())
+                price = trained_model.predict(to_pred_df.to_numpy())
                 price_range.append(price)
                 to_pred[eachCabType] = 0
             #res += f"For {each_cab_comp}, price ranges from ${round(price_range[0][0], 2)} to ${round(price_range[1][0], 2)}\n"
