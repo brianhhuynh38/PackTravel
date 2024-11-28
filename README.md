@@ -76,15 +76,17 @@ Installation instructions can be found in [`INSTALL.md`](./INSTALL.md).
 
 3. **Functionalities**: Cancel Sent Request and Reject Ride Request functionalities to be implemented
 
-4. **Ride History**: View Past Rides of User
+4. **Website Hosting:** Deploy the PackTravel website on a reliable server to ensure it is publicly accessible for user sign-up and usage.
 
-5. **Website Hosting:** Deploy the PackTravel website on a reliable server to ensure it is publicly accessible for user sign-up and usage.
+5. **Mobile Support:** Enhance the application's usability on smartphones by developing a dedicated mobile app or optimizing it for mobile browser viewing.
 
-6. **Mobile Support:** Enhance the application's usability on smartphones by developing a dedicated mobile app or optimizing it for mobile browser viewing.
+6. **Real-Time Fares:** Pull real-time fares directly from Uber and Lyft.
 
-7. **Real-Time Fares:** Pull real-time fares directly from Uber and Lyft.
+7. **Improve our ML model:** Transition to a deep learning model to improve efficiency.
 
-8. **Improve our ML model** - to predict cab prices. Data Scientists, you are needed!!!
+8. **Ride Completion:** Be able to mark rides as complete in order to open doors for many new functionalities.
+  
+9. **Ride Recommendation System:** Recommend rides based on user's ride history.
 
 
 <h3>Screens:</h3>
