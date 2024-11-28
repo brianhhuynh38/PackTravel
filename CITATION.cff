@@ -7,7 +7,7 @@ abstract: '<h2><strong>Pilot Release - v1.3</strong></h2>
   - Developers no longer have to expose their API key or replace 6 different instances
   of it every time something needs to be done.
 
-  - All important data handled via `.env` file</p>
+  - All important data handled via .env file</p>
 
   <p><strong>2. View Ride History:</strong>
 
@@ -23,20 +23,6 @@ abstract: '<h2><strong>Pilot Release - v1.3</strong></h2>
   
   - Introduce 5 new models with better perfomance than the previous model</p>
 
-
-
-  <h3><strong>Bug Fixes:</strong></h3>
-
-  <p><strong>1. Ride Deletion Issue:</strong> Fixed an issue where ride owners were
-  unable to delete the rides they created. Ride owners can now successfully delete
-  any rides they''ve created as intended.</p>
-
-  <p><strong>2. Unique Identifier:</strong> source point was being used as the _id
-  for searching rides. This was fixed by using a UUID as the _id as the identifier
-  for a ride.</p>
-
-  <p><strong>3. Unique Username Constraint:</strong> Added ride owner unique username
-  constraint and simplified db querying.</p>'
 authors:
 - family-names: Chatadi
   given-names: Shanmukh
