@@ -60,9 +60,9 @@ class predict_price():
                 date_list[i] = 0
         d = date(day=date_list[0], month=date_list[1], year=date_list[2]).strftime('%A')
 
-        if d in ["Saturday", "Sunday"] :
+        if d in ["Saturday", "Sunday"]:
             to_pred_data["weekend"] = 1
-        else :
+        else:
             to_pred_data["weekday"] = 1
         to_pred_data["weekend"] = 1
 
@@ -75,7 +75,6 @@ class predict_price():
         new_data = new_data[1:]
         new_data.columns = cols
         return new_data
-
 
     def predictCabs(self, to_pred):
         """This method predicts cab price with input data"""
@@ -113,7 +112,6 @@ class predict_price():
         to_pred["distance"] = self.distance
         to_pred = self.populateTimePeriod(to_pred)
         return to_pred
-
 
     def generate_data_return_price(self):
         """This method returns estimate price"""
