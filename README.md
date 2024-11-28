@@ -18,22 +18,23 @@
 [![Pull Requests](https://img.shields.io/github/issues-pr/brianhhuynh38/PackTravel?style=for-the-badge)](https://github.com/brianhhuynh38/PackTravel/pulls)
 [![Repo Size](https://img.shields.io/github/repo-size/brianhhuynh38/PackTravel?style=for-the-badge)](https://github.com/brianhhuynh38/PackTravel)
 
-
 </div>
-DEMO: <a href="https://drive.google.com/drive/u/3/folders/17D7UdbXRUxfWHnkc3N5_KJEVKsNOitFJ" target="_blank">Link to Demo Video</a>
 
+## Demo
+
+[![](https://img.youtube.com/vi/rHN_3GS9OTY/0.jpg)](https://www.youtube.com/watch?v=rHN_3GS9OTY)
 
 <h2>What is Packtravel?</h2>
 
 Most of the university students do not have a car to travel off-campus and rely mostly on the Wolfline. But what if someone wants to travel outside Wolfline's limit? Well... why not collaborate on PackTravel to travel off-campus by a cab, rental car, etc.
 
+## Overview Video
+
+[Link HERE]
 
 **So, let's try Packtravel:**
 
 Installation instructions can be found in [`INSTALL.md`](./INSTALL.md).
-
-https://github.com/user-attachments/assets/23f9fbcc-e94b-4396-8b41-565bf2569b51
-
 
 **Built Using:**
 
