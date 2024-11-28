@@ -5,7 +5,7 @@
 
 
 
-[![DOI](https://zenodo.org/badge/879310431.svg)](https://doi.org/10.5281/zenodo.14020210)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14233081.svg)](https://doi.org/10.5281/zenodo.14233081)
 [![Tests](https://github.com/brianhhuynh38/PackTravel/actions/workflows/run_test_cases.yml/badge.svg)](https://github.com/brianhhuynh38/PackTravel/actions/workflows/run_test_cases.yml)
 [![codecov](https://codecov.io/gh/brianhhuynh38/PackTravel/graph/badge.svg?token=M2466V4YVI)](https://codecov.io/gh/brianhhuynh38/PackTravel)
 [![Python Style Checker](https://github.com/brianhhuynh38/PackTravel/actions/workflows/python_style_checker.yml/badge.svg)](https://github.com/brianhhuynh38/PackTravel/actions/workflows/python_style_checker.yml)
