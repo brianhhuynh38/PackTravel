@@ -30,7 +30,7 @@ Most of the university students do not have a car to travel off-campus and rely 
 
 ## Overview Video
 
-[Link HERE]
+[![](https://img.youtube.com/vi/JIpUmG3VPOo/0.jpg)](https://www.youtube.com/watch?v=JIpUmG3VPOo)
 
 **So, let's try Packtravel:**
 
@@ -127,6 +127,8 @@ Installation instructions can be found in [`INSTALL.md`](./INSTALL.md).
 - [PyLint](https://pylint.org/)
 
 ## Contributors 
+
+Contact us if you need assistance!
 
 <table>
   <tr>
