@@ -5,9 +5,9 @@
 
 
 
-[![DOI](https://zenodo.org/badge/879310431.svg)](https://doi.org/10.5281/zenodo.14020210)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14233081.svg)](https://doi.org/10.5281/zenodo.14233081)
 [![Tests](https://github.com/brianhhuynh38/PackTravel/actions/workflows/run_test_cases.yml/badge.svg)](https://github.com/brianhhuynh38/PackTravel/actions/workflows/run_test_cases.yml)
-[![Codecov](https://codecov.io/gh/brianhhuynh38/PackTravel/branch/main_new/graph/badge.svg)](https://codecov.io/gh/brianhhuynh38/PackTravel)
+[![codecov](https://codecov.io/gh/brianhhuynh38/PackTravel/graph/badge.svg?token=M2466V4YVI)](https://codecov.io/gh/brianhhuynh38/PackTravel)
 [![Python Style Checker](https://github.com/brianhhuynh38/PackTravel/actions/workflows/python_style_checker.yml/badge.svg)](https://github.com/brianhhuynh38/PackTravel/actions/workflows/python_style_checker.yml)
 [![Lint Python](https://github.com/brianhhuynh38/PackTravel/actions/workflows/pylint.yml/badge.svg)](https://github.com/brianhhuynh38/PackTravel/actions/workflows/pylint.yml)
 
@@ -27,7 +27,10 @@ DEMO: <a href="https://drive.google.com/drive/u/3/folders/17D7UdbXRUxfWHnkc3N5_K
 
 Most of the university students do not have a car to travel off-campus and rely mostly on the Wolfline. But what if someone wants to travel outside Wolfline's limit? Well... why not collaborate on PackTravel to travel off-campus by a cab, rental car, etc.
 
+
 **So, let's try Packtravel:**
+
+Installation instructions can be found in [`INSTALL.md`](./INSTALL.md).
 
 https://github.com/user-attachments/assets/23f9fbcc-e94b-4396-8b41-565bf2569b51
 
@@ -113,97 +116,22 @@ https://github.com/user-attachments/assets/23f9fbcc-e94b-4396-8b41-565bf2569b51
 
 ![dashboard 2](https://github.com/user-attachments/assets/85025d8e-612f-489b-a9ce-bd23033913d4)
 
-  - ### Prerequisite:
-      - Download [Python3.x](https://www.python.org/downloads/release/python-380/).
-      - Download [Django](https://docs.djangoproject.com/en/4.1/topics/install/).
+**View Ride History**
 
-   ## Run Locally
+![ride_history](https://github.com/user-attachments/assets/2b5f5cda-6b00-4879-9474-ee65bc62211d)
 
-Create a virtual environment:
-
-```bash
-  python3.8 -m venv env
-```
-
-Activate the virtual environment:
-Linux/MacOS:
-```bash
-  source env/bin/activate
-```
-Windows:
-```bash
-  \env\Scripts\activate
-```
-
-Clone the project
-
-```bash
-  git clone https://github.com/GradHackersGuild/PackTravel-Old
-```
-
-Go to the project directory
-
-```bash
-  cd PackTravel
-```
-
-Install dependencies
-
-```bash 
-  pip install -r requirements.txt
-```
-
-Create API Keys
-1) Go to [google api keys](https://developers.google.com/maps/documentation/embed/get-api-key) and create API of your own. 
-2) Then replace every instance of 'your_google_api_key' with the key you created in the entire codebase. 
-
-Create MongoDB User to Connect to a dB 
-1) Go to [mongodb atlas](https://cloud.mongodb.com/)
-2) Create a new database or visit existing one.
-3) Create new cluster called pack-travel.
-4) Click on connect -> mongodB for VS Code.
-5) This will give you one endpoint like below.
-
-![image](https://github.com/user-attachments/assets/b39e2ba4-26e8-4071-a989-f62e0acb42f6)
-
-1) Go to Database Access.
-2) Create new user.
-3) Enter username and password.
-4) Put the password in config.ini file
-5) Replace the current endpoint in utils.py that you with the newly created endpoint
-6) Populate the username
-7) Password has already been taken care of in the step 4 
- 
-
-Start the server
-
-```bash
-  python manage.py migrate
-  python manage.py runserver
-```
-
-     - Site gets hosted at:
-       `http://127.0.0.1:8000/`
-       
 ## Tools
 - [Preetier Code Formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - [JS-HTML-CSS Formatter](https://marketplace.visualstudio.com/items?itemName=lonefy.vscode-JS-CSS-HTML-formatter)
 - [PyLint](https://pylint.org/)
 
-
-
-## Discord Channel
-<a href="https://discord.com/channels/1290739583042191420/1290739583042191423"><img src="https://github.com/user-attachments/assets/aff2b82a-677c-43da-be9e-73fcda385960" width="100px" height="100px"/></a>
-
-
-
 ## Contributors 
 
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/MakarandPundlik"><img src="https://avatars.githubusercontent.com/u/65530539?v=4" width="100px;" alt=""/><br /><sub><b>Makarand Pundlik</b></sub></a></td>
-    <td align="center"><a href="https://github.com/V4run14"><img src="https://avatars.githubusercontent.com/u/59575040?v=4" width="100px;" alt=""/><br /><sub><b>Varun Varatharajan</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/michellevarghese"><img src="https://avatars.githubusercontent.com/u/73420769?v=4" width="100px;" alt=""/><br /><sub><b>Michelle Varghese</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/shinegami-2002"><img src="https://avatars.githubusercontent.com/shinegami-2002?v=4" width="100px;" alt=""/><br /><sub><b>Shanmukh Chatadi</b></sub></a></td>
+    <td align="center"><a href="https://github.com/brianhhuynh38"><img src="https://avatars.githubusercontent.com/brianhhuynh38?v=4" width="100px;" alt=""/><br /><sub><b>Brian Huynh</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/manavkamdar27"><img src="https://avatars.githubusercontent.com/manavkamdar27?v=4" width="100px;" alt=""/><br /><sub><b>Manav Kamdar</b></sub></a><br /></td>
   </tr>
 </table>
 
